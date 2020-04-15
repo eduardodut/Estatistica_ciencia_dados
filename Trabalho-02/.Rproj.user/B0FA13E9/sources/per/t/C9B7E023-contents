@@ -47,34 +47,63 @@ Para cada um dos 4 problemas dados a seguir pede-se:
   c) Faça a análise dos dados, usando dois gráficos: boxplot (gráfico de caixa), que é um gráfico utilizado para avaliar a distribuição empírica dos dados) e histograma, que é um gráfico de frequência, que tem como objetivo ilustrar como uma determinada amostra ou população de dados está distribuída) 
 
 1- Problema:
-analisar as preferências de usuários entre dois sistemas
-Amostra é prefsAB.cvs
+analisar as preferências de usuários entre dois sistemas: prefsAB.cvs
 
 Desenvolvimento: </b>
+
+a)Hipóteses:
+
+"Há diferença na preferência entre os sistemas A e B?"
+
+b)Leitura dos dados:
+
 ```{r}
-#leitura dos dados
-
 library(readr)
-prefsAB <- read_csv("prefsAB.csv", col_types = cols(Subject = col_skip()))
-
+#install.packages("tidyverse") #<--- caso tidyverse não esteja instalado
+library(tidyverse)
+#A leitura dos dados é realizado excluindo-se a primeira coluna, pois se trata de um sequêncial sem significado para o problema em questão. Além disso é realizado o "factor" dos dados para que seja possível realizar a contagem dos valores
+prefsAB <- as.tibble(read_csv("Dados/prefsAB.csv",col_types = cols(Pref = col_factor(levels = c("A","B")), Subject = col_skip())))
 
 summary(prefsAB)
+```
+
+c)Geração de gráficos
+
+```{r}
+library(ggplot2)
+grafico4.1.c <- ggplot(prefsABC, aes(x=Pref))+  geom_bar() + theme_light()+ labs(x= "Sistema", y="Número de escolhas por sistema", title="4.1.c) Preferência entre sistemas A e B")
 
 
-#a)
-
-
-
-
+grafico4.1.c
 
 ```
 
 <b>2- Problema:
-analisar as preferências de usuários entre três sistemas
-Amostra é prefsABC.cvs
+analisar as preferências de usuários entre três sistemas: prefsABC.cvs
 
 Desenvolvimento: </b>
+
+a)Hipóteses:
+
+"Há diferença na preferência entre os sistemas A, B e C?"
+
+b)Leitura dos dados:
+
 ```{r}
+#A leitura dos dados é realizado excluindo-se a primeira coluna, pois se trata de um sequêncial sem significado para o problema em questão. Além disso é realizado o "factor" dos dados para que seja possível realizar a contagem dos valores
+prefsABC <- as.tibble(read_csv("Dados/prefsABC.csv",col_types = cols(Pref = col_factor(levels = c("A","B","C")), Subject = col_skip())))
+```
+
+c)Geração de gráficos
+
+```{r}
+  
+grafico4.2.c <- ggplot(prefsABC, aes(x=Pref))+  geom_bar() + theme_light()+ labs(x= "Sistema", y="Número de escolhas por sistema", title="4.2.c) Preferência entre sistemas A, B e C")
+
+
+grafico4.2.c
+
+
 
 ```
 <b>3- Problema:
@@ -82,19 +111,110 @@ analisar as preferências de usuários, por sexo, entre dois sistemas
 Amostra é prefsABsex.cvs
 
 Desenvolvimento: </b>
+
+a)Hipóteses:
+
+"Há diferença na preferência do sistemas A por homens e mulheres?"
+
+"Há diferença na preferência do sistemas B por homens e mulheres?"
+
+
+b)Leitura dos dados:
+
 ```{r}
+#A leitura dos dados é realizado excluindo-se a primeira coluna, pois se trata de um sequêncial sem significado para o problema em questão. Além disso é realizado o "factor" dos dados para que seja possível realizar a contagem dos valores
+prefsABsex <- as.tibble(read_csv("Dados/prefsABsex.csv", 
+    col_types = cols(Pref = col_factor(levels = c("A", 
+        "B")),
+        Sex = col_factor(levels = c("M", "F")), 
+        Subject = col_skip())))
 
+#organização dos dados: agrupamento por preferência de sistema
+tabelaPorPref.ABSex <- prefsABsex%>%
+  group_by(Pref,Sex)%>%
+  summarize(count = n())%>%
+  spread(Sex, count)
+  
+  
+print(tabelaPorPref.ABSex)
 
+#organização dos dados: agrupamento por sexo do participante
+tabelaPorSex.ABSex <- prefsABsex%>%
+  group_by(Sex, Pref)%>%
+  summarize(count = n())%>%
+  spread(Pref, count)
 
-
-
+print(tabelaPorSex.ABSex)
 
 ```
+
+c)Geração de gráficos
+
+```{r}
+
+grafico4.3.c.1 <- ggplot(prefsABsex, aes(x=Pref, fill = Sex))+  geom_bar() + theme_light()+ labs(x= "Sistema", y="Número de escolhas por sistema", title="4.3.c.1) Preferência entre sistemas A e B")
+
+
+grafico4.3.c.2 <- ggplot(prefsABsex, aes(x=Sex, fill = Pref))+  geom_bar() + theme_light()+ labs(x= "Sistemas escolhidos por sexo", y="Número de escolhas por sistema", title="4.3.c.2) Preferência entre sistemas A e B")+facet_wrap(~Pref)
+
+grafico4.3.c.1
+
+grafico4.3.c.2
+```
+
 <b>4- Problema:
 analisar as preferências de usuários, por sexo, entre dois sistemas
 Amostra é prefsABCsex.cvs
 
 Desenvolvimento: </b>
+
+a)Hipóteses:
+
+"Há diferença na preferência do sistemas A por homens e mulheres?"
+
+"Há diferença na preferência do sistemas B por homens e mulheres?"
+
+"Há diferença na preferência do sistemas C por homens e mulheres?"
+
+b)Leitura dos dados:
+
 ```{r}
 
+#A leitura dos dados é realizado excluindo-se a primeira coluna, pois se trata de um sequêncial sem significado para o problema em questão. Além disso é realizado o "factor" dos dados para que seja possível realizar a contagem dos valores
+prefsABCsex <- as.tibble(read_csv("Dados/prefsABCsex.csv", 
+    col_types = cols(Pref = col_factor(levels = c("A", 
+        "B", "C")), Sex = col_factor(levels = c("F", 
+        "M")), Subject = col_skip())))
+
+#organização dos dados: agrupamento por preferência de sistema
+
+tabelaPorPref.ABCSex <- prefsABCsex%>%
+  group_by(Pref,Sex)%>%
+  summarize(count = n())%>%
+  spread(Sex, count)
+  
+print(tabelaPorPref.ABCSex)
+
+#organização dos dados: agrupamento por sexo do participante
+tabelaPorSex.ABCSex <- prefsABCsex%>%
+  group_by(Sex, Pref)%>%
+  summarize(count = n())%>%
+  spread(Pref, count)
+
+print(tabelaPorSex.ABCSex)
+```
+
+c)Geração de gráficos
+
+```{r}
+#ggplot(data=tabelaPorPref.ABCSex, aes(x=Pref, y=M)) +  geom_bar(stat="identity", position = #"fill")
+  
+grafico4.4.c.1 <- ggplot(prefsABCsex, aes(x=Pref, fill = Sex))+  geom_bar() + theme_light()+
+  labs(x= "Sistema", y="Número de escolhas por sistema", title="4.4.c.1) Preferência entre sistemas A e B")
+
+
+grafico4.4.c.2 <- ggplot(prefsABCsex, aes(x=Sex, fill = Pref))+  geom_bar() + theme_light()+
+  labs(x= "Sistemas escolhidos por sexo", y="Número de escolhas por sistema", title="4.4.c.2) Preferência entre sistemas A e B")+facet_wrap(~Pref)
+grafico4.4.c.1
+grafico4.4.c.2
 ```
