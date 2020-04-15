@@ -1,0 +1,29 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1586885837503.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "610330460",
+    "id" : "C9B7E023",
+    "lastKnownWriteTime" : 1586900646,
+    "last_content_update" : 1586900646295,
+    "path" : "~/GitHub/Trabalho-02/notebook.Rmd",
+    "project_path" : "notebook.Rmd",
+    "properties" : {
+        "chunk_output_type" : "inline",
+        "cursorPosition" : "64,0",
+        "docOutlineSize" : "501.78734850287447",
+        "docOutlineVisible" : "0",
+        "scrollLine" : "44",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}
