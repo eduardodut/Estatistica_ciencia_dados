@@ -71,7 +71,7 @@ c)Geração de gráficos
 
 ```{r}
 library(ggplot2)
-grafico4.1.c <- ggplot(prefsABC, aes(x=Pref))+  geom_bar() + theme_light()+ labs(x= "Sistema", y="Número de escolhas por sistema", title="4.1.c) Preferência entre sistemas A e B")
+grafico4.1.c <- ggplot(prefsAB, aes(x=Pref))+  geom_bar() + theme_light()+ labs(x= "Sistema", y="Número de escolhas por sistema", title="4.1.c) Preferência entre sistemas A e B")
 
 
 grafico4.1.c
