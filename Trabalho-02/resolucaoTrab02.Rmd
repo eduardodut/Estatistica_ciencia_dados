@@ -75,7 +75,6 @@ grafico4.1.c <- ggplot(prefsAB, aes(x=Pref))+  geom_bar() + theme_light()+ labs(
 
 
 grafico4.1.c
-
 ```
 
 <b>2- Problema:
@@ -102,21 +101,18 @@ grafico4.2.c <- ggplot(prefsABC, aes(x=Pref))+  geom_bar() + theme_light()+ labs
 
 
 grafico4.2.c
-
-
-
 ```
 <b>3- Problema:
-analisar as preferências de usuários, por sexo, entre dois sistemas
+analisar as preferências de usuários, por gênero, entre dois sistemas
 Amostra é prefsABsex.cvs
 
 Desenvolvimento: </b>
 
 a)Hipóteses:
 
-"Há diferença na preferência do sistemas A por homens e mulheres?"
+"Há diferença na preferência do sistemas A por gênero?"
 
-"Há diferença na preferência do sistemas B por homens e mulheres?"
+"Há diferença na preferência do sistemas B por gênero?"
 
 
 b)Leitura dos dados:
@@ -138,14 +134,13 @@ tabelaPorPref.ABSex <- prefsABsex%>%
   
 print(tabelaPorPref.ABSex)
 
-#organização dos dados: agrupamento por sexo do participante
+#organização dos dados: agrupamento por gênero do participante
 tabelaPorSex.ABSex <- prefsABsex%>%
   group_by(Sex, Pref)%>%
   summarize(count = n())%>%
   spread(Pref, count)
 
 print(tabelaPorSex.ABSex)
-
 ```
 
 c)Geração de gráficos
@@ -155,7 +150,7 @@ c)Geração de gráficos
 grafico4.3.c.1 <- ggplot(prefsABsex, aes(x=Pref, fill = Sex))+  geom_bar() + theme_light()+ labs(x= "Sistema", y="Número de escolhas por sistema", title="4.3.c.1) Preferência entre sistemas A e B")
 
 
-grafico4.3.c.2 <- ggplot(prefsABsex, aes(x=Sex, fill = Pref))+  geom_bar() + theme_light()+ labs(x= "Sistemas escolhidos por sexo", y="Número de escolhas por sistema", title="4.3.c.2) Preferência entre sistemas A e B")+facet_wrap(~Pref)
+grafico4.3.c.2 <- ggplot(prefsABsex, aes(x=Sex, fill = Pref))+  geom_bar() + theme_light()+ labs(x= "Sistemas escolhidos por gênero", y="Número de escolhas por sistema", title="4.3.c.2) Preferência entre sistemas A e B")+facet_wrap(~Pref)
 
 grafico4.3.c.1
 
@@ -163,18 +158,18 @@ grafico4.3.c.2
 ```
 
 <b>4- Problema:
-analisar as preferências de usuários, por sexo, entre dois sistemas
+analisar as preferências de usuários, por gênero, entre dois sistemas
 Amostra é prefsABCsex.cvs
 
 Desenvolvimento: </b>
 
 a)Hipóteses:
 
-"Há diferença na preferência do sistemas A por homens e mulheres?"
+"Há diferença na preferência do sistemas A por gênero?"
 
-"Há diferença na preferência do sistemas B por homens e mulheres?"
+"Há diferença na preferência do sistemas B por gênero?"
 
-"Há diferença na preferência do sistemas C por homens e mulheres?"
+"Há diferença na preferência do sistemas C por gênero?"
 
 b)Leitura dos dados:
 
@@ -195,7 +190,7 @@ tabelaPorPref.ABCSex <- prefsABCsex%>%
   
 print(tabelaPorPref.ABCSex)
 
-#organização dos dados: agrupamento por sexo do participante
+#organização dos dados: agrupamento por gênero do participante
 tabelaPorSex.ABCSex <- prefsABCsex%>%
   group_by(Sex, Pref)%>%
   summarize(count = n())%>%
@@ -207,14 +202,83 @@ print(tabelaPorSex.ABCSex)
 c)Geração de gráficos
 
 ```{r}
-#ggplot(data=tabelaPorPref.ABCSex, aes(x=Pref, y=M)) +  geom_bar(stat="identity", position = #"fill")
-  
+
 grafico4.4.c.1 <- ggplot(prefsABCsex, aes(x=Pref, fill = Sex))+  geom_bar() + theme_light()+
-  labs(x= "Sistema", y="Número de escolhas por sistema", title="4.4.c.1) Preferência entre sistemas A e B")
+  labs(x= "Sistema", y="Número de escolhas por sistema", title="4.4.c.1) Preferência entre sistemas A, B e C")
 
 
 grafico4.4.c.2 <- ggplot(prefsABCsex, aes(x=Sex, fill = Pref))+  geom_bar() + theme_light()+
-  labs(x= "Sistemas escolhidos por sexo", y="Número de escolhas por sistema", title="4.4.c.2) Preferência entre sistemas A e B")+facet_wrap(~Pref)
+  labs(x= "Sistemas escolhidos por gênero", y="Número de escolhas por sistema", title="4.4.c.2) Preferência entre sistemas A, B e C")+facet_wrap(~Pref)
 grafico4.4.c.1
 grafico4.4.c.2
+```
+<b>5ª. Questão. Considere o arquivo, tempoporsite.cvs, em que 600 participantes, usaram um dos dois sites A ou B, e o tempo de uso de cada um deles foi computado.
+Este arquivo descreve um teste A / B do site em que o tempo no site dos participantes foi medido em duas variações do mesmo site. 
+Metade foram expostos ao site A e metade a variação de A, que é o site B. Nenhum deles tinha usado o site antes. 
+A questão de investigação foi a seguinte: Qual site causa no usuário o interesse em ficar o maior tempo possível.
+
+Pede-se:
+
+a) Analise os conceitos apresentados em aula (desvio padrão, mediana). 
+Quantos sujeitos estavam neste teste A / B do site? 
+
+Quantos sujeitos foram expostos a cada variação do site A e B?
+
+Qual foi o tempo médio para o site "B"?
+
+Qual foi o desvio padrão de tempo para o site "A"?
+
+b) Gere um ou mais gráficos mencionados na aula e ilustre seu gráfico. Analise a utilidade dos gráficos que você gerou.
+
+Faça os histogramas para cada um dos sites 
+
+Faça um boxplot comparando os sites.
+
+
+Desenvolvimento: </b>
+
+
+```{r}
+#leitura dos dados
+tempoporsite <- read_csv("Dados/tempoporsite.csv", 
+    col_types = cols(Site = col_factor(levels = c("A", 
+        "B")), Subject = col_skip(), Time = col_integer()))
+resumo = summary(tempoporsite)
+#filtro por observações de cada site
+obsSiteA <- filter(tempoporsite, Site == "A")
+obsSiteB <- filter(tempoporsite, Site == "B")
+
+#ciração de uma tabela resumo
+tabelaResumo <- tibble(Site = c("A", "B"),
+                       qtdSujeitos = c(as.integer(count(obsSiteA)),as.integer(count(obsSiteB))),
+                       mediaTempo = c(mean(obsSiteB$Time),mean(obsSiteB$Time)),
+                       desvPadTempo = c(sd(obsSiteB$Time),sd(obsSiteB$Time)))
+#qtdSujeitos <- tabelaResumo%>%select(qtdSujeitos)%>%colSums(na.rm = TRUE, dims = 1L)
+print("a)")    
+qtdSujeitos <- tabelaResumo%>%select(qtdSujeitos)%>%colSums(na.rm = TRUE, dims = 1L)
+sprintf("Quantidade de sujeitos no teste: %d", qtdSujeitos) 
+qtdSujeitosA <- tabelaResumo%>%filter(Site== "A")%>%select(qtdSujeitos)%>%colSums(na.rm = TRUE, dims = 1L)
+sprintf("Quantidade de sujeitos no teste expostos ao site A: %d", qtdSujeitosA) 
+qtdSujeitosB <- tabelaResumo%>%filter(Site== "B")%>%select(qtdSujeitos)%>%colSums(na.rm = TRUE, dims = 1L)
+sprintf("Quantidade de sujeitos no teste expostos ao site B: %d", qtdSujeitosB)
+mediaSiteB <- as.double(tabelaResumo%>%filter(Site == "B")%>%select(mediaTempo))
+sprintf("Média de tempo gasto no site B: %.2f", mediaSiteB)
+desvPadSiteA <- as.double(tabelaResumo%>%filter(Site == "A")%>%select(desvPadTempo))
+sprintf("Desvio padrão do tempo gasto no site A: %.3f", desvPadSiteA)
+```
+```{r}
+#geração de gráficos
+
+
+grafico5.b.1 <- ggplot(tempoporsite, aes(Time, fill=Site))+  geom_histogram(binwidth=40) + theme_light()+
+  labs(x= "tempo por site", y = 'contagem',title="5.b.1) Histograma do tempo gasto por usuário nos sites A e B")
+
+grafico5.b.1
+
+
+
+grafico5.b.2 <- ggplot(tempoporsite, aes(Site,Time, fill=Site))+  geom_boxplot() + theme_light()+
+  labs(x= "Site", y="Tempo por site", title="5.b.2) Tempo gasto por usuário nos sites A e B")+coord_flip()
+
+grafico5.b.2
 ```
