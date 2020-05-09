@@ -62,7 +62,7 @@ library(readr)
 #install.packages("tidyverse") #<--- caso tidyverse não esteja instalado
 library(tidyverse)
 #A leitura dos dados é realizado excluindo-se a primeira coluna, pois se trata de um sequêncial sem significado para o problema em questão. Além disso é realizado o "factor" dos dados para que seja possível realizar a contagem dos valores
-prefsAB <- as.tibble(read_csv("Dados/prefsAB.csv",col_types = cols(Pref = col_factor(levels = c("A","B")), Subject = col_skip())))
+prefsAB <- as_tibble(read_csv("Dados/prefsAB.csv",col_types = cols(Pref = col_factor(levels = c("A","B")), Subject = col_skip())))
 
 summary(prefsAB)
 ```
@@ -254,15 +254,20 @@ tabelaResumo <- tibble(Site = c("A", "B"),
                        mediaTempo = c(mean(obsSiteB$Time),mean(obsSiteB$Time)),
                        desvPadTempo = c(sd(obsSiteB$Time),sd(obsSiteB$Time)))
 #qtdSujeitos <- tabelaResumo%>%select(qtdSujeitos)%>%colSums(na.rm = TRUE, dims = 1L)
-print("a)")    
+print("a)")
+#Cálculo da quantidade de sujeitos
 qtdSujeitos <- tabelaResumo%>%select(qtdSujeitos)%>%colSums(na.rm = TRUE, dims = 1L)
-sprintf("Quantidade de sujeitos no teste: %d", qtdSujeitos) 
+sprintf("Quantidade de sujeitos no teste: %d", qtdSujeitos)
+#Cálculo da quantidade de sujeitos que utilizaram o Site A
 qtdSujeitosA <- tabelaResumo%>%filter(Site== "A")%>%select(qtdSujeitos)%>%colSums(na.rm = TRUE, dims = 1L)
 sprintf("Quantidade de sujeitos no teste expostos ao site A: %d", qtdSujeitosA) 
+#Cálculo da quantidade de sujeitos que utilizaram o Site B
 qtdSujeitosB <- tabelaResumo%>%filter(Site== "B")%>%select(qtdSujeitos)%>%colSums(na.rm = TRUE, dims = 1L)
 sprintf("Quantidade de sujeitos no teste expostos ao site B: %d", qtdSujeitosB)
+#Cálculo da média de tempo gasto no Site B
 mediaSiteB <- as.double(tabelaResumo%>%filter(Site == "B")%>%select(mediaTempo))
 sprintf("Média de tempo gasto no site B: %.2f", mediaSiteB)
+#Cálculo do desvio padrão do tempo gasto no Site A
 desvPadSiteA <- as.double(tabelaResumo%>%filter(Site == "A")%>%select(desvPadTempo))
 sprintf("Desvio padrão do tempo gasto no site A: %.3f", desvPadSiteA)
 ```

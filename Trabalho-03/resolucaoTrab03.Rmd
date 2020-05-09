@@ -1,0 +1,226 @@
+---
+title: "Estatística para ciência de dados"
+output: html_notebook
+---
+
+<b>Aluno:</b> Eduardo Façanha Dutra
+
+<b>Matrícula:</b> 2016473
+
+<b>Resolução do trabalho 03: Ex3-teste-normalidade - duas variáveis
+
+Objetivos:
+Analisar a distribuição da amostra
+Transformar a distribuição dos dados da amostra em uma distribuição lognormal – os valores em logaritmos seguem a DN
+
+<div style="text-align: justify;">Considere o caso em que o tempo do usuário é a variável independente (calculada) e representando o tempo que o usuário passou em uma determinada conferência virtual, quando fez uso de um dos Meet virtuais, se usando Zoom ou Hangout.
+A hipótese é saber se existe diferença significativa entre os dois Meet.
+O arquivo segue os seguintes princípios para a realização deste trabalho:
+- independência dos dados, quem usou um meet não usou o outro.
+- A variável tempo é mais próxima de uma log normalidade, porque a medida que o usuário usa um sistema, ele se torna mais especialista e o tempo, no eixo X tende a diminuir com o tempo.
+
+Obs: 
+In a test statistic: the result expresses in a single number how much my data differ from my null hypothesis. So it indicates to what extent the observed scores deviate from a normal distribution.
+Now, if my null hypothesis is true, then this deviation percentage should probably be quite small. That is, a small deviation has a high probability value or p-value.
+Reversely, a huge deviation percentage is very unlikely and suggests that my reaction times don't follow a normal distribution in the entire population. So a large deviation has a low p-value. As a rule of thumb, we reject the null hypothesis if p < 0.05.
+So if p < 0.05, we don't believe that our variable follows a normal distribution in our population.
+
+Pede-se:
+Teste a normalidade da amostra da variável Tempo, realizando as duas técnicas dadas a seguir e considerando que:
+
+1. a técnica Shapiro-wilk permite testar a normalidade, para uma amostra pequena
+2. a técnica Kolmogorov-Smirnov permite testar a lognormalidade da amostra. 
+3. Visualize os dados usando Boxplot, histograma e qqnorm.
+
+Senão houver normalidade da amostra, então transforme os dados em uma log normal, depois, verifique como ficaram os dados, e repeta os testes, dos passos 1 ao 3.</b>
+
+
+
+
+Para saber mais assista o vídeo:
+https://www.sigmamagic.com/blogs/how-to-interpret-skewness-and-kurtosis/<br>
+
+<b>Resolução:</b>
+
+
+
+A resolução da atividade seguirá o seguinte roteiro:
+
+1- Leitura dos dados e inicialização das variáveis;
+
+2- Visualização dos gráficos e cálculo de assimetria e curtose dos conjuntos de dados;
+
+3- Realização do teste de Shapiro-wilk para os dados de Tempo das duas plataformas, plotagem dos gráficos e discussão dos resultados;
+
+4- Realização do teste de Kolmogorov-Smirnov para os dados de Tempo das duas plataformas, plotagem dos gráficos e discussão dos resultados;
+
+
+
+Para realizar o teste de normalidade analisar os dados serão plotados os gráficos pertinentes, 
+
+
+<b>1 - Leitura dos dados e inicialização das variáveis:</b>
+```{r}
+library(readr)
+#Leitura do arquivo CSV
+meet_file <- read_csv("Dados/meet-file.csv", #caminho do arquivo 
+                      col_types = cols(Meet = col_factor(levels = c("Zoom", #configuração das colunas da tabela
+                                                                "Hangout")),
+                                                          Subject = col_skip()))
+#seleção dos dados que representam a plataforma Zoom
+Zoom = meet_file[meet_file$Meet == "Zoom","Tempo"]
+
+#seleção dos dados que representam a plataforma Hangout
+Hangout = meet_file[meet_file$Meet == "Hangout","Tempo"]
+
+
+#Função para configuração dos gráficos
+library(ggplot2)
+library(cowplot)
+
+gera_histograma <- function(dados, bins=9){
+ 
+n = length(dados$Tempo)   
+nome <- deparse(substitute(dados))
+mediaAmostra<-mean(dados$Tempo) 
+sd<-sqrt(var(dados$Tempo)*(n-1)/n) 
+
+histograma <- ggplot(dados,aes(Tempo))
+histograma <- histograma + geom_histogram(bins = bins, aes(y=..density.., fill=..count..))+geom_density()
+histograma <- histograma + labs( x="",y="Frequência", title=paste("Tempo utilizado por usuário na plataforma",nome))
+histograma <- histograma + scale_fill_gradient("Amostra por caixa", low="#DCDCDC", high="#7C7C7C",)
+histograma <- histograma + stat_function(fun=dnorm, color="red", args=list(mean=mediaAmostra, sd=sd))
+
+ylimHist= layer_scales(histograma)$x$range$range
+
+diagCaixa <- ggplot(dados, aes(y=Tempo))
+diagCaixa <- diagCaixa + geom_boxplot()
+diagCaixa <- diagCaixa + theme(axis.title.y=element_blank(),axis.text.y=element_blank(),axis.ticks.y=element_blank())
+diagCaixa <- diagCaixa + labs(y=paste("Tempo de uso do",nome))
+diagCaixa <- diagCaixa + coord_flip(ylim = ylimHist)
+
+plot_grid(histograma, diagCaixa, 
+                   ncol = 1, rel_heights = c(2, 1),
+                   align = 'v', axis = "rlbt")  }
+
+```
+<b>2 - Cálculo de assimetria e curtose dos conjuntos de dados, e visualização dos gráficos</b>
+
+<b>2.1 - Plataforma Zoom:</b><br>
+Cálculo da curtose e assimetria:
+
+O cálculo da curtose e assimetria de uma amostra se dá utilizando o quarto e terceiro momentos centrais, respectivamente, ajustados para dados amostrais.
+
+```{r}
+library(e1071) 
+curtoseZoom <- kurtosis(Zoom$Tempo)
+assimetriaZoom <- skewness(Zoom$Tempo)
+cat(" Curtose para as amostras que utilizaram a plataforma Zoom: ", curtoseZoom,"\n","Assimetria para as amostras que utilizaram a plataforma Zoom: ", assimetriaZoom)
+```
+<b>Comentário:</b>
+
+A partir da curtose calculada pode-se afirmar que a distribuição é mais concentrada em torno de um valor, o que faz com que a distribuição amostral possa ser caracterizada como <b>leptocúrtica</b>.
+
+A partir da assimetria calculada pode-se afirmar que a distribuição possui uma <b>assimetria positiva</b>, o que faz com que a distribuição possua uma cauda mais longa à direita. 
+
+Desenho dos gráficos para a plataforma Zoom:
+```{r}
+gera_histograma(Zoom,bins= 11)
+```
+<b>Comentário:</b>
+
+Foi plotado um diagrama de caixas, um histograma com 11 caixas (bins), valor selecionado empiricamente, e uma curva gaussiana com a média e desvio padrão iguais aos da amostra de tempo utilizado na ferramenta Zoom, para utilizar como referência visual.<br>
+
+O gráfico do histograma mostra que a amostra segue aparentemente uma distribuição normal, exceto pelo valor extremo à direita, pois: observa-se que a média da gaussiana e a barra com maior frequência e número de observações aparentemente coincidem, e o número de observações ao redor da média e sua frequência são similares.<br>
+
+O valor extremo à direita faz com que haja uma <b>assimetria positiva</b> na amostra.
+
+Quanto à curtose do histograma, observa-se que os valores estão afunilados em torno da média e acima da curva normal, justificando a <b>curtose positiva</b> calculada. 
+
+```{r}
+library(e1071) 
+curtoseHangout <- kurtosis(Hangout$Tempo)
+assimetriaHangout <- skewness(Hangout$Tempo)
+cat(" Curtose para as amostras que utilizaram a plataforma Hangout: ", curtoseHangout,"\n","Assimetria para as amostras que utilizaram a plataforma Hangout: ", assimetriaHangout)
+```
+<b>Comentário:</b>
+
+A partir da curtose calculada pode-se afirmar que a distribuição é mais concentrada em torno de um valor, o que faz com que a distribuição amostral possa ser caracterizada como <b>leptocúrtica</b>.
+
+A partir da assimetria calculada pode-se afirmar que a distribuição possui uma <b>assimetria positiva</b>, o que faz com que a distribuição possua uma cauda mais longa à direita. 
+
+
+
+
+
+
+
+
+
+
+
+<b>2.2 - Histograma Hangout:</b><br>
+Desenho dos gráficos para a plataforma Zoom:
+```{r}
+gera_histograma(Hangout, bins= 10)
+```
+<b>Comentário:</b>
+Como no gráfico anterior, foi plotado um diagrama de caixas, um histograma de 10 caixas e uma curva gaussiana para comparação.
+O gráfico nos revela que a amostra não segue aparentemente uma distribuição normal, pois: observa-se que a média da gaussiana e a barra com maior frequência e número de observações não coincidem, com um número de observações muito concentrado à esquerda do gráfico e uma longa cauda à direita, o que revela a <b>assimetria positiva</b> da amostra.<br>
+
+Quanto à curtose da amostra, devido a acentuada assimetria no gráfico não foi possível estimar visualmente se há uma curtose positiva ou negativa.
+
+A seguir é montada uma tabela com a estatística descritiva do conjunto de dados para confirmar e obter uma medida precisa das características analisadas. 
+```{r}
+library(magrittr)
+library(psych)
+library(dplyr)
+
+describeZoom <- meet_file[meet_file$Meet == "Zoom",]%>%describe(trim = 0.0)%>%slice(2:n())%>%`rownames<-`("Tempo uso Zoom")
+
+describeHangout <-meet_file[meet_file$Meet == "Hangout",]%>%describe(trim = 0)%>%slice(2:n())%>%`rownames<-`("Tempo uso Hangout")
+
+tabelaDescricao <- rbind(describeZoom, describeHangout)[,c("skew","kurtosis")]
+
+tabelaDescricao
+```
+<b>Comentário:</b>
+Observa-se que os assimetria (skew) e a curtose (kurtosis) estão fora dos valores da curva padrão normal(que deve ser 0.0 para curtose e assimetria). Mesmo com esses resultados indicando que a amostra pode ter sido retirada de uma população que não segue uma curva normal, é necessário realizar os testes de normalidade, pois os valores obtidos podem ser devido ao tamanho da amostra, que pode não ter sido suficiente para indicar a real tendência da população.
+
+Para 
+
+
+
+```{r}
+shapiro.test(meet_file[meet_file$Meet == "Zoom",]$Tempo)
+
+
+
+qqnorm(meet_file[meet_file$Meet == "Zoom",]$Tempo)
+
+
+shapiro.test(meet_file[meet_file$Meet == "Hangout",]$Tempo)
+
+
+
+qqnorm(meet_file[meet_file$Meet == "Hangout",]$Tempo)
+
+
+meet_file["teste"] = meet_file["Tempo"]*3
+
+```
+
+
+
+
+```{r}
+library(MASS)
+
+fit = fitdistr(meet_file[meet_file$Meet=='Zoom',]$Tempo,'lognormal')$estimate
+
+ks.test(fit)
+
+
+
+```
+
