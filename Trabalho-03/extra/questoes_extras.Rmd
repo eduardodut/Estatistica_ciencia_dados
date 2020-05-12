@@ -1,0 +1,77 @@
+---
+title: "Questões extras"
+author: "Eduardo"
+date: "12/05/2020"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Q01: Parâmetro var.equal do teste t
+
+Foi questionado a razão pela qual os dois testes abaixo chegam a conclusões semelhantes, mesmo alterando o parâmetro var.equal.
+
+```{r}
+library(readr)
+meet_file <- read_csv("meet-file.csv", #caminho do arquivo 
+                      col_types = cols(Meet = col_factor(levels = c("Zoom","Hangout")), Subject = col_skip()))
+t.test(Tempo ~ Meet, data=meet_file, var.equal=FALSE)
+t.test(Tempo ~ Meet, data=meet_file, var.equal=TRUE)
+```
+
+O parâmetro var.equal do teste t de student permite informar para o algoritmo se as amostras foram retiradas de populações diferentes ou da mesma população, o que vai alterar a forma como é calculado o número de graus de liberdade para a função densidade de probabilidade da distribuição e também define como é calculada a variância conjunta das amostras utilizada para o cálculo do erro padrão, e por consequência o intervalo de confiança desejado. Segue a FDP da distribuição T:
+
+$$
+\begin{aligned}
+f(t) = \frac{1}{\sqrt{\nu}\,\mathrm{B} (\frac{1}{2}, \frac{\nu}{2})} \left(1+\frac{t^2}{\nu}\right)^{\!-\frac{\nu+1}{2}}
+\end{aligned}
+$$
+<b>Variâncias iguais:</b>
+
+Para um var.equal = TRUE, afirma-se que as duas amostras testadas são originadas da mesma população, portanto com variâncias populacionais iguais. Para essa situação, o número de graus de liberdade é calculado da seguinte forma:
+
+$$
+\begin{aligned}
+\nu = n_1+n_2-2 = 20 + 20-2 =38
+\end{aligned}
+$$
+Para 38 graus de liberdade tem-se o intervalo de confiança de 95% para um teste bicaudal de [-2.024 2,024].
+
+
+A distribuição t particular do teste é selecionada a partir dos graus de liberdade e Essa informação altera o cálculo da variância utilizada como parâmetro da distribuição
+
+
+
+
+
+$$
+\begin{aligned}
+\nu = \frac{
+  \left(\dfrac{s_{1}^{2}}{n_1}+\dfrac{s_{2}^{2}}{n_2}\right)^{\!2}}{\dfrac{(s_{1}^{2}/n^{}_1)^2}{n_1-1}+\dfrac{(s_{2}^{2}/n^{}_2)^2}{n_2-1}}
+\end{aligned}
+$$
+
+
+  
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+
+```
+
+$\sum_{n=1}^{10} n^2$
+
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
