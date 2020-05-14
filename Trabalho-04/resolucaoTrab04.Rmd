@@ -254,7 +254,6 @@ O cálculo da curtose e assimetria de uma amostra se dá utilizando o quarto e t
 Os valores esperados de curtose e assimetria para uma curva normal são 0.0 e 0.0 respectivamente. No código abaixo são geradas 1.000.000 de amostras aleatórias de uma distribuição normal e calculados seus parâmetros de assimetria e curtose:
 ```{r curtose e assimetria Normal}
 library(e1071)
-
 distNormal<- rnorm(1000000)
 curtoseNormal <- kurtosis(distNormal)
 assimetriaNormal <- skewness(distNormal)
