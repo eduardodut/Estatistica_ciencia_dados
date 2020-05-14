@@ -1,17 +1,13 @@
 ---
 title: "Estatística para ciência de dados"
+author: "Eduardo Façanha Dutra - 2016473"
 output:
-  pdf_document:
-    number_sections: yes
   html_document:
     df_print: paged
     number_sections: yes
+  pdf_document:
+    number_sections: yes
 ---
-
-<b>Aluno:</b> Eduardo Façanha Dutra
-
-<b>Matrícula:</b> 2016473
-
 <b>Resolução do trabalho 03: Ex3-teste-normalidade - duas variáveis
 
 Objetivos:
@@ -60,7 +56,6 @@ Resumo:
 * Quanto ao teste lognormalidade da amostra Hangout (P= 0.871), o resultado se mostrou positivo.
 
 * Considera-se então que as duas amostras seguem melhor uma distribuição lognormal do que uma distribuição normal.
-
 
 
 A resolução da atividade seguirá as seguintes etapas:
