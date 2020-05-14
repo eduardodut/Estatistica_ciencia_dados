@@ -61,12 +61,17 @@ Resumo:
 
 * Quanto ao teste lognormalidade da amostra Hangout (P= 0.871), o resultado se mostrou positivo, a hipótese de lognormalidade não pode ser descartad.
 
+<<<<<<< HEAD
 * A amostra Skype pode não ser considerada normal para o teste de Shapiro-Wilk (P= 0.02294), entretanto pode ser considerada para o teste de Komogorov-Smirnov (P= 0.1186);
 
 * Quanto ao teste lognormalidade da amostra Hangout (P=  0.4377), o resultado se mostrou positivo, a hipótese de lognormalidade não pode ser descartada; 
 
 * Considera-se então que as duas amostras seguem melhor uma distribuição lognormal do que uma distribuição normal;
 
+=======
+* Considera-se então que as duas amostras seguem melhor uma distribuição lognormal do que uma distribuição normal;
+
+>>>>>>> 47731c7ceb3936ca04bf41ce8c0a06ad944b9eb8
 * Mesmo que após os testes de normalidade as amostras tenham sido consideradas como provenientes de uma distribuição lognormal, os testes de Levene foram realizados utilizando como centro a média e a mediana para obter um comparativo entre os testes;
 
 * Não houve discordância na conclusão entre os testes com média ou mediana para qualquer um dos casos testados;
@@ -600,6 +605,7 @@ A partir da visualização do gráfico foi notado que a amostra Hangout parece s
 
 ### Testes entre Zoom e Hangout
 ```{r teste entre Zoom e Hangout: mediana}
+<<<<<<< HEAD
 leveneTest(Tempo ~ Meet, 
            data=meet_file[meet_file$Meet == "Zoom" | meet_file$Meet == "Hangout", ], 
            center=median)
@@ -609,27 +615,43 @@ leveneTest(Tempo ~ Meet,
 leveneTest(Tempo ~ Meet, 
            data=meet_file[meet_file$Meet == "Zoom" | meet_file$Meet == "Hangout", ], 
            center=mean)
+=======
+leveneTest(Tempo ~ Meet, data=meet_file[meet_file$Meet == "Zoom" | meet_file$Meet == "Hangout", ], center=median)
+```
+**Para uma siginificância de 0,05 a hipótese nula pode ser rejeitada demonstrando que as amostras Zoom e Hangout podem ser originadas de populações distintas**
+```{r teste entre Zoom e Hangout: média}
+leveneTest(Tempo ~ Meet, data=meet_file[meet_file$Meet == "Zoom" | meet_file$Meet == "Hangout", ], center=mean)
+>>>>>>> 47731c7ceb3936ca04bf41ce8c0a06ad944b9eb8
 ```
 
 **Para uma siginificância de 0,05 a hipótese nula pode ser rejeitada demonstrando que as amostras Zoom e Hangout podem ser originadas de populações distintas**
 
 ### Testes entre Skype e Hangout
 ```{r teste entre Skype e Hangout: mediana}
+<<<<<<< HEAD
 leveneTest(Tempo ~ Meet, 
            data=meet_file[meet_file$Meet == "Skype" | meet_file$Meet == "Hangout", ], 
            center=median)
+=======
+leveneTest(Tempo ~ Meet, data=meet_file[meet_file$Meet == "Skype" | meet_file$Meet == "Hangout", ], center=median)
+>>>>>>> 47731c7ceb3936ca04bf41ce8c0a06ad944b9eb8
 ```
 **Para uma siginificância de 0,05 a hipótese nula pode ser rejeitada demonstrando que as amostras Skype e Hangout podem ser originadas de populações distintas**
 
 ```{r teste entre Skype e Hangout: média}
+<<<<<<< HEAD
 leveneTest(Tempo ~ Meet, 
            data=meet_file[meet_file$Meet == "Skype" | meet_file$Meet == "Hangout", ], 
            center=mean)
+=======
+leveneTest(Tempo ~ Meet, data=meet_file[meet_file$Meet == "Skype" | meet_file$Meet == "Hangout", ], center=mean)
+>>>>>>> 47731c7ceb3936ca04bf41ce8c0a06ad944b9eb8
 ```
 **Para uma siginificância de 0,05 a hipótese nula pode ser rejeitada demonstrando que as amostras Skype e Hangout podem ser originadas de populações distintas**
 
 ### Testes entre Zoom e Skype
 ```{r teste entre Zoom e Skype: mediana}
+<<<<<<< HEAD
 leveneTest(Tempo ~ Meet, 
            data=meet_file[meet_file$Meet == "Zoom" | meet_file$Meet == "Skype", ], 
            center=median)
@@ -639,6 +661,13 @@ leveneTest(Tempo ~ Meet,
 leveneTest(Tempo ~ Meet, 
            data=meet_file[meet_file$Meet == "Zoom" | meet_file$Meet == "Skype", ], 
            center=mean)
+=======
+leveneTest(Tempo ~ Meet, data=meet_file[meet_file$Meet == "Zoom" | meet_file$Meet == "Skype", ], center=median)
+```
+**Para uma siginificância de 0,05 a hipótes nula não pode ser rejeitada demonstrando que as amostras Zoom e Skype podem ser originadas de populações de variâncias semelhantes ou da mesma população**
+```{r teste entre Zoom e Skype: média}
+leveneTest(Tempo ~ Meet, data=meet_file[meet_file$Meet == "Zoom" | meet_file$Meet == "Skype", ], center=mean)
+>>>>>>> 47731c7ceb3936ca04bf41ce8c0a06ad944b9eb8
 ```
 
 **Para uma siginificância de 0,05 a hipótese nula não pode ser rejeitada demonstrando que as amostras Zoom e Skype podem ser originadas de populações de variâncias semelhantes ou da mesma população**
