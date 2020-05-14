@@ -1,28 +1,43 @@
 ---
-title: "Estatística para ciência de dados"
+title: |
+  | Estatística para Ciência de Dados
+  | Resolução do trabalho 04: Ex4-teste-normalidade - três variáveis
+header-includes:
+  \renewcommand{\contentsname}{Conteúdo}
+author: | 
+  | Eduardo Façanha Dutra 
+  | 2016473
 output:
-  pdf_document:
+  pdf_document: 
     number_sections: yes
-  html_document:
-    df_print: paged
+    toc: yes
+  lang: pt-BR
+  html_document: 
     number_sections: yes
+    toc: yes
 ---
 
-<b>Aluno:</b> Eduardo Façanha Dutra
-
-<b>Matrícula:</b> 2016473
-
-<b>Resolução do trabalho 03: Ex3-teste-normalidade - duas variáveis
-
+# Enunciado
 Objetivos:
-Analisar a distribuição da amostra
-Transformar a distribuição dos dados da amostra em uma distribuição lognormal – os valores em logaritmos seguem a DN
+Analisar a distribuição da amostra onde o fenômeno Tempo agora diz respeito aos valores de 1 fator e 3 níveis
+Fazer os testes para análise da variância do fenômeno.
 
-<div style="text-align: justify;">Considere o caso em que o tempo do usuário é a variável independente (calculada) e representando o tempo que o usuário passou em uma determinada conferência virtual, quando fez uso de um dos Meet virtuais, se usando Zoom ou Hangout.
-A hipótese é saber se existe diferença significativa entre os dois Meet.
+Considere o caso em que o tempo do usuário é a variável independente (calculada) e representando o tempo que o usuário passou em uma determinada conferência virtual, quando fez uso de um dos Meet virtuais, se usando Zoom, Hangout ou Skype.
+A hipótese é saber se existe diferença significativa entre os três Meet.
 O arquivo segue os seguintes princípios para a realização deste trabalho:
 - independência dos dados, quem usou um meet não usou o outro.
-- A variável tempo é mais próxima de uma log normalidade, porque a medida que o usuário usa um sistema, ele se torna mais especialista e o tempo, no eixo X tende a diminuir com o tempo.
+- A variável tempo é mais próxima de uma log normalidade, porque a medida que o usuário usa um sistema, ele se torna mais especialista e o tempo, no eixo X tende a diminuir com o tempo; ou ainda tem poucas atividades que levam muito tempo e muitas que levam pouco tempo, afetadas pela experiência do usuário.
+
+Pede-se:
+Fazer os testes para análise da variância do fenômeno, realizando as três técnicas dadas a seguir e considerando que:
+
+1. a técnica Shapiro-wilk permite testar a normalidade, para uma amostra pequena
+2. a técnica Kolmogorov-Smirnov permite testar a lognormalidade da amostra. 
+3. a técnica Levene
+4. Visualize os dados usando Boxplot, histograma e qqplot.
+
+Senão houver normalidade da amostra, então transforme os dados em uma log normal, depois, verifique como ficaram os dados, e repita os testes dos passos.
+
 
 Obs: 
 In a test statistic: the result expresses in a single number how much my data differ from my null hypothesis. So it indicates to what extent the observed scores deviate from a normal distribution.
@@ -30,20 +45,7 @@ Now, if my null hypothesis is true, then this deviation percentage should probab
 Reversely, a huge deviation percentage is very unlikely and suggests that my reaction times don't follow a normal distribution in the entire population. So a large deviation has a low p-value. As a rule of thumb, we reject the null hypothesis if p < 0.05.
 So if p < 0.05, we don't believe that our variable follows a normal distribution in our population.
 
-Pede-se:
-Teste a normalidade da amostra da variável Tempo, realizando as duas técnicas dadas a seguir e considerando que:
-
-1. a técnica Shapiro-wilk permite testar a normalidade, para uma amostra pequena
-2. a técnica Kolmogorov-Smirnov permite testar a lognormalidade da amostra. 
-3. Visualize os dados usando Boxplot, histograma e qqnorm.
-
-Senão houver normalidade da amostra, então transforme os dados em uma log normal, depois, verifique como ficaram os dados, e repeta os testes, dos passos 1 ao 3.</b>
-
-
-Para saber mais assista o vídeo:
-https://www.sigmamagic.com/blogs/how-to-interpret-skewness-and-kurtosis/<br>
-
-<b>Resolução:</b>
+**Resolução:**
 
 Resumo:
 
@@ -59,8 +61,19 @@ Resumo:
 
 * Quanto ao teste lognormalidade da amostra Hangout (P= 0.871), o resultado se mostrou positivo.
 
-* Considera-se então que as duas amostras seguem melhor uma distribuição lognormal do que uma distribuição normal.
+* Considera-se então que as duas amostras seguem melhor uma distribuição lognormal do que uma distribuição normal;
 
+* Mesmo que após os testes de normalidade as amostras tenham sido consideradas como provenientes de uma distribuição lognormal, os testes de Levene foram realizados utilizando como centro a média e a mediana para obter um comparativo entre os testes;
+
+* Não houve discordância na conclusão entre os testes com média ou mediana para qualquer um dos casos testados;
+
+* Após realizar os testes de Levene entre as 3 amostras ($P_{\text{mediana}}= 0.01388$, $P_{\text{média}}= 0.0004823$), conclui-se que pelo menos uma das 3 amostras veio de uma população diferente, ou há diferença na usabilidade de pelo menos uma plataforma para as demais;
+
+* Após realizar o teste de Levene entre Zoom e Hangout ($P_{\text{mediana}}= 0.01984$, $P_{\text{média}}= 0.001356$), concluiu-se que elas podem ter sido originadas de população diferentes, ou há diferença na usabilidade entre as plataformas;
+
+* Após realizar o teste de Levene entre Skype e Hangout ($P_{\text{mediana}}= 0.03061$, $P_{\text{média}}= 0.002625$), concluiu-se que elas podem ter sido originadas de população diferentes, ou há diferença na usabilidade entre as plataformas;
+
+* Após realizar o teste de Levene entre Zoom e Skype($P_{\text{mediana}}= 0.7678$, $P_{\text{média}}= 0.7632$), concluiu-se que elas podem ter sido originadas de população de características semelhantes, ou não há diferença na usabilidade entre as plataformas.
 
 
 A resolução da atividade seguirá as seguintes etapas:
@@ -69,33 +82,45 @@ A resolução da atividade seguirá as seguintes etapas:
 
 2. Análise de normalidade e lognormalidade para as amostras que utilizaram a plataforma Zoom;
 
-3. Análise de normalidade e lognormalidade para as amostras que utilizaram a plataforma Hangout.
+3. Análise de normalidade e lognormalidade para as amostras que utilizaram a plataforma Hangout;
+
+3. Análise de normalidade e lognormalidade para as amostras que utilizaram a plataforma Skype;
+
+4. Testes de Levene
 
 #  Leitura dos dados
-```{r message=FALSE, warning=FALSE, paged.print=TRUE}
+```{r Leitura dos dados e definição de funções, message=FALSE, warning=FALSE, paged.print=TRUE}
 library(readr)
 #Leitura do arquivo CSV
-meet_file <- read_csv("Dados/meet-file.csv",
-                      col_types = cols(Meet = col_factor(levels = c("Zoom", "Hangout")),
+meet_file <- read_csv("Dados/meet3-file.csv",
+                      col_types = cols(Meet = col_factor(levels = c("Zoom", 
+                                                                    "Hangout", 
+                                                                    "Skype")),
                                       Subject = col_skip()))
+
+meet_file$logTempo <- log(meet_file$Tempo)
+
+
 #seleção dos dados que representam a plataforma Zoom
 Zoom = meet_file[meet_file$Meet == "Zoom","Tempo"]
 
 Zoom$Tempo <- sort(Zoom$Tempo, FALSE)
-
-Zoom$logTempo <- log(Zoom$Tempo)
 
 #seleção dos dados que representam a plataforma Hangout
 Hangout = meet_file[meet_file$Meet == "Hangout","Tempo"]
 
 Hangout$Tempo <- sort(Hangout$Tempo, FALSE)
 
-Hangout$logTempo <- log(Hangout$Tempo)
+#seleção dos dados que representam a plataforma Hangout
+Skype = meet_file[meet_file$Meet == "Skype","Tempo"]
+
+Skype$Tempo <- sort(Skype$Tempo, FALSE)
 
 #Função para configuração dos gráficos
 library(ggplot2)
 library(cowplot)
 library(qqplotr)
+library(car)
 
 gera_histograma <- function(dados, bins=9){
 
@@ -197,18 +222,18 @@ Serão aplicados os 3 métodos isoladamente para a conclusão sobre a normalidad
 
 ## Análise dos gráficos
 
-```{r}
+```{r Histograma Zoom}
 gera_histograma(Zoom,bins= 11)
 ```
 Foi plotado um diagrama de caixas, um histograma com 11 caixas (bins) e uma curva gaussiana com a média e desvio padrão iguais aos da amostra de tempo utilizado na ferramenta Zoom, para utilizar como referência visual.<br>
 
 O gráfico do histograma mostra que a amostra seguiria uma uma distribuição aparentemente normal se o valor extremo à direita fosse excluído, pois: observa-se que a média da gaussiana e a barra com maior frequência e número de observações aparentementam estar muito próximas, e o número de observações ao redor da média e sua frequência são similares.<br>
 
-O valor extremo à direita faz com que haja uma <b>assimetria positiva</b> na amostra.
+O valor extremo à direita faz com que haja uma **assimetria positiva** na amostra.
 
 Uma das ferramentas gráficas utilizadas para avaliar a normalidade é o gráfico de quantil-quantil, onde são representados os quantis de cada observação da amostra e comparado com uma linha que representa os quantis de uma distribuição normal.
 
-```{r}
+```{r qqplot Zoom}
 gera_qqplot(Zoom)
 ```
 
@@ -223,7 +248,7 @@ Portanto, baseado na visualização dos gráficos pode-se inferir que a amostra 
 O cálculo da curtose e assimetria de uma amostra se dá utilizando o quarto e terceiro momentos centrais, respectivamente, ajustados para dados amostrais.
 
 Os valores esperados de curtose e assimetria para uma curva normal são 0.0 e 0.0 respectivamente. No código abaixo são geradas 1.000.000 de amostras aleatórias de uma distribuição normal e calculados seus parâmetros de assimetria e curtose:
-```{r}
+```{r curtose e assimetria Normal}
 library(e1071)
 
 distNormal<- rnorm(1000000)
@@ -235,7 +260,7 @@ cat(" Curtose de uma distribuição normal: ",
 ```
 
 Abaixo são calculados os mesmos parâmetros para a amostra Zoom:
-```{r}
+```{r curtose e assimetria hangout}
 curtoseZoom <- kurtosis(Zoom$Tempo)
 assimetriaZoom <- skewness(Zoom$Tempo)
 cat(" Curtose para as amostras que utilizaram a plataforma Zoom: ", 
@@ -243,9 +268,9 @@ cat(" Curtose para as amostras que utilizaram a plataforma Zoom: ",
     assimetriaZoom)
 ```
 
-Percebe-se que os valores estão desviados do valor esperado para uma curva normal. Quanto à curtose pode-se classificar a amostra como <b>leptocúrtica</b>, ou seja, mais alongada que uma distribuição normal
+Percebe-se que os valores estão desviados do valor esperado para uma curva normal. Quanto à curtose pode-se classificar a amostra como **leptocúrtica**, ou seja, mais alongada que uma distribuição normal
 
-A partir da assimetria calculada pode-se afirmar que a distribuição possui uma <b>assimetria positiva</b>, espera-se que a distribuição possua uma cauda mais longa à direita. 
+A partir da assimetria calculada pode-se afirmar que a distribuição possui uma **assimetria positiva**, espera-se que a distribuição possua uma cauda mais longa à direita. 
 
 Portanto, a partir dos parâmetros calculados, conclui-se que a amostra não foi retirada de uma população que siga uma distribuição normal, pois seus parâmetros muitos se distanciam dos parâmetros para uma curva normal (0.0 e 0.0 para ambos).
 
@@ -269,19 +294,19 @@ Se o valor p para uma dada amostra for menor que um nível de significância des
 Valores comuns para comparação de testes de hipóteses são: 0.1, 0.05, 0.01, a depender do que se está estudando e o nível de rigor requerido.
 
 Abaixo a amostra Zoom é testada para normalidade seguindo o método de Shapiro-Wilk:
-```{r}
+```{r shapiro Zoom}
 testeZoom <- shapiro.test(Zoom$Tempo)
 testeZoom
 ```
 
 A partir do teste aplicado nas amostras que utilizaram Zoom pode-se afirmar que:
 
-<b>A um nível de significância de 0.1, 0.05 ou 0.01 a hipótese nula pode ser rejeitada chegando-se a conclusão que a amostra não vem de uma população que segue uma distribuição normal.</b>
+**A um nível de significância de 0.1, 0.05 ou 0.01 a hipótese nula pode ser rejeitada chegando-se a conclusão que a amostra não vem de uma população que segue uma distribuição normal.**
 
 O resultado do teste confirma o que foi visto através do desvio acentuado da assimetria e curtose da amostra e contraria a análise gráfica realizada.
 
 O teste é aplicado novamente removendo o valor extremo:
-```{r}
+```{r shapiro Zoom sem outlier}
 testeZoom <- shapiro.test(Zoom$Tempo[1:19])
 testeZoom
 ```
@@ -301,23 +326,23 @@ H0: A amostra foi retirada de uma população que segue a distribuição de refe
 
 Aplica-se então o teste para comparar a amostra Zoom a uma distribuição normal de média e desvio padrão iguais aos da amostra:
 
-```{r}
+```{r kolmogorov Zoom}
 testeKSZoom <- ks.test(Zoom$Tempo, "pnorm", mean=mean(Zoom$Tempo), sd=sd(Zoom$Tempo))
 testeKSZoom
 ```
 A partir das informações contidas no teste:
 
-<b>A um nível de significância de 0.1 a hipótese nula não pode ser rejeitada chegando-se a conclusão que a amostra segue uma distribuição normal.</b>
+**A um nível de significância de 0.1 a hipótese nula não pode ser rejeitada chegando-se a conclusão que a amostra segue uma distribuição normal.**
 
 A visualização da distribuição cumulativa comparada com a distribuição cumulativa da curva normal é mostrada em seguida, onde os dois pontos conectados entre as curvas demonstram a estatística D do teste de Komogorov.
-```{r}
+```{r ks plot Zoom}
 dist.Normal.Zoom<- rnorm(10000, mean(Zoom$Tempo), sd(Zoom$Tempo))
 
 gera_ksplot(Zoom, dist.Normal.Zoom)
 
 ```
 Teste de lognormalidade para a amostra Zoom:
-```{r}
+```{r kolmogorov lognormal Zoom}
 library(MASS)
 #
 fitlogZoom <- fitdistr(Zoom$Tempo, "lognormal")$estimate
@@ -330,7 +355,7 @@ testeKSlogZoom
 ```
 A partir das informações contidas no teste:
 
-<b>A um nível de significância de 0.1 a hipótese nula não pode ser rejeitada chegando-se a conclusão que a amostra segue uma distribuição lognormal.</b>
+**A um nível de significância de 0.1 a hipótese nula não pode ser rejeitada chegando-se a conclusão que a amostra segue uma distribuição lognormal.**
 
 O resultado positivo tanto para normalidade quanto para normalidade pode ser devido ao baixo número de observações na amostra. Entretanto podemos observar que o valor-p para a lognormalidade é maior do que para normalidade.
 
@@ -340,17 +365,17 @@ Serão aplicados os mesmos testes utilizados para a amostra Zoom.
 
 ## Análise dos gráficos
 
-```{r}
+```{r histograma Hangout}
 gera_histograma(Hangout,bins= 10)
 ```
 Foi plotado um diagrama de caixas, um histograma com 10 caixas (bins) e uma curva gaussiana com a média e desvio padrão iguais aos da amostra de tempo utilizado na ferramenta Hangout, para utilizar como referência visual.<br>
 
 Aparentemente a curva não segue uma distribuição normal devido aos valores maiores possuirem menor frequência na amostra.<br>
 
-A baixa frequência nos valores à direita faz com que haja <b>assimetria positiva</b> na amostra.
+A baixa frequência nos valores à direita faz com que haja **assimetria positiva** na amostra.
 
 
-```{r}
+```{r qqplot Hangout}
 gera_qqplot(Hangout)
 ```
 
@@ -362,15 +387,15 @@ Portanto, baseado na visualização dos gráficos pode-se inferir que a amostra 
 ## Cálculo da curtose e assimetria
 
 Abaixo são calculados os mesmos parâmetros para a amostra Zoom:
-```{r}
+```{r curtose e assimetria Hangout}
 curtoseZoom <- kurtosis(Hangout$Tempo)
 assimetriaZoom <- skewness(Hangout$Tempo)
 cat(" Curtose para as amostras que utilizaram a plataforma Hangout: ", curtoseZoom,"\n","Assimetria para as amostras que utilizaram a plataforma Hangout: ", assimetriaZoom)
 ```
 
-Percebe-se que os valores estão desviados do valor esperado para uma curva normal. Quanto à curtose pode-se classificar a amostra como <b>platicúrtica</b>, ou seja, mais achatada que uma distribuição normal, embora em baixa intensidade.
+Percebe-se que os valores estão desviados do valor esperado para uma curva normal. Quanto à curtose pode-se classificar a amostra como **platicúrtica**, ou seja, mais achatada que uma distribuição normal, embora em baixa intensidade.
 
-A partir da assimetria calculada pode-se afirmar que a distribuição possui uma <b>assimetria positiva</b>.
+A partir da assimetria calculada pode-se afirmar que a distribuição possui uma **assimetria positiva**.
 
 Portanto, a partir dos parâmetros calculados, conclui-se que a amostra pode ter sido retirada de uma população que segue uma distribuição normal, pois seus parâmetros pouco se distanciam dos parâmetros de uma curva normal (0.0 e 0.0 para assimetria e curtose).
 
@@ -379,16 +404,16 @@ Portanto, a partir dos parâmetros calculados, conclui-se que a amostra pode ter
 ### Teste de Shapiro-Wilk:
 
 Abaixo a amostra Hangout é testada para normalidade seguindo o método de Shapiro-Wilk:
-```{r}
+```{r shapiro Hangout}
 testeHangout <- shapiro.test(Hangout$Tempo)
 testeHangout
 ```
 
 A partir do teste aplicado nas amostras que utilizaram Hangout pode-se afirmar que:
 
-<b>A um nível de significância de 0.1 ou 0.05  a hipótese nula pode ser rejeitada chegando-se a conclusão que a amostra não vem de uma população que segue uma distribuição normal.</b>
+**A um nível de significância de 0.1 ou 0.05  a hipótese nula pode ser rejeitada chegando-se a conclusão que a amostra não vem de uma população que segue uma distribuição normal.**
 
-<b>A um nível de significância de 0.01  a hipótese nula não pode ser rejeitada chegando-se a conclusão que a amostra vem de uma população que segue uma distribuição normal.</b>
+**A um nível de significância de 0.01  a hipótese nula não pode ser rejeitada chegando-se a conclusão que a amostra vem de uma população que segue uma distribuição normal.**
 
 A depender do nível limiar de significância aplicado pelo pesquisador ambas as conclusões podem ser adotadas.
 
@@ -404,23 +429,23 @@ H0: As duas amostras foram retiradas de uma população com a mesma distribuiç�
 Comparação entre uma amostra e uma distribuição de referência:
 H0: A amostra foi retirada de uma população que segue a distribuição de referência.
 
-Aplica-se então o teste para comparar a amostra Zoom a uma distribuição normal de média e desvio padrão iguais aos da amostra:
+Aplica-se então o teste para comparar a amostra Hangout a uma distribuição normal de média e desvio padrão iguais aos da amostra:
 
-```{r}
+```{r kolmogorov Hangout}
 testeKSHangout <- ks.test(Hangout$Tempo, "pnorm", mean=mean(Hangout$Tempo), sd=sd(Hangout$Tempo))
 testeKSHangout
 ```
 A partir das informações contidas no teste:
 
-<b>A um nível de significância de 0.1 a hipótese nula não pode ser rejeitada chegando-se a conclusão que a amostra segue uma distribuição normal.</b>
+**A um nível de significância de 0.1 a hipótese nula não pode ser rejeitada chegando-se a conclusão de que a possibilidade que a amostra siga uma distribuição normal não pode ser descartada.**
 
 A visualização da distribuição cumulativa comparada com a distribuição cumulativa da curva normal é mostrada em seguida:
-```{r}
+```{r ksplot Hangout}
 dist.Normal.Hangout<- rnorm(10000, mean(Hangout$Tempo), sd(Hangout$Tempo))
 gera_ksplot(Hangout, dist.Normal.Hangout)
 ```
 Teste de lognormalidade para a amostra Zoom:
-```{r}
+```{r kolmogorov lognormal Hangout}
 fitlogHangout <- fitdistr(Hangout$Tempo, "lognormal")$estimate
 meanlogHangout <- fitlogHangout[1]
 sdlogHangout <- fitlogHangout[2]
@@ -429,6 +454,177 @@ testeKSlogHangout
 ```
 A partir das informações contidas no teste:
 
-<b>A qualquer nível de significância comumente utilizado a hipótese não nula pode ser rejeitada chegando-se a conclusão que a amostra segue uma distribuição lognormal.</b>
+**A qualquer nível de significância comumente utilizado a hipótese nula não pode ser rejeitada chegando-se a conclusão de que a possibilidade que a amostra siga uma distribuição lognormal não pode ser descartada.**
 
+# Análise de normalidade para as amostras que utilizaram a plataforma Skype
+
+## Análise dos gráficos
+
+```{r histograma Skype}
+gera_histograma(Skype,bins= 11)
+```
+Foi plotado um diagrama de caixas, um histograma com 11 caixas (bins) e uma curva gaussiana com a média e desvio padrão iguais aos da amostra de tempo utilizado na ferramenta Skype, para utilizar como referência visual.<br>
+
+Aparentemente a curva não segue uma distribuição normal devido aos valores maiores possuirem menor frequência na amostra.<br>
+
+A baixa frequência nos valores à direita faz com que haja **assimetria positiva** na amostra.
+
+
+```{r qqplot Skype}
+gera_qqplot(Skype)
+```
+
+Observa-se que os pontos são plotados ao longo da reta que representam os quantis de uma distribuição normal, a não ser pelos valores extremos que estão em maior número que as amostras anteriores.
+
+Portanto, baseado na visualização dos gráficos não se pode inferir que a amostra foi retirada de uma população que segue uma distribuição normal.
+
+
+## Cálculo da curtose e assimetria
+
+Abaixo são calculados os mesmos parâmetros para a amostra Zoom:
+```{r curtose e assimetria Skype}
+curtoseZoom <- kurtosis(Skype$Tempo)
+assimetriaZoom <- skewness(Skype$Tempo)
+cat(" Curtose para as amostras que utilizaram a plataforma Skype: ", curtoseZoom,"\n","Assimetria para as amostras que utilizaram a plataforma Skype: ", assimetriaZoom)
+```
+
+Percebe-se que os valores estão desviados do valor esperado para uma curva normal. Quanto à curtose pode-se classificar a amostra como **leptocúrtica**.
+
+A partir da assimetria calculada pode-se afirmar que a distribuição possui uma **assimetria positiva**.
+
+Portanto, a partir dos parâmetros calculados, conclui-se que a amostra pode NÃO ter sido retirada de uma população que segue uma distribuição normal.
+
+## Testes estatísticos
+
+### Teste de Shapiro-Wilk:
+
+Abaixo a amostra Skype é testada para normalidade seguindo o método de Shapiro-Wilk:
+```{r shapiro Skype}
+testeSkype <- shapiro.test(Skype$Tempo)
+testeSkype
+```
+
+A partir do teste aplicado nas amostras que utilizaram Skype pode-se afirmar que:
+
+**A um nível de significância de 0.1 ou 0.05  a hipótese nula pode ser rejeitada chegando-se a conclusão que a amostra não vem de uma população que segue uma distribuição normal.**
+
+**A um nível de significância de 0.01 a hipótese nula não pode ser rejeitada chegando-se a conclusão que a amostra vem de uma população que segue uma distribuição normal.**
+
+A depender do nível limiar de significância aplicado pelo pesquisador ambas as conclusões podem ser adotadas.
+
+### Teste de Kolmogorov-Smirnov:
+
+Aplica-se então o teste para comparar a amostra Skype a uma distribuição normal de média e desvio padrão iguais aos da amostra:
+
+```{r kolmogorov Skype}
+testeKSSkype <- ks.test(Skype$Tempo, "pnorm", mean=mean(Skype$Tempo), sd=sd(Skype$Tempo))
+testeKSSkype
+```
+A partir das informações contidas no teste:
+
+**A um nível de significância de 0.1 a hipótese nula não pode ser rejeitada chegando-se a conclusão que a hipótese de que a amostra segue uma distribuição normal não pode ser descartada.**
+
+A visualização da distribuição cumulativa comparada com a distribuição cumulativa da curva normal é mostrada em seguida:
+```{r ksplot Skype}
+dist.Normal.Skype<- rnorm(10000, mean(Skype$Tempo), sd(Skype$Tempo))
+gera_ksplot(Skype, dist.Normal.Skype)
+```
+Teste de lognormalidade para a amostra Skype:
+```{r kolmogorov lognormal Skype}
+fitlogSkype <- fitdistr(Skype$Tempo, "lognormal")$estimate
+meanlogSkype <- fitlogSkype[1]
+sdlogSkype <- fitlogSkype[2]
+testeKSlogSkype <- ks.test(Skype$Tempo, "plnorm", meanlogSkype, sdlogSkype)
+testeKSlogSkype
+```
+A partir das informações contidas no teste:
+
+**A qualquer nível de significância comumente utilizado a hipótese nula não pode ser rejeitada, chegando-se a conclusão que a hipótese de que a amostra segue uma distribuição lognormal não pode ser descartada.**
+
+# Teste de Levene
+
+O teste de Levene é utilizado para avaliar se a variância entre os grupos é homogênea. O teste calcula a estatística F como é mostrado na fórmula a seguir:
+$$
+F = \frac{(N-k)} {(k-1)}
+               \frac{\sum_{i=1}^{k}N_{i}(\bar{Z}_{i.}-\bar{Z}_{..})^{2} }
+               {\sum_{i=1}^{k}\sum_{j=1}^{N_i}(Z_{ij}-\bar{Z}_{i.})^{2} }
+$$
+Entretanto, ao invés de calcular o quadrado da distância de cada ponto para a média de sua amostra, o teste de Levene transforma cada ponto da amostra para o módulo da diferença entre o ponto e a média ou mediana da amostra, como na fórmula a seguir:
+
+$${\displaystyle Z_{ij}={\begin{cases}|Y_{ij}-{\bar {Y}}_{i\cdot }|,&{\bar {Y}}_{i\cdot }{\text{ é a média do }}i{\text{-ésimo grupo}},\\|Y_{ij}-{\tilde {Y}}_{i\cdot }|,&{\tilde {Y}}_{i\cdot }{\text{ é a mediana do }}i{\text{-ésimo grupo}}.\end{cases}}}$$
+A escolha entre utilizar a média ou a mediana está relacionada com a normalidade da amostra. Para amostras que seguem uma distribuição normal é utilizada a média. Para amostras assimétricas o parâmetro indicado é a mediana.<br> 
+
+O teste com centro na mediana também é chamado de teste de Brown-Forsythe<br>
+
+O teste possui como hipótese nula a seguinte afirmação:<br>
+**H0: As amostras foram retiradas de populções com dispersões homogêneas**<br>
+
+
+## Plotagem de diagrama de caixas
+
+Antes de realizar os testes gera-se um gráfico para uma análise visual comparativa.
+
+```{r boxplot 3 variáveis}
+Boxplot3Variaveis <- ggplot(meet_file, aes(Meet,Tempo, fill=Meet))+
+                      geom_boxplot() + 
+                      theme_light()+
+                      labs(x= "Plataforma", 
+                           y="Tempo por plataforma", 
+                           title="Comparação do tempo gasto por usuário em cada plataforma")+
+                      coord_flip()
+
+Boxplot3Variaveis
+
+```
+
+## Teste entre as 3 amostras
+
+O teste de homogeneidade será realizado utilizando a média e a mediana como ajuste da amostra. 
+
+```{r teste entre as 3 amostras: mediana}
+leveneTest(Tempo ~ Meet, data=meet_file, center= median)
+```
+**Para uma siginificância de 0,05 a hipótese nula pode ser rejeitada demonstrando que pelo menos uma amostra pode vir de uma população com variância diferente das demais**
+
+```{r teste entre as 3 amostras: média}
+leveneTest(Tempo ~ Meet, data=meet_file, center= mean)
+```
+**Para uma siginificância de 0,05 a hipótese nula pode ser rejeitada demonstrando que pelo menos uma amostra pode vir de uma população com variância diferente das demais**
+
+## Testes 2 a 2
+
+A partir da visualização do gráfico foi notado que a amostra Hangout parece ser a que mais se difere das demais. Para testar essa possibilidade é realizado o teste de cada combinação de amostras.
+
+### Testes entre Zoom e Hangout
+```{r teste entre Zoom e Hangout: mediana}
+leveneTest(Tempo ~ Meet, data=meet_file[meet_file$Meet == "Zoom" | meet_file$Meet == "Hangout", ], center=median)
+```
+**Para uma siginificância de 0,05 a hipótese nula pode ser rejeitada demonstrando que as amostras Zoom e Hangout podem ser originadas de populações distintas**
+```{r teste entre Zoom e Hangout: média}
+leveneTest(Tempo ~ Meet, data=meet_file[meet_file$Meet == "Zoom" | meet_file$Meet == "Hangout", ], center=mean)
+```
+
+**Para uma siginificância de 0,05 a hipótese nula pode ser rejeitada demonstrando que as amostras Zoom e Hangout podem ser originadas de populações distintas**
+
+### Testes entre Skype e Hangout
+```{r teste entre Skype e Hangout: mediana}
+leveneTest(Tempo ~ Meet, data=meet_file[meet_file$Meet == "Skype" | meet_file$Meet == "Hangout", ], center=median)
+```
+**Para uma siginificância de 0,05 a hipótese nula pode ser rejeitada demonstrando que as amostras Skype e Hangout podem ser originadas de populações distintas**
+
+```{r teste entre Skype e Hangout: média}
+leveneTest(Tempo ~ Meet, data=meet_file[meet_file$Meet == "Skype" | meet_file$Meet == "Hangout", ], center=mean)
+```
+**Para uma siginificância de 0,05 a hipótese nula pode ser rejeitada demonstrando que as amostras Skype e Hangout podem ser originadas de populações distintas**
+
+### Testes entre Zoom e Skype
+```{r teste entre Zoom e Skype: mediana}
+leveneTest(Tempo ~ Meet, data=meet_file[meet_file$Meet == "Zoom" | meet_file$Meet == "Skype", ], center=median)
+```
+**Para uma siginificância de 0,05 a hipótes nula não pode ser rejeitada demonstrando que as amostras Zoom e Skype podem ser originadas de populações de variâncias semelhantes ou da mesma população**
+```{r teste entre Zoom e Skype: média}
+leveneTest(Tempo ~ Meet, data=meet_file[meet_file$Meet == "Zoom" | meet_file$Meet == "Skype", ], center=mean)
+```
+
+**Para uma siginificância de 0,05 a hipótese nula não pode ser rejeitada demonstrando que as amostras Zoom e Skype podem ser originadas de populações de variâncias semelhantes ou da mesma população**
 

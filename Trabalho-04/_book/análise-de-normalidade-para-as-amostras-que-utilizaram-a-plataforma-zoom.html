@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>2 Análise de normalidade para as amostras que utilizaram a plataforma Zoom | Estatística para ciência de dados</title>
+  <meta name="description" content="2 Análise de normalidade para as amostras que utilizaram a plataforma Zoom | Estatística para ciência de dados" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="2 Análise de normalidade para as amostras que utilizaram a plataforma Zoom | Estatística para ciência de dados" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="2 Análise de normalidade para as amostras que utilizaram a plataforma Zoom | Estatística para ciência de dados" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="leitura-dos-dados.html"/>
+<link rel="next" href="análise-de-normalidade-para-as-amostras-que-utilizaram-a-plataforma-hangout.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="leitura-dos-dados.html"><a href="leitura-dos-dados.html"><i class="fa fa-check"></i><b>1</b> Leitura dos dados</a></li>
+<li class="chapter" data-level="2" data-path="análise-de-normalidade-para-as-amostras-que-utilizaram-a-plataforma-zoom.html"><a href="análise-de-normalidade-para-as-amostras-que-utilizaram-a-plataforma-zoom.html"><i class="fa fa-check"></i><b>2</b> Análise de normalidade para as amostras que utilizaram a plataforma Zoom</a><ul>
+<li class="chapter" data-level="2.1" data-path="análise-de-normalidade-para-as-amostras-que-utilizaram-a-plataforma-zoom.html"><a href="análise-de-normalidade-para-as-amostras-que-utilizaram-a-plataforma-zoom.html#análise-dos-gráficos"><i class="fa fa-check"></i><b>2.1</b> Análise dos gráficos</a></li>
+<li class="chapter" data-level="2.2" data-path="análise-de-normalidade-para-as-amostras-que-utilizaram-a-plataforma-zoom.html"><a href="análise-de-normalidade-para-as-amostras-que-utilizaram-a-plataforma-zoom.html#cálculo-da-curtose-e-assimetria"><i class="fa fa-check"></i><b>2.2</b> Cálculo da curtose e assimetria</a></li>
+<li class="chapter" data-level="2.3" data-path="análise-de-normalidade-para-as-amostras-que-utilizaram-a-plataforma-zoom.html"><a href="análise-de-normalidade-para-as-amostras-que-utilizaram-a-plataforma-zoom.html#testes-estatísticos"><i class="fa fa-check"></i><b>2.3</b> Testes estatísticos</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="análise-de-normalidade-para-as-amostras-que-utilizaram-a-plataforma-zoom.html"><a href="análise-de-normalidade-para-as-amostras-que-utilizaram-a-plataforma-zoom.html#teste-de-shapiro-wilk"><i class="fa fa-check"></i><b>2.3.1</b> Teste de Shapiro-Wilk:</a></li>
+<li class="chapter" data-level="2.3.2" data-path="análise-de-normalidade-para-as-amostras-que-utilizaram-a-plataforma-zoom.html"><a href="análise-de-normalidade-para-as-amostras-que-utilizaram-a-plataforma-zoom.html#teste-de-kolmogorov-smirnov"><i class="fa fa-check"></i><b>2.3.2</b> Teste de Kolmogorov-Smirnov</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="análise-de-normalidade-para-as-amostras-que-utilizaram-a-plataforma-hangout.html"><a href="análise-de-normalidade-para-as-amostras-que-utilizaram-a-plataforma-hangout.html"><i class="fa fa-check"></i><b>3</b> Análise de normalidade para as amostras que utilizaram a plataforma Hangout</a><ul>
+<li class="chapter" data-level="3.1" data-path="análise-de-normalidade-para-as-amostras-que-utilizaram-a-plataforma-hangout.html"><a href="análise-de-normalidade-para-as-amostras-que-utilizaram-a-plataforma-hangout.html#análise-dos-gráficos-1"><i class="fa fa-check"></i><b>3.1</b> Análise dos gráficos</a></li>
+<li class="chapter" data-level="3.2" data-path="análise-de-normalidade-para-as-amostras-que-utilizaram-a-plataforma-hangout.html"><a href="análise-de-normalidade-para-as-amostras-que-utilizaram-a-plataforma-hangout.html#cálculo-da-curtose-e-assimetria-1"><i class="fa fa-check"></i><b>3.2</b> Cálculo da curtose e assimetria</a></li>
+<li class="chapter" data-level="3.3" data-path="análise-de-normalidade-para-as-amostras-que-utilizaram-a-plataforma-hangout.html"><a href="análise-de-normalidade-para-as-amostras-que-utilizaram-a-plataforma-hangout.html#testes-estatísticos-1"><i class="fa fa-check"></i><b>3.3</b> Testes estatísticos</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="análise-de-normalidade-para-as-amostras-que-utilizaram-a-plataforma-hangout.html"><a href="análise-de-normalidade-para-as-amostras-que-utilizaram-a-plataforma-hangout.html#teste-de-shapiro-wilk-1"><i class="fa fa-check"></i><b>3.3.1</b> Teste de Shapiro-Wilk:</a></li>
+<li class="chapter" data-level="3.3.2" data-path="análise-de-normalidade-para-as-amostras-que-utilizaram-a-plataforma-hangout.html"><a href="análise-de-normalidade-para-as-amostras-que-utilizaram-a-plataforma-hangout.html#teste-de-kolmogorov-smirnov-1"><i class="fa fa-check"></i><b>3.3.2</b> Teste de Kolmogorov-Smirnov:</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="análise-de-normalidade-para-as-amostras-que-utilizaram-a-plataforma-skype.html"><a href="análise-de-normalidade-para-as-amostras-que-utilizaram-a-plataforma-skype.html"><i class="fa fa-check"></i><b>4</b> Análise de normalidade para as amostras que utilizaram a plataforma Skype</a><ul>
+<li class="chapter" data-level="4.1" data-path="análise-de-normalidade-para-as-amostras-que-utilizaram-a-plataforma-skype.html"><a href="análise-de-normalidade-para-as-amostras-que-utilizaram-a-plataforma-skype.html#análise-dos-gráficos-2"><i class="fa fa-check"></i><b>4.1</b> Análise dos gráficos</a></li>
+<li class="chapter" data-level="4.2" data-path="análise-de-normalidade-para-as-amostras-que-utilizaram-a-plataforma-skype.html"><a href="análise-de-normalidade-para-as-amostras-que-utilizaram-a-plataforma-skype.html#cálculo-da-curtose-e-assimetria-2"><i class="fa fa-check"></i><b>4.2</b> Cálculo da curtose e assimetria</a></li>
+<li class="chapter" data-level="4.3" data-path="análise-de-normalidade-para-as-amostras-que-utilizaram-a-plataforma-skype.html"><a href="análise-de-normalidade-para-as-amostras-que-utilizaram-a-plataforma-skype.html#testes-estatísticos-2"><i class="fa fa-check"></i><b>4.3</b> Testes estatísticos</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="análise-de-normalidade-para-as-amostras-que-utilizaram-a-plataforma-skype.html"><a href="análise-de-normalidade-para-as-amostras-que-utilizaram-a-plataforma-skype.html#teste-de-shapiro-wilk-2"><i class="fa fa-check"></i><b>4.3.1</b> Teste de Shapiro-Wilk:</a></li>
+<li class="chapter" data-level="4.3.2" data-path="análise-de-normalidade-para-as-amostras-que-utilizaram-a-plataforma-skype.html"><a href="análise-de-normalidade-para-as-amostras-que-utilizaram-a-plataforma-skype.html#teste-de-kolmogorov-smirnov-2"><i class="fa fa-check"></i><b>4.3.2</b> Teste de Kolmogorov-Smirnov:</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Estatística para ciência de dados</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="análise-de-normalidade-para-as-amostras-que-utilizaram-a-plataforma-zoom" class="section level1">
+<h1><span class="header-section-number">2</span> Análise de normalidade para as amostras que utilizaram a plataforma Zoom</h1>
+<p>A análise de normalidade é importante para permitir ao pesquisador decidir que tipo de testes estatísticos são pertinentes nos dados gerados pelo objeto de estudo. Com essa análise pode-se concluir ou não se a mostra foi retirada de uma população que segue uma distribuição normal.</p>
+<p>A seguir são realizados os testes de normalidade para as amostras do arquivo meet-file.csv que utilizaram a plataforma Zoom.</p>
+<p>A análise da normalidade pode ser feita por métodos visuais, cálculo de parâmetros e/ou testes estatísticos.</p>
+<p>Serão aplicados os 3 métodos isoladamente para a conclusão sobre a normalidade da amostra.</p>
+<div id="análise-dos-gráficos" class="section level2">
+<h2><span class="header-section-number">2.1</span> Análise dos gráficos</h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="análise-de-normalidade-para-as-amostras-que-utilizaram-a-plataforma-zoom.html#cb2-1"></a><span class="kw">gera_histograma</span>(Zoom,<span class="dt">bins=</span> <span class="dv">11</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-24-1.png" width="672" />
+Foi plotado um diagrama de caixas, um histograma com 11 caixas (bins) e uma curva gaussiana com a média e desvio padrão iguais aos da amostra de tempo utilizado na ferramenta Zoom, para utilizar como referência visual.<br></p>
+<p>O gráfico do histograma mostra que a amostra seguiria uma uma distribuição aparentemente normal se o valor extremo à direita fosse excluído, pois: observa-se que a média da gaussiana e a barra com maior frequência e número de observações aparentementam estar muito próximas, e o número de observações ao redor da média e sua frequência são similares.<br></p>
+<p>O valor extremo à direita faz com que haja uma <strong>assimetria positiva</strong> na amostra.</p>
+<p>Uma das ferramentas gráficas utilizadas para avaliar a normalidade é o gráfico de quantil-quantil, onde são representados os quantis de cada observação da amostra e comparado com uma linha que representa os quantis de uma distribuição normal.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="análise-de-normalidade-para-as-amostras-que-utilizaram-a-plataforma-zoom.html#cb3-1"></a><span class="kw">gera_qqplot</span>(Zoom)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
+<p>Observa-se que os pontos são plotados ao longo da reta que representam os quantis de uma distribuição normal, à exceção do valor extremo visualizado no gráfico anterior.</p>
+<p>Portanto, baseado na visualização dos gráficos pode-se inferir que a amostra foi retirada de uma população que segue uma distribuição normal.</p>
+</div>
+<div id="cálculo-da-curtose-e-assimetria" class="section level2">
+<h2><span class="header-section-number">2.2</span> Cálculo da curtose e assimetria</h2>
+<p>O cálculo da curtose e assimetria de uma amostra se dá utilizando o quarto e terceiro momentos centrais, respectivamente, ajustados para dados amostrais.</p>
+<p>Os valores esperados de curtose e assimetria para uma curva normal são 0.0 e 0.0 respectivamente. No código abaixo são geradas 1.000.000 de amostras aleatórias de uma distribuição normal e calculados seus parâmetros de assimetria e curtose:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="análise-de-normalidade-para-as-amostras-que-utilizaram-a-plataforma-zoom.html#cb4-1"></a><span class="kw">library</span>(e1071)</span>
+<span id="cb4-2"><a href="análise-de-normalidade-para-as-amostras-que-utilizaram-a-plataforma-zoom.html#cb4-2"></a></span>
+<span id="cb4-3"><a href="análise-de-normalidade-para-as-amostras-que-utilizaram-a-plataforma-zoom.html#cb4-3"></a>distNormal&lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">1000000</span>)</span>
+<span id="cb4-4"><a href="análise-de-normalidade-para-as-amostras-que-utilizaram-a-plataforma-zoom.html#cb4-4"></a>curtoseNormal &lt;-<span class="st"> </span><span class="kw">kurtosis</span>(distNormal)</span>
+<span id="cb4-5"><a href="análise-de-normalidade-para-as-amostras-que-utilizaram-a-plataforma-zoom.html#cb4-5"></a>assimetriaNormal &lt;-<span class="st"> </span><span class="kw">skewness</span>(distNormal)</span>
+<span id="cb4-6"><a href="análise-de-normalidade-para-as-amostras-que-utilizaram-a-plataforma-zoom.html#cb4-6"></a><span class="kw">cat</span>(<span class="st">&quot; Curtose de uma distribuição normal: &quot;</span>, </span>
+<span id="cb4-7"><a href="análise-de-normalidade-para-as-amostras-que-utilizaram-a-plataforma-zoom.html#cb4-7"></a>    curtoseNormal,<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>,<span class="st">&quot;Assimetria uma distribuição normal: &quot;</span>, </span>
+<span id="cb4-8"><a href="análise-de-normalidade-para-as-amostras-que-utilizaram-a-plataforma-zoom.html#cb4-8"></a>    assimetriaNormal)</span></code></pre></div>
+<pre><code>##  Curtose de uma distribuição normal:  -0.002317177 
+##  Assimetria uma distribuição normal:  -0.001900704</code></pre>
+<p>Abaixo são calculados os mesmos parâmetros para a amostra Zoom:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="análise-de-normalidade-para-as-amostras-que-utilizaram-a-plataforma-zoom.html#cb6-1"></a>curtoseZoom &lt;-<span class="st"> </span><span class="kw">kurtosis</span>(Zoom<span class="op">$</span>Tempo)</span>
+<span id="cb6-2"><a href="análise-de-normalidade-para-as-amostras-que-utilizaram-a-plataforma-zoom.html#cb6-2"></a>assimetriaZoom &lt;-<span class="st"> </span><span class="kw">skewness</span>(Zoom<span class="op">$</span>Tempo)</span>
+<span id="cb6-3"><a href="análise-de-normalidade-para-as-amostras-que-utilizaram-a-plataforma-zoom.html#cb6-3"></a><span class="kw">cat</span>(<span class="st">&quot; Curtose para as amostras que utilizaram a plataforma Zoom: &quot;</span>, </span>
+<span id="cb6-4"><a href="análise-de-normalidade-para-as-amostras-que-utilizaram-a-plataforma-zoom.html#cb6-4"></a>    curtoseZoom,<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>,<span class="st">&quot;Assimetria para as amostras que utilizaram a plataforma Zoom: &quot;</span>, </span>
+<span id="cb6-5"><a href="análise-de-normalidade-para-as-amostras-que-utilizaram-a-plataforma-zoom.html#cb6-5"></a>    assimetriaZoom)</span></code></pre></div>
+<pre><code>##  Curtose para as amostras que utilizaram a plataforma Zoom:  3.208934 
+##  Assimetria para as amostras que utilizaram a plataforma Zoom:  1.617429</code></pre>
+<p>Percebe-se que os valores estão desviados do valor esperado para uma curva normal. Quanto à curtose pode-se classificar a amostra como <strong>leptocúrtica</strong>, ou seja, mais alongada que uma distribuição normal</p>
+<p>A partir da assimetria calculada pode-se afirmar que a distribuição possui uma <strong>assimetria positiva</strong>, espera-se que a distribuição possua uma cauda mais longa à direita.</p>
+<p>Portanto, a partir dos parâmetros calculados, conclui-se que a amostra não foi retirada de uma população que siga uma distribuição normal, pois seus parâmetros muitos se distanciam dos parâmetros para uma curva normal (0.0 e 0.0 para ambos).</p>
+</div>
+<div id="testes-estatísticos" class="section level2">
+<h2><span class="header-section-number">2.3</span> Testes estatísticos</h2>
+<p>Chegou-se a conclusões distintas quanto à normalidade utilizando o método gráfico e o cálculo da assimetria e curtose.</p>
+<p>É necessário portanto aplicar testes estatísticos de normalidade para a obtenção de resultados mais conclusivos.</p>
+<div id="teste-de-shapiro-wilk" class="section level3">
+<h3><span class="header-section-number">2.3.1</span> Teste de Shapiro-Wilk:</h3>
+<p>O teste de Shapiro-Wilk apresenta a estatística W e o valor P para representar a significância estatística do teste. A hipótese nula é:</p>
+<p>H0: A amostra foi retirada de uma população que segue uma distribuição normal.</p>
+<p>A estatística W do teste, varia de entre 0 e 1, quanto mais alto for W mais a amostra se aproxima de uma distribuição normal.</p>
+<p>O teste também apresenta o valor de significância estatística valor p para a amostra em questão.</p>
+<p>Se o valor p para uma dada amostra for menor que um nível de significância designado pode-se rejeitar a hipótese nula e afirmar que a amostra não segue uma distribuição normal.
+Valores comuns para comparação de testes de hipóteses são: 0.1, 0.05, 0.01, a depender do que se está estudando e o nível de rigor requerido.</p>
+<p>Abaixo a amostra Zoom é testada para normalidade seguindo o método de Shapiro-Wilk:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="análise-de-normalidade-para-as-amostras-que-utilizaram-a-plataforma-zoom.html#cb8-1"></a>testeZoom &lt;-<span class="st"> </span><span class="kw">shapiro.test</span>(Zoom<span class="op">$</span>Tempo)</span>
+<span id="cb8-2"><a href="análise-de-normalidade-para-as-amostras-que-utilizaram-a-plataforma-zoom.html#cb8-2"></a>testeZoom</span></code></pre></div>
+<pre><code>## 
+##  Shapiro-Wilk normality test
+## 
+## data:  Zoom$Tempo
+## W = 0.84372, p-value = 0.004191</code></pre>
+<p>A partir do teste aplicado nas amostras que utilizaram Zoom pode-se afirmar que:</p>
+<p><strong>A um nível de significância de 0.1, 0.05 ou 0.01 a hipótese nula pode ser rejeitada chegando-se a conclusão que a amostra não vem de uma população que segue uma distribuição normal.</strong></p>
+<p>O resultado do teste confirma o que foi visto através do desvio acentuado da assimetria e curtose da amostra e contraria a análise gráfica realizada.</p>
+<p>O teste é aplicado novamente removendo o valor extremo:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="análise-de-normalidade-para-as-amostras-que-utilizaram-a-plataforma-zoom.html#cb10-1"></a>testeZoom &lt;-<span class="st"> </span><span class="kw">shapiro.test</span>(Zoom<span class="op">$</span>Tempo[<span class="dv">1</span><span class="op">:</span><span class="dv">19</span>])</span>
+<span id="cb10-2"><a href="análise-de-normalidade-para-as-amostras-que-utilizaram-a-plataforma-zoom.html#cb10-2"></a>testeZoom</span></code></pre></div>
+<pre><code>## 
+##  Shapiro-Wilk normality test
+## 
+## data:  Zoom$Tempo[1:19]
+## W = 0.98052, p-value = 0.9482</code></pre>
+<p>O novo teste aplicado sem o valor extremo possui um valor p maior do que o maior valor normalmente utilizado de 0.1, portanto a distribuição segue uma distribuição normal se o valor extremo for excluído.</p>
+</div>
+<div id="teste-de-kolmogorov-smirnov" class="section level3">
+<h3><span class="header-section-number">2.3.2</span> Teste de Kolmogorov-Smirnov</h3>
+<p>O teste de Kolmogorov pode ser utilizado para comparar duas amostras ou para comparar uma amostra com uma distribuição padrão.</p>
+<p>O teste de Kolmogorov apresenta a estatíca D: Máxima diferença absoluta entre duas funções de distribuições cumulativas e possui um valor P para representar a significância estatística do teste. O teste de Kolmogorov possui as seguintes hipóteses nulas:</p>
+<p>Comparação entre duas amostras:<br>
+H0: As duas amostras foram retiradas de uma população com a mesma distribuição.</p>
+<p>Comparação entre uma amostra e uma distribuição de referência:<br>
+H0: A amostra foi retirada de uma população que segue a distribuição de referência.</p>
+<p>Aplica-se então o teste para comparar a amostra Zoom a uma distribuição normal de média e desvio padrão iguais aos da amostra:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="análise-de-normalidade-para-as-amostras-que-utilizaram-a-plataforma-zoom.html#cb12-1"></a>testeKSZoom &lt;-<span class="st"> </span><span class="kw">ks.test</span>(Zoom<span class="op">$</span>Tempo, <span class="st">&quot;pnorm&quot;</span>, <span class="dt">mean=</span><span class="kw">mean</span>(Zoom<span class="op">$</span>Tempo), <span class="dt">sd=</span><span class="kw">sd</span>(Zoom<span class="op">$</span>Tempo))</span>
+<span id="cb12-2"><a href="análise-de-normalidade-para-as-amostras-que-utilizaram-a-plataforma-zoom.html#cb12-2"></a>testeKSZoom</span></code></pre></div>
+<pre><code>## 
+##  One-sample Kolmogorov-Smirnov test
+## 
+## data:  Zoom$Tempo
+## D = 0.20017, p-value = 0.3517
+## alternative hypothesis: two-sided</code></pre>
+<p>A partir das informações contidas no teste:</p>
+<p><strong>A um nível de significância de 0.1 a hipótese nula não pode ser rejeitada chegando-se a conclusão que a amostra segue uma distribuição normal.</strong></p>
+<p>A visualização da distribuição cumulativa comparada com a distribuição cumulativa da curva normal é mostrada em seguida, onde os dois pontos conectados entre as curvas demonstram a estatística D do teste de Komogorov.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="análise-de-normalidade-para-as-amostras-que-utilizaram-a-plataforma-zoom.html#cb14-1"></a>dist.Normal.Zoom&lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">10000</span>, <span class="kw">mean</span>(Zoom<span class="op">$</span>Tempo), <span class="kw">sd</span>(Zoom<span class="op">$</span>Tempo))</span>
+<span id="cb14-2"><a href="análise-de-normalidade-para-as-amostras-que-utilizaram-a-plataforma-zoom.html#cb14-2"></a></span>
+<span id="cb14-3"><a href="análise-de-normalidade-para-as-amostras-que-utilizaram-a-plataforma-zoom.html#cb14-3"></a><span class="kw">gera_ksplot</span>(Zoom, dist.Normal.Zoom)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-31-1.png" width="672" />
+Teste de lognormalidade para a amostra Zoom:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="análise-de-normalidade-para-as-amostras-que-utilizaram-a-plataforma-zoom.html#cb15-1"></a><span class="kw">library</span>(MASS)</span>
+<span id="cb15-2"><a href="análise-de-normalidade-para-as-amostras-que-utilizaram-a-plataforma-zoom.html#cb15-2"></a><span class="co">#</span></span>
+<span id="cb15-3"><a href="análise-de-normalidade-para-as-amostras-que-utilizaram-a-plataforma-zoom.html#cb15-3"></a>fitlogZoom &lt;-<span class="st"> </span><span class="kw">fitdistr</span>(Zoom<span class="op">$</span>Tempo, <span class="st">&quot;lognormal&quot;</span>)<span class="op">$</span>estimate</span>
+<span id="cb15-4"><a href="análise-de-normalidade-para-as-amostras-que-utilizaram-a-plataforma-zoom.html#cb15-4"></a>meanlogZoom &lt;-<span class="st"> </span>fitlogZoom[<span class="dv">1</span>]</span>
+<span id="cb15-5"><a href="análise-de-normalidade-para-as-amostras-que-utilizaram-a-plataforma-zoom.html#cb15-5"></a>sdlogZoom &lt;-<span class="st"> </span>fitlogZoom[<span class="dv">2</span>]</span>
+<span id="cb15-6"><a href="análise-de-normalidade-para-as-amostras-que-utilizaram-a-plataforma-zoom.html#cb15-6"></a></span>
+<span id="cb15-7"><a href="análise-de-normalidade-para-as-amostras-que-utilizaram-a-plataforma-zoom.html#cb15-7"></a>testeKSlogZoom &lt;-<span class="st"> </span><span class="kw">ks.test</span>(Zoom<span class="op">$</span>Tempo, <span class="st">&quot;plnorm&quot;</span>, meanlogZoom,sdlogZoom)</span>
+<span id="cb15-8"><a href="análise-de-normalidade-para-as-amostras-que-utilizaram-a-plataforma-zoom.html#cb15-8"></a>testeKSlogZoom</span></code></pre></div>
+<pre><code>## 
+##  One-sample Kolmogorov-Smirnov test
+## 
+## data:  Zoom$Tempo
+## D = 0.13421, p-value = 0.8181
+## alternative hypothesis: two-sided</code></pre>
+<p>A partir das informações contidas no teste:</p>
+<p><strong>A um nível de significância de 0.1 a hipótese nula não pode ser rejeitada chegando-se a conclusão que a amostra segue uma distribuição lognormal.</strong></p>
+<p>O resultado positivo tanto para normalidade quanto para normalidade pode ser devido ao baixo número de observações na amostra. Entretanto podemos observar que o valor-p para a lognormalidade é maior do que para normalidade.</p>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="leitura-dos-dados.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="análise-de-normalidade-para-as-amostras-que-utilizaram-a-plataforma-hangout.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

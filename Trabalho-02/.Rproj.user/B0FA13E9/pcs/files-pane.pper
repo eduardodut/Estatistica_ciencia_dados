@@ -1,9 +1,9 @@
 {
-    "path" : "~/GitHub/Estatistica_ciencia_dados/Trabalho-02",
-    "sortOrder" : [
+    "path": "~/GitHub/Estatistica_ciencia_dados/Trabalho-02",
+    "sortOrder": [
         {
-            "ascending" : true,
-            "columnIndex" : 2
+            "columnIndex": 2,
+            "ascending": true
         }
     ]
 }
