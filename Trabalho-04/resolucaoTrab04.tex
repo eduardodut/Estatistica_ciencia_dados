@@ -1,0 +1,1319 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\renewcommand{\contentsname}{Conteúdo}
+
+\title{Estatística para Ciência de Dados\\
+Resolução do trabalho 04: Ex4-teste-normalidade - três variáveis}
+\author{Eduardo Façanha Dutra\\
+2016473}
+\date{}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\hypertarget{enunciado}{%
+\section{Enunciado}\label{enunciado}}
+
+Objetivos: Analisar a distribuição da amostra onde o fenômeno Tempo
+agora diz respeito aos valores de 1 fator e 3 níveis Fazer os testes
+para análise da variância do fenômeno.
+
+Considere o caso em que o tempo do usuário é a variável independente
+(calculada) e representando o tempo que o usuário passou em uma
+determinada conferência virtual, quando fez uso de um dos Meet virtuais,
+se usando Zoom, Hangout ou Skype. A hipótese é saber se existe diferença
+significativa entre os três Meet. O arquivo segue os seguintes
+princípios para a realização deste trabalho: - independência dos dados,
+quem usou um meet não usou o outro. - A variável tempo é mais próxima de
+uma log normalidade, porque a medida que o usuário usa um sistema, ele
+se torna mais especialista e o tempo, no eixo X tende a diminuir com o
+tempo; ou ainda tem poucas atividades que levam muito tempo e muitas que
+levam pouco tempo, afetadas pela experiência do usuário.
+
+Pede-se: Fazer os testes para análise da variância do fenômeno,
+realizando as três técnicas dadas a seguir e considerando que:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  a técnica Shapiro-wilk permite testar a normalidade, para uma amostra
+  pequena
+\item
+  a técnica Kolmogorov-Smirnov permite testar a lognormalidade da
+  amostra.
+\item
+  a técnica Levene
+\item
+  Visualize os dados usando Boxplot, histograma e qqplot.
+\end{enumerate}
+
+Senão houver normalidade da amostra, então transforme os dados em uma
+log normal, depois, verifique como ficaram os dados, e repita os testes
+dos passos.
+
+Obs: In a test statistic: the result expresses in a single number how
+much my data differ from my null hypothesis. So it indicates to what
+extent the observed scores deviate from a normal distribution. Now, if
+my null hypothesis is true, then this deviation percentage should
+probably be quite small. That is, a small deviation has a high
+probability value or p-value. Reversely, a huge deviation percentage is
+very unlikely and suggests that my reaction times don't follow a normal
+distribution in the entire population. So a large deviation has a low
+p-value. As a rule of thumb, we reject the null hypothesis if p
+\textless{} 0.05. So if p \textless{} 0.05, we don't believe that our
+variable follows a normal distribution in our population.
+
+\textbf{Resolução:}
+
+Resumo:
+
+\begin{itemize}
+\item
+  Análises gráficas podem ser muito elucidativas para conhecer os dados
+  que o pesquisador está trabalhando, entretanto testes estatísticos são
+  necessários para obter evidências mais precisas;
+\item
+  Curtose e assimetria podem indicar desvio da normalidade mas não podem
+  ser utilizadas isoladamente para se obter conclusões;
+\item
+  A amostra Zoom segue a normalidade para o teste de
+  Komogorov-Smirnov(P= 0.3517). Para o teste de Shapiro-Wilk (P=
+  0.004191) a normalidade só é verificada se o teste for realizado
+  excluindo-se o valor extremo (P= 0.9482). O teste sem o valor extremo
+  só foi cogitado após a visualização gráfica dos dados;
+\item
+  Quanto ao teste de lognormalidade da amostra Zoom (P= 0.8181), o
+  resultado se mostrou positivo. Esse resultado pode ser devido ao baixo
+  número de amostras, entretanto observou-se que o valor p da
+  lognormalidade superou o da normalidade para o mesmo teste (0.8181
+  contra 0.3517);
+\item
+  A amostra Hangout não pode ser considerada normal para o teste de
+  Shapiro-Wilk (P= 0.01281), mas pode ser considerada para o teste de
+  Komogorov-Smirnov (P= 0.375). Não há valores extremos que possam ser
+  retirados para que se possa obter um teste positivo para normalidade;
+\item
+  Quanto ao teste lognormalidade da amostra Hangout (P= 0.871), o
+  resultado se mostrou positivo, a hipótese de lognormalidade não pode
+  ser descartad.
+\end{itemize}
+
+\textless\textless\textless\textless\textless\textless\textless{} HEAD *
+A amostra Skype pode não ser considerada normal para o teste de
+Shapiro-Wilk (P= 0.02294), entretanto pode ser considerada para o teste
+de Komogorov-Smirnov (P= 0.1186);
+
+\begin{itemize}
+\item
+  Quanto ao teste lognormalidade da amostra Hangout (P= 0.4377), o
+  resultado se mostrou positivo, a hipótese de lognormalidade não pode
+  ser descartada;
+\item
+  Considera-se então que as duas amostras seguem melhor uma distribuição
+  lognormal do que uma distribuição normal;
+\end{itemize}
+
+======= * Considera-se então que as duas amostras seguem melhor uma
+distribuição lognormal do que uma distribuição normal;
+
+\begin{quote}
+\begin{quote}
+\begin{quote}
+\begin{quote}
+\begin{quote}
+\begin{quote}
+\begin{quote}
+47731c7ceb3936ca04bf41ce8c0a06ad944b9eb8 * Mesmo que após os testes de
+normalidade as amostras tenham sido consideradas como provenientes de
+uma distribuição lognormal, os testes de Levene foram realizados
+utilizando como centro a média e a mediana para obter um comparativo
+entre os testes;
+\end{quote}
+\end{quote}
+\end{quote}
+\end{quote}
+\end{quote}
+\end{quote}
+\end{quote}
+
+\begin{itemize}
+\item
+  Não houve discordância na conclusão entre os testes com média ou
+  mediana para qualquer um dos casos testados;
+\item
+  Após realizar os testes de Levene entre as 3 amostras
+  (\(P_{\text{mediana}}= 0.01388\), \(P_{\text{média}}= 0.0004823\)),
+  conclui-se que pelo menos uma das 3 amostras veio de uma população
+  diferente, ou há diferença na usabilidade de pelo menos uma plataforma
+  para as demais;
+\item
+  Após realizar o teste de Levene entre Zoom e Hangout
+  (\(P_{\text{mediana}}= 0.01984\), \(P_{\text{média}}= 0.001356\)),
+  concluiu-se que elas podem ter sido originadas de população
+  diferentes, ou há diferença na usabilidade entre as plataformas;
+\item
+  Após realizar o teste de Levene entre Skype e Hangout
+  (\(P_{\text{mediana}}= 0.03061\), \(P_{\text{média}}= 0.002625\)),
+  concluiu-se que elas podem ter sido originadas de população
+  diferentes, ou há diferença na usabilidade entre as plataformas;
+\item
+  Após realizar o teste de Levene entre Zoom e
+  Skype(\(P_{\text{mediana}}= 0.7678\), \(P_{\text{média}}= 0.7632\)),
+  concluiu-se que elas podem ter sido originadas de população de
+  características semelhantes, ou não há diferença na usabilidade entre
+  as plataformas.
+\end{itemize}
+
+A resolução da atividade seguirá as seguintes etapas:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Leitura dos dados, inicialização das variáveis e das funções para os
+  gráficos;
+\item
+  Análise de normalidade e lognormalidade para as amostras que
+  utilizaram a plataforma Zoom;
+\item
+  Análise de normalidade e lognormalidade para as amostras que
+  utilizaram a plataforma Hangout;
+\item
+  Análise de normalidade e lognormalidade para as amostras que
+  utilizaram a plataforma Skype;
+\item
+  Testes de Levene
+\end{enumerate}
+
+\hypertarget{leitura-dos-dados}{%
+\section{Leitura dos dados}\label{leitura-dos-dados}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(readr)}
+\CommentTok{#Leitura do arquivo CSV}
+\NormalTok{meet_file <-}\StringTok{ }\KeywordTok{read_csv}\NormalTok{(}\StringTok{"Dados/meet3-file.csv"}\NormalTok{,}
+                      \DataTypeTok{col_types =} \KeywordTok{cols}\NormalTok{(}\DataTypeTok{Meet =} \KeywordTok{col_factor}\NormalTok{(}\DataTypeTok{levels =} \KeywordTok{c}\NormalTok{(}\StringTok{"Zoom"}\NormalTok{, }
+                                                                    \StringTok{"Hangout"}\NormalTok{, }
+                                                                    \StringTok{"Skype"}\NormalTok{)),}
+                                      \DataTypeTok{Subject =} \KeywordTok{col_skip}\NormalTok{()))}
+
+\NormalTok{meet_file}\OperatorTok{$}\NormalTok{logTempo <-}\StringTok{ }\KeywordTok{log}\NormalTok{(meet_file}\OperatorTok{$}\NormalTok{Tempo)}
+
+
+\CommentTok{#seleção dos dados que representam a plataforma Zoom}
+\NormalTok{Zoom =}\StringTok{ }\NormalTok{meet_file[meet_file}\OperatorTok{$}\NormalTok{Meet }\OperatorTok{==}\StringTok{ "Zoom"}\NormalTok{,}\StringTok{"Tempo"}\NormalTok{]}
+
+\NormalTok{Zoom}\OperatorTok{$}\NormalTok{Tempo <-}\StringTok{ }\KeywordTok{sort}\NormalTok{(Zoom}\OperatorTok{$}\NormalTok{Tempo, }\OtherTok{FALSE}\NormalTok{)}
+
+\CommentTok{#seleção dos dados que representam a plataforma Hangout}
+\NormalTok{Hangout =}\StringTok{ }\NormalTok{meet_file[meet_file}\OperatorTok{$}\NormalTok{Meet }\OperatorTok{==}\StringTok{ "Hangout"}\NormalTok{,}\StringTok{"Tempo"}\NormalTok{]}
+
+\NormalTok{Hangout}\OperatorTok{$}\NormalTok{Tempo <-}\StringTok{ }\KeywordTok{sort}\NormalTok{(Hangout}\OperatorTok{$}\NormalTok{Tempo, }\OtherTok{FALSE}\NormalTok{)}
+
+\CommentTok{#seleção dos dados que representam a plataforma Hangout}
+\NormalTok{Skype =}\StringTok{ }\NormalTok{meet_file[meet_file}\OperatorTok{$}\NormalTok{Meet }\OperatorTok{==}\StringTok{ "Skype"}\NormalTok{,}\StringTok{"Tempo"}\NormalTok{]}
+
+\NormalTok{Skype}\OperatorTok{$}\NormalTok{Tempo <-}\StringTok{ }\KeywordTok{sort}\NormalTok{(Skype}\OperatorTok{$}\NormalTok{Tempo, }\OtherTok{FALSE}\NormalTok{)}
+
+\CommentTok{#Função para configuração dos gráficos}
+\KeywordTok{library}\NormalTok{(ggplot2)}
+\KeywordTok{library}\NormalTok{(cowplot)}
+\KeywordTok{library}\NormalTok{(qqplotr)}
+\KeywordTok{library}\NormalTok{(car)}
+
+\NormalTok{gera_histograma <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(dados, }\DataTypeTok{bins=}\DecValTok{9}\NormalTok{)\{}
+
+\NormalTok{  n            <-}\StringTok{ }\KeywordTok{length}\NormalTok{(dados}\OperatorTok{$}\NormalTok{Tempo)   }
+\NormalTok{  nome         <-}\StringTok{ }\KeywordTok{deparse}\NormalTok{(}\KeywordTok{substitute}\NormalTok{(dados))}
+\NormalTok{  mediaAmostra <-}\StringTok{ }\KeywordTok{mean}\NormalTok{(dados}\OperatorTok{$}\NormalTok{Tempo) }
+
+\NormalTok{  sd<-}\KeywordTok{sqrt}\NormalTok{(}\KeywordTok{var}\NormalTok{(dados}\OperatorTok{$}\NormalTok{Tempo)}\OperatorTok{*}\NormalTok{(n}\DecValTok{-1}\NormalTok{)}\OperatorTok{/}\NormalTok{n) }
+  
+\NormalTok{  histograma <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(dados,}\KeywordTok{aes}\NormalTok{(Tempo))}
+\NormalTok{  histograma <-}\StringTok{ }\NormalTok{histograma }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_histogram}\NormalTok{(}\DataTypeTok{bins =}\NormalTok{ bins, }
+                                            \KeywordTok{aes}\NormalTok{(}\DataTypeTok{y=}\NormalTok{..density.., }\DataTypeTok{fill=}\NormalTok{..count..))}
+\NormalTok{  histograma <-}\StringTok{ }\NormalTok{histograma }\OperatorTok{+}\StringTok{ }\KeywordTok{labs}\NormalTok{( }\DataTypeTok{x=}\StringTok{""}\NormalTok{,}\DataTypeTok{y=}\StringTok{"Frequência", }
+\StringTok{                                   title=paste("}\NormalTok{Tempo utilizado por usuário na plataforma}\StringTok{",}
+\StringTok{                                               nome))}
+\StringTok{  histograma <- histograma + scale_fill_gradient("}\NormalTok{Amostra por caixa}\StringTok{", }
+\StringTok{                                                 low="}\CommentTok{#DCDCDC", }
+                                                 \DataTypeTok{high=}\StringTok{"#7C7C7C"}\NormalTok{,)}
+\NormalTok{  histograma <-}\StringTok{ }\NormalTok{histograma }\OperatorTok{+}\StringTok{ }\KeywordTok{stat_function}\NormalTok{(}\DataTypeTok{fun=}\NormalTok{dnorm, }
+                                           \DataTypeTok{color=}\StringTok{"red"}\NormalTok{, }
+                                           \DataTypeTok{args=}\KeywordTok{list}\NormalTok{(}\DataTypeTok{mean=}\NormalTok{mediaAmostra, }
+                                                     \DataTypeTok{sd=}\NormalTok{sd))}
+  
+\NormalTok{  ylimHist=}\StringTok{ }\KeywordTok{layer_scales}\NormalTok{(histograma)}\OperatorTok{$}\NormalTok{x}\OperatorTok{$}\NormalTok{range}\OperatorTok{$}\NormalTok{range}
+  
+\NormalTok{  diagCaixa <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(dados, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y=}\NormalTok{Tempo))}
+\NormalTok{  diagCaixa <-}\StringTok{ }\NormalTok{diagCaixa }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_boxplot}\NormalTok{()}
+\NormalTok{  diagCaixa <-}\StringTok{ }\NormalTok{diagCaixa }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{axis.title.y=}\KeywordTok{element_blank}\NormalTok{(),}
+                                 \DataTypeTok{axis.text.y=}\KeywordTok{element_blank}\NormalTok{(),}
+                                 \DataTypeTok{axis.ticks.y=}\KeywordTok{element_blank}\NormalTok{())}
+\NormalTok{  diagCaixa <-}\StringTok{ }\NormalTok{diagCaixa }\OperatorTok{+}\StringTok{ }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{y=}\KeywordTok{paste}\NormalTok{(}\StringTok{"Tempo de uso do"}\NormalTok{,nome))}
+\NormalTok{  diagCaixa <-}\StringTok{ }\NormalTok{diagCaixa }\OperatorTok{+}\StringTok{ }\KeywordTok{coord_flip}\NormalTok{(}\DataTypeTok{ylim =}\NormalTok{ ylimHist)}
+  
+  \KeywordTok{plot_grid}\NormalTok{(histograma, diagCaixa,  }
+                     \DataTypeTok{ncol =} \DecValTok{1}\NormalTok{, }\DataTypeTok{rel_heights =} \KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{1}\NormalTok{),}
+                     \DataTypeTok{align =} \StringTok{'v'}\NormalTok{, }\DataTypeTok{axis =} \StringTok{"rlbt"}\NormalTok{)  }
+\NormalTok{\}}
+
+\NormalTok{gera_qqplot <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(dados)\{}
+  
+ 
+  
+\NormalTok{  nome            <-}\StringTok{ }\KeywordTok{deparse}\NormalTok{(}\KeywordTok{substitute}\NormalTok{(dados))}
+  
+\NormalTok{  diagramaQuartil <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(dados, }\DataTypeTok{mapping=} \KeywordTok{aes}\NormalTok{(}\DataTypeTok{sample =}\NormalTok{ Tempo))}
+\NormalTok{  diagramaQuartil <-}\StringTok{ }\NormalTok{diagramaQuartil }\OperatorTok{+}\StringTok{ }\KeywordTok{stat_qq_band}\NormalTok{(}\DataTypeTok{bandType =} \StringTok{"pointwise"}\NormalTok{)}
+\NormalTok{  diagramaQuartil <-}\StringTok{ }\NormalTok{diagramaQuartil }\OperatorTok{+}\StringTok{ }\KeywordTok{stat_qq_line}\NormalTok{() }
+\NormalTok{  diagramaQuartil <-}\StringTok{ }\NormalTok{diagramaQuartil }\OperatorTok{+}\StringTok{ }\KeywordTok{stat_qq_point}\NormalTok{()}
+\NormalTok{  diagramaQuartil <-}\StringTok{ }\NormalTok{diagramaQuartil }\OperatorTok{+}\StringTok{ }\KeywordTok{labs}\NormalTok{( }\DataTypeTok{x=}\StringTok{"Quantis teóricos de uma distribuição normal"}\NormalTok{,}
+                                             \DataTypeTok{y=}\StringTok{"Quantis amostrais"}\NormalTok{, }
+                                             \DataTypeTok{title=}\KeywordTok{paste}\NormalTok{(}\StringTok{"Diagrama QQ para a plataforma"}\NormalTok{, nome))}
+\NormalTok{  diagramaQuartil\}}
+
+\NormalTok{gera_ksplot <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(dados, distribuicao)\{}
+  
+  
+\NormalTok{  media    <-}\StringTok{ }\KeywordTok{mean}\NormalTok{(dados}\OperatorTok{$}\NormalTok{Tempo)}
+\NormalTok{  sd       <-}\StringTok{ }\KeywordTok{sd}\NormalTok{(dados}\OperatorTok{$}\NormalTok{Tempo)}
+\NormalTok{  nome     <-}\StringTok{ }\KeywordTok{deparse}\NormalTok{(}\KeywordTok{substitute}\NormalTok{(dados))}
+\NormalTok{  nomeDist <-}\StringTok{ }\KeywordTok{deparse}\NormalTok{(}\KeywordTok{substitute}\NormalTok{(distribuicao))}
+\NormalTok{  group    <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\KeywordTok{rep}\NormalTok{(nome, }\KeywordTok{length}\NormalTok{(dados}\OperatorTok{$}\NormalTok{Tempo)), }
+             \KeywordTok{rep}\NormalTok{(}\StringTok{"Dist Normal"}\NormalTok{, }\KeywordTok{length}\NormalTok{(distribuicao)))}
+\NormalTok{  dat      <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{KSD =} \KeywordTok{c}\NormalTok{(dados}\OperatorTok{$}\NormalTok{Tempo,distribuicao), }\DataTypeTok{group =}\NormalTok{ group)}
+
+\NormalTok{  cdf1 <-}\StringTok{ }\KeywordTok{ecdf}\NormalTok{(dados}\OperatorTok{$}\NormalTok{Tempo) }
+\NormalTok{  cdf2 <-}\StringTok{ }\KeywordTok{ecdf}\NormalTok{(distribuicao) }
+
+\NormalTok{  minMax <-}\StringTok{ }\KeywordTok{seq}\NormalTok{(}\KeywordTok{min}\NormalTok{(dados}\OperatorTok{$}\NormalTok{Tempo, distribuicao), }
+                \KeywordTok{max}\NormalTok{(dados}\OperatorTok{$}\NormalTok{Tempo, distribuicao), }
+                \DataTypeTok{length.out=}\KeywordTok{length}\NormalTok{(dados}\OperatorTok{$}\NormalTok{Tempo)) }
+\NormalTok{  x0 <-}\StringTok{ }\NormalTok{minMax[}\KeywordTok{which}\NormalTok{(}\KeywordTok{abs}\NormalTok{(}\KeywordTok{cdf1}\NormalTok{(minMax) }\OperatorTok{-}\StringTok{ }\KeywordTok{cdf2}\NormalTok{(minMax)) }\OperatorTok{==}\StringTok{ }
+\StringTok{                       }\KeywordTok{max}\NormalTok{(}\KeywordTok{abs}\NormalTok{(}\KeywordTok{cdf1}\NormalTok{(minMax) }\OperatorTok{-}\StringTok{ }\KeywordTok{cdf2}\NormalTok{(minMax))) )] }
+\NormalTok{  y0 <-}\StringTok{ }\KeywordTok{cdf1}\NormalTok{(x0) }
+\NormalTok{  y1 <-}\StringTok{ }\KeywordTok{cdf2}\NormalTok{(x0) }
+  \KeywordTok{ggplot}\NormalTok{(dat, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ KSD, }\DataTypeTok{group =}\NormalTok{ group, }\DataTypeTok{color =}\NormalTok{ group))}\OperatorTok{+}
+\StringTok{    }\KeywordTok{stat_ecdf}\NormalTok{(}\DataTypeTok{size=}\DecValTok{1}\NormalTok{) }\OperatorTok{+}
+\StringTok{      }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position =}\StringTok{"top"}\NormalTok{) }\OperatorTok{+}
+\StringTok{      }\KeywordTok{xlab}\NormalTok{(}\StringTok{"Amostra"}\NormalTok{) }\OperatorTok{+}
+\StringTok{      }\KeywordTok{ylab}\NormalTok{(}\StringTok{"ECDF"}\NormalTok{) }\OperatorTok{+}
+\StringTok{      }\CommentTok{#geom_line(size=1) +}
+\StringTok{      }\KeywordTok{geom_segment}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ x0[}\DecValTok{1}\NormalTok{], }\DataTypeTok{y =}\NormalTok{ y0[}\DecValTok{1}\NormalTok{], }\DataTypeTok{xend =}\NormalTok{ x0[}\DecValTok{1}\NormalTok{], }\DataTypeTok{yend =}\NormalTok{ y1[}\DecValTok{1}\NormalTok{]),}
+          \DataTypeTok{linetype =} \StringTok{"dashed"}\NormalTok{, }\DataTypeTok{color =} \StringTok{"red"}\NormalTok{) }\OperatorTok{+}
+\StringTok{      }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ x0[}\DecValTok{1}\NormalTok{] , }\DataTypeTok{y=}\NormalTok{ y0[}\DecValTok{1}\NormalTok{]), }\DataTypeTok{color=}\StringTok{"red"}\NormalTok{, }\DataTypeTok{size=}\DecValTok{2}\NormalTok{) }\OperatorTok{+}
+\StringTok{      }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ x0[}\DecValTok{1}\NormalTok{] , }\DataTypeTok{y=}\NormalTok{ y1[}\DecValTok{1}\NormalTok{]), }\DataTypeTok{color=}\StringTok{"red"}\NormalTok{, }\DataTypeTok{size=}\DecValTok{2}\NormalTok{) }\OperatorTok{+}
+\StringTok{      }\KeywordTok{ggtitle}\NormalTok{(}\KeywordTok{paste}\NormalTok{(}\StringTok{"K-S Test: Plataforma"}\NormalTok{,nome,}\StringTok{"/"}\NormalTok{,nomeDist)) }\OperatorTok{+}
+\StringTok{      }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.title=}\KeywordTok{element_blank}\NormalTok{())}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{anuxe1lise-de-normalidade-para-as-amostras-que-utilizaram-a-plataforma-zoom}{%
+\section{Análise de normalidade para as amostras que utilizaram a
+plataforma
+Zoom}\label{anuxe1lise-de-normalidade-para-as-amostras-que-utilizaram-a-plataforma-zoom}}
+
+A análise de normalidade é importante para permitir ao pesquisador
+decidir que tipo de testes estatísticos são pertinentes nos dados
+gerados pelo objeto de estudo. Com essa análise pode-se concluir ou não
+se a mostra foi retirada de uma população que segue uma distribuição
+normal.
+
+A seguir são realizados os testes de normalidade para as amostras do
+arquivo meet-file.csv que utilizaram a plataforma Zoom.
+
+A análise da normalidade pode ser feita por métodos visuais, cálculo de
+parâmetros e/ou testes estatísticos.
+
+Serão aplicados os 3 métodos isoladamente para a conclusão sobre a
+normalidade da amostra.
+
+\hypertarget{anuxe1lise-dos-gruxe1ficos}{%
+\subsection{Análise dos gráficos}\label{anuxe1lise-dos-gruxe1ficos}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{gera_histograma}\NormalTok{(Zoom,}\DataTypeTok{bins=} \DecValTok{11}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{resolucaoTrab04_files/figure-latex/Histograma Zoom-1.pdf}
+Foi plotado um diagrama de caixas, um histograma com 11 caixas (bins) e
+uma curva gaussiana com a média e desvio padrão iguais aos da amostra de
+tempo utilizado na ferramenta Zoom, para utilizar como referência
+visual.
+
+O gráfico do histograma mostra que a amostra seguiria uma uma
+distribuição aparentemente normal se o valor extremo à direita fosse
+excluído, pois: observa-se que a média da gaussiana e a barra com maior
+frequência e número de observações aparentementam estar muito próximas,
+e o número de observações ao redor da média e sua frequência são
+similares.
+
+O valor extremo à direita faz com que haja uma \textbf{assimetria
+positiva} na amostra.
+
+Uma das ferramentas gráficas utilizadas para avaliar a normalidade é o
+gráfico de quantil-quantil, onde são representados os quantis de cada
+observação da amostra e comparado com uma linha que representa os
+quantis de uma distribuição normal.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{gera_qqplot}\NormalTok{(Zoom)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{resolucaoTrab04_files/figure-latex/qqplot Zoom-1.pdf}
+
+Observa-se que os pontos são plotados ao longo da reta que representam
+os quantis de uma distribuição normal, à exceção do valor extremo
+visualizado no gráfico anterior.
+
+Portanto, baseado na visualização dos gráficos pode-se inferir que a
+amostra foi retirada de uma população que segue uma distribuição normal.
+
+\hypertarget{cuxe1lculo-da-curtose-e-assimetria}{%
+\subsection{Cálculo da curtose e
+assimetria}\label{cuxe1lculo-da-curtose-e-assimetria}}
+
+O cálculo da curtose e assimetria de uma amostra se dá utilizando o
+quarto e terceiro momentos centrais, respectivamente, ajustados para
+dados amostrais.
+
+Os valores esperados de curtose e assimetria para uma curva normal são
+0.0 e 0.0 respectivamente. No código abaixo são geradas 1.000.000 de
+amostras aleatórias de uma distribuição normal e calculados seus
+parâmetros de assimetria e curtose:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(e1071)}
+\NormalTok{distNormal<-}\StringTok{ }\KeywordTok{rnorm}\NormalTok{(}\DecValTok{1000000}\NormalTok{)}
+\NormalTok{curtoseNormal <-}\StringTok{ }\KeywordTok{kurtosis}\NormalTok{(distNormal)}
+\NormalTok{assimetriaNormal <-}\StringTok{ }\KeywordTok{skewness}\NormalTok{(distNormal)}
+\KeywordTok{cat}\NormalTok{(}\StringTok{" Curtose de uma distribuição normal: "}\NormalTok{, }
+\NormalTok{    curtoseNormal,}\StringTok{"}\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{,}\StringTok{"Assimetria uma distribuição normal: "}\NormalTok{, }
+\NormalTok{    assimetriaNormal)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  Curtose de uma distribuição normal:  -0.001803853 
+##  Assimetria uma distribuição normal:  -0.001078358
+\end{verbatim}
+
+Abaixo são calculados os mesmos parâmetros para a amostra Zoom:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{curtoseZoom <-}\StringTok{ }\KeywordTok{kurtosis}\NormalTok{(Zoom}\OperatorTok{$}\NormalTok{Tempo)}
+\NormalTok{assimetriaZoom <-}\StringTok{ }\KeywordTok{skewness}\NormalTok{(Zoom}\OperatorTok{$}\NormalTok{Tempo)}
+\KeywordTok{cat}\NormalTok{(}\StringTok{" Curtose para as amostras que utilizaram a plataforma Zoom: "}\NormalTok{, }
+\NormalTok{    curtoseZoom,}\StringTok{"}\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{,}\StringTok{"Assimetria para as amostras que utilizaram a plataforma Zoom: "}\NormalTok{, }
+\NormalTok{    assimetriaZoom)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  Curtose para as amostras que utilizaram a plataforma Zoom:  3.208934 
+##  Assimetria para as amostras que utilizaram a plataforma Zoom:  1.617429
+\end{verbatim}
+
+Percebe-se que os valores estão desviados do valor esperado para uma
+curva normal. Quanto à curtose pode-se classificar a amostra como
+\textbf{leptocúrtica}, ou seja, mais alongada que uma distribuição
+normal
+
+A partir da assimetria calculada pode-se afirmar que a distribuição
+possui uma \textbf{assimetria positiva}, espera-se que a distribuição
+possua uma cauda mais longa à direita.
+
+Portanto, a partir dos parâmetros calculados, conclui-se que a amostra
+não foi retirada de uma população que siga uma distribuição normal, pois
+seus parâmetros muitos se distanciam dos parâmetros para uma curva
+normal (0.0 e 0.0 para ambos).
+
+\hypertarget{testes-estatuxedsticos}{%
+\subsection{Testes estatísticos}\label{testes-estatuxedsticos}}
+
+Chegou-se a conclusões distintas quanto à normalidade utilizando o
+método gráfico e o cálculo da assimetria e curtose.
+
+É necessário portanto aplicar testes estatísticos de normalidade para a
+obtenção de resultados mais conclusivos.
+
+\hypertarget{teste-de-shapiro-wilk}{%
+\subsubsection{Teste de Shapiro-Wilk:}\label{teste-de-shapiro-wilk}}
+
+O teste de Shapiro-Wilk apresenta a estatística W e o valor P para
+representar a significância estatística do teste. A hipótese nula é:
+
+H0: A amostra foi retirada de uma população que segue uma distribuição
+normal.
+
+A estatística W do teste, varia de entre 0 e 1, quanto mais alto for W
+mais a amostra se aproxima de uma distribuição normal.
+
+O teste também apresenta o valor de significância estatística valor p
+para a amostra em questão.
+
+Se o valor p para uma dada amostra for menor que um nível de
+significância designado pode-se rejeitar a hipótese nula e afirmar que a
+amostra não segue uma distribuição normal. Valores comuns para
+comparação de testes de hipóteses são: 0.1, 0.05, 0.01, a depender do
+que se está estudando e o nível de rigor requerido.
+
+Abaixo a amostra Zoom é testada para normalidade seguindo o método de
+Shapiro-Wilk:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{testeZoom <-}\StringTok{ }\KeywordTok{shapiro.test}\NormalTok{(Zoom}\OperatorTok{$}\NormalTok{Tempo)}
+\NormalTok{testeZoom}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Shapiro-Wilk normality test
+## 
+## data:  Zoom$Tempo
+## W = 0.84372, p-value = 0.004191
+\end{verbatim}
+
+A partir do teste aplicado nas amostras que utilizaram Zoom pode-se
+afirmar que:
+
+\textbf{A um nível de significância de 0.1, 0.05 ou 0.01 a hipótese nula
+pode ser rejeitada chegando-se a conclusão que a amostra não vem de uma
+população que segue uma distribuição normal.}
+
+O resultado do teste confirma o que foi visto através do desvio
+acentuado da assimetria e curtose da amostra e contraria a análise
+gráfica realizada.
+
+O teste é aplicado novamente removendo o valor extremo:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{testeZoom <-}\StringTok{ }\KeywordTok{shapiro.test}\NormalTok{(Zoom}\OperatorTok{$}\NormalTok{Tempo[}\DecValTok{1}\OperatorTok{:}\DecValTok{19}\NormalTok{])}
+\NormalTok{testeZoom}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Shapiro-Wilk normality test
+## 
+## data:  Zoom$Tempo[1:19]
+## W = 0.98052, p-value = 0.9482
+\end{verbatim}
+
+O novo teste aplicado sem o valor extremo possui um valor p maior do que
+o maior valor normalmente utilizado de 0.1, portanto a distribuição
+segue uma distribuição normal se o valor extremo for excluído.
+
+\hypertarget{teste-de-kolmogorov-smirnov}{%
+\subsubsection{Teste de
+Kolmogorov-Smirnov}\label{teste-de-kolmogorov-smirnov}}
+
+O teste de Kolmogorov pode ser utilizado para comparar duas amostras ou
+para comparar uma amostra com uma distribuição padrão.
+
+O teste de Kolmogorov apresenta a estatíca D: Máxima diferença absoluta
+entre duas funções de distribuições cumulativas e possui um valor P para
+representar a significância estatística do teste. O teste de Kolmogorov
+possui as seguintes hipóteses nulas:
+
+Comparação entre duas amostras: H0: As duas amostras foram retiradas de
+uma população com a mesma distribuição.
+
+Comparação entre uma amostra e uma distribuição de referência: H0: A
+amostra foi retirada de uma população que segue a distribuição de
+referência.
+
+Aplica-se então o teste para comparar a amostra Zoom a uma distribuição
+normal de média e desvio padrão iguais aos da amostra:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{testeKSZoom <-}\StringTok{ }\KeywordTok{ks.test}\NormalTok{(Zoom}\OperatorTok{$}\NormalTok{Tempo, }\StringTok{"pnorm"}\NormalTok{, }\DataTypeTok{mean=}\KeywordTok{mean}\NormalTok{(Zoom}\OperatorTok{$}\NormalTok{Tempo), }\DataTypeTok{sd=}\KeywordTok{sd}\NormalTok{(Zoom}\OperatorTok{$}\NormalTok{Tempo))}
+\NormalTok{testeKSZoom}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  One-sample Kolmogorov-Smirnov test
+## 
+## data:  Zoom$Tempo
+## D = 0.20017, p-value = 0.3517
+## alternative hypothesis: two-sided
+\end{verbatim}
+
+A partir das informações contidas no teste:
+
+\textbf{A um nível de significância de 0.1 a hipótese nula não pode ser
+rejeitada chegando-se a conclusão que a amostra segue uma distribuição
+normal.}
+
+A visualização da distribuição cumulativa comparada com a distribuição
+cumulativa da curva normal é mostrada em seguida, onde os dois pontos
+conectados entre as curvas demonstram a estatística D do teste de
+Komogorov.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dist.Normal.Zoom<-}\StringTok{ }\KeywordTok{rnorm}\NormalTok{(}\DecValTok{10000}\NormalTok{, }\KeywordTok{mean}\NormalTok{(Zoom}\OperatorTok{$}\NormalTok{Tempo), }\KeywordTok{sd}\NormalTok{(Zoom}\OperatorTok{$}\NormalTok{Tempo))}
+
+\KeywordTok{gera_ksplot}\NormalTok{(Zoom, dist.Normal.Zoom)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{resolucaoTrab04_files/figure-latex/ks plot Zoom-1.pdf}
+Teste de lognormalidade para a amostra Zoom:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(MASS)}
+\CommentTok{#}
+\NormalTok{fitlogZoom <-}\StringTok{ }\KeywordTok{fitdistr}\NormalTok{(Zoom}\OperatorTok{$}\NormalTok{Tempo, }\StringTok{"lognormal"}\NormalTok{)}\OperatorTok{$}\NormalTok{estimate}
+\NormalTok{meanlogZoom <-}\StringTok{ }\NormalTok{fitlogZoom[}\DecValTok{1}\NormalTok{]}
+\NormalTok{sdlogZoom <-}\StringTok{ }\NormalTok{fitlogZoom[}\DecValTok{2}\NormalTok{]}
+
+\NormalTok{testeKSlogZoom <-}\StringTok{ }\KeywordTok{ks.test}\NormalTok{(Zoom}\OperatorTok{$}\NormalTok{Tempo, }\StringTok{"plnorm"}\NormalTok{, meanlogZoom,sdlogZoom)}
+\NormalTok{testeKSlogZoom}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  One-sample Kolmogorov-Smirnov test
+## 
+## data:  Zoom$Tempo
+## D = 0.13421, p-value = 0.8181
+## alternative hypothesis: two-sided
+\end{verbatim}
+
+A partir das informações contidas no teste:
+
+\textbf{A um nível de significância de 0.1 a hipótese nula não pode ser
+rejeitada chegando-se a conclusão que a amostra segue uma distribuição
+lognormal.}
+
+O resultado positivo tanto para normalidade quanto para normalidade pode
+ser devido ao baixo número de observações na amostra. Entretanto podemos
+observar que o valor-p para a lognormalidade é maior do que para
+normalidade.
+
+\hypertarget{anuxe1lise-de-normalidade-para-as-amostras-que-utilizaram-a-plataforma-hangout}{%
+\section{Análise de normalidade para as amostras que utilizaram a
+plataforma
+Hangout}\label{anuxe1lise-de-normalidade-para-as-amostras-que-utilizaram-a-plataforma-hangout}}
+
+Serão aplicados os mesmos testes utilizados para a amostra Zoom.
+
+\hypertarget{anuxe1lise-dos-gruxe1ficos-1}{%
+\subsection{Análise dos gráficos}\label{anuxe1lise-dos-gruxe1ficos-1}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{gera_histograma}\NormalTok{(Hangout,}\DataTypeTok{bins=} \DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{resolucaoTrab04_files/figure-latex/histograma Hangout-1.pdf}
+Foi plotado um diagrama de caixas, um histograma com 10 caixas (bins) e
+uma curva gaussiana com a média e desvio padrão iguais aos da amostra de
+tempo utilizado na ferramenta Hangout, para utilizar como referência
+visual.
+
+Aparentemente a curva não segue uma distribuição normal devido aos
+valores maiores possuirem menor frequência na amostra.
+
+A baixa frequência nos valores à direita faz com que haja
+\textbf{assimetria positiva} na amostra.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{gera_qqplot}\NormalTok{(Hangout)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{resolucaoTrab04_files/figure-latex/qqplot Hangout-1.pdf}
+
+Observa-se que os pontos são plotados ao longo da reta que representam
+os quantis de uma distribuição normal, e não há valores extremos.
+
+Portanto, baseado na visualização dos gráficos pode-se inferir que a
+amostra foi retirada de uma população que segue uma distribuição normal.
+
+\hypertarget{cuxe1lculo-da-curtose-e-assimetria-1}{%
+\subsection{Cálculo da curtose e
+assimetria}\label{cuxe1lculo-da-curtose-e-assimetria-1}}
+
+Abaixo são calculados os mesmos parâmetros para a amostra Zoom:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{curtoseZoom <-}\StringTok{ }\KeywordTok{kurtosis}\NormalTok{(Hangout}\OperatorTok{$}\NormalTok{Tempo)}
+\NormalTok{assimetriaZoom <-}\StringTok{ }\KeywordTok{skewness}\NormalTok{(Hangout}\OperatorTok{$}\NormalTok{Tempo)}
+\KeywordTok{cat}\NormalTok{(}\StringTok{" Curtose para as amostras que utilizaram a plataforma Hangout: "}\NormalTok{, curtoseZoom,}\StringTok{"}\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{,}\StringTok{"Assimetria para as amostras que utilizaram a plataforma Hangout: "}\NormalTok{, assimetriaZoom)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  Curtose para as amostras que utilizaram a plataforma Hangout:  -0.6120307 
+##  Assimetria para as amostras que utilizaram a plataforma Hangout:  0.8665088
+\end{verbatim}
+
+Percebe-se que os valores estão desviados do valor esperado para uma
+curva normal. Quanto à curtose pode-se classificar a amostra como
+\textbf{platicúrtica}, ou seja, mais achatada que uma distribuição
+normal, embora em baixa intensidade.
+
+A partir da assimetria calculada pode-se afirmar que a distribuição
+possui uma \textbf{assimetria positiva}.
+
+Portanto, a partir dos parâmetros calculados, conclui-se que a amostra
+pode ter sido retirada de uma população que segue uma distribuição
+normal, pois seus parâmetros pouco se distanciam dos parâmetros de uma
+curva normal (0.0 e 0.0 para assimetria e curtose).
+
+\hypertarget{testes-estatuxedsticos-1}{%
+\subsection{Testes estatísticos}\label{testes-estatuxedsticos-1}}
+
+\hypertarget{teste-de-shapiro-wilk-1}{%
+\subsubsection{Teste de Shapiro-Wilk:}\label{teste-de-shapiro-wilk-1}}
+
+Abaixo a amostra Hangout é testada para normalidade seguindo o método de
+Shapiro-Wilk:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{testeHangout <-}\StringTok{ }\KeywordTok{shapiro.test}\NormalTok{(Hangout}\OperatorTok{$}\NormalTok{Tempo)}
+\NormalTok{testeHangout}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Shapiro-Wilk normality test
+## 
+## data:  Hangout$Tempo
+## W = 0.87213, p-value = 0.01281
+\end{verbatim}
+
+A partir do teste aplicado nas amostras que utilizaram Hangout pode-se
+afirmar que:
+
+\textbf{A um nível de significância de 0.1 ou 0.05 a hipótese nula pode
+ser rejeitada chegando-se a conclusão que a amostra não vem de uma
+população que segue uma distribuição normal.}
+
+\textbf{A um nível de significância de 0.01 a hipótese nula não pode ser
+rejeitada chegando-se a conclusão que a amostra vem de uma população que
+segue uma distribuição normal.}
+
+A depender do nível limiar de significância aplicado pelo pesquisador
+ambas as conclusões podem ser adotadas.
+
+\hypertarget{teste-de-kolmogorov-smirnov-1}{%
+\subsubsection{Teste de
+Kolmogorov-Smirnov:}\label{teste-de-kolmogorov-smirnov-1}}
+
+O teste de Kolmogorov pode ser utilizado para comparar duas amostras ou
+para comparar uma amostra com uma distribuição padrão.
+
+O teste de Kolmogorov apresenta a estatíca D: Máxima diferença absoluta
+entre duas funções de distribuições cumulativas e possui um valor P para
+representar a significância estatística do teste. O teste de Kolmogorov
+possui as seguintes hipóteses nulas:
+
+Comparação entre duas amostras: H0: As duas amostras foram retiradas de
+uma população com a mesma distribuição.
+
+Comparação entre uma amostra e uma distribuição de referência: H0: A
+amostra foi retirada de uma população que segue a distribuição de
+referência.
+
+Aplica-se então o teste para comparar a amostra Hangout a uma
+distribuição normal de média e desvio padrão iguais aos da amostra:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{testeKSHangout <-}\StringTok{ }\KeywordTok{ks.test}\NormalTok{(Hangout}\OperatorTok{$}\NormalTok{Tempo, }\StringTok{"pnorm"}\NormalTok{, }\DataTypeTok{mean=}\KeywordTok{mean}\NormalTok{(Hangout}\OperatorTok{$}\NormalTok{Tempo), }\DataTypeTok{sd=}\KeywordTok{sd}\NormalTok{(Hangout}\OperatorTok{$}\NormalTok{Tempo))}
+\NormalTok{testeKSHangout}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  One-sample Kolmogorov-Smirnov test
+## 
+## data:  Hangout$Tempo
+## D = 0.19626, p-value = 0.375
+## alternative hypothesis: two-sided
+\end{verbatim}
+
+A partir das informações contidas no teste:
+
+\textbf{A um nível de significância de 0.1 a hipótese nula não pode ser
+rejeitada chegando-se a conclusão de que a possibilidade que a amostra
+siga uma distribuição normal não pode ser descartada.}
+
+A visualização da distribuição cumulativa comparada com a distribuição
+cumulativa da curva normal é mostrada em seguida:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dist.Normal.Hangout<-}\StringTok{ }\KeywordTok{rnorm}\NormalTok{(}\DecValTok{10000}\NormalTok{, }\KeywordTok{mean}\NormalTok{(Hangout}\OperatorTok{$}\NormalTok{Tempo), }\KeywordTok{sd}\NormalTok{(Hangout}\OperatorTok{$}\NormalTok{Tempo))}
+\KeywordTok{gera_ksplot}\NormalTok{(Hangout, dist.Normal.Hangout)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{resolucaoTrab04_files/figure-latex/ksplot Hangout-1.pdf}
+Teste de lognormalidade para a amostra Zoom:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fitlogHangout <-}\StringTok{ }\KeywordTok{fitdistr}\NormalTok{(Hangout}\OperatorTok{$}\NormalTok{Tempo, }\StringTok{"lognormal"}\NormalTok{)}\OperatorTok{$}\NormalTok{estimate}
+\NormalTok{meanlogHangout <-}\StringTok{ }\NormalTok{fitlogHangout[}\DecValTok{1}\NormalTok{]}
+\NormalTok{sdlogHangout <-}\StringTok{ }\NormalTok{fitlogHangout[}\DecValTok{2}\NormalTok{]}
+\NormalTok{testeKSlogHangout <-}\StringTok{ }\KeywordTok{ks.test}\NormalTok{(Hangout}\OperatorTok{$}\NormalTok{Tempo, }\StringTok{"plnorm"}\NormalTok{, meanlogHangout, sdlogHangout)}
+\NormalTok{testeKSlogHangout}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  One-sample Kolmogorov-Smirnov test
+## 
+## data:  Hangout$Tempo
+## D = 0.12583, p-value = 0.871
+## alternative hypothesis: two-sided
+\end{verbatim}
+
+A partir das informações contidas no teste:
+
+\textbf{A qualquer nível de significância comumente utilizado a hipótese
+nula não pode ser rejeitada chegando-se a conclusão de que a
+possibilidade que a amostra siga uma distribuição lognormal não pode ser
+descartada.}
+
+\hypertarget{anuxe1lise-de-normalidade-para-as-amostras-que-utilizaram-a-plataforma-skype}{%
+\section{Análise de normalidade para as amostras que utilizaram a
+plataforma
+Skype}\label{anuxe1lise-de-normalidade-para-as-amostras-que-utilizaram-a-plataforma-skype}}
+
+\hypertarget{anuxe1lise-dos-gruxe1ficos-2}{%
+\subsection{Análise dos gráficos}\label{anuxe1lise-dos-gruxe1ficos-2}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{gera_histograma}\NormalTok{(Skype,}\DataTypeTok{bins=} \DecValTok{11}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{resolucaoTrab04_files/figure-latex/histograma Skype-1.pdf}
+Foi plotado um diagrama de caixas, um histograma com 11 caixas (bins) e
+uma curva gaussiana com a média e desvio padrão iguais aos da amostra de
+tempo utilizado na ferramenta Skype, para utilizar como referência
+visual.
+
+Aparentemente a curva não segue uma distribuição normal devido aos
+valores maiores possuirem menor frequência na amostra.
+
+A baixa frequência nos valores à direita faz com que haja
+\textbf{assimetria positiva} na amostra.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{gera_qqplot}\NormalTok{(Skype)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{resolucaoTrab04_files/figure-latex/qqplot Skype-1.pdf}
+
+Observa-se que os pontos são plotados ao longo da reta que representam
+os quantis de uma distribuição normal, a não ser pelos valores extremos
+que estão em maior número que as amostras anteriores.
+
+Portanto, baseado na visualização dos gráficos não se pode inferir que a
+amostra foi retirada de uma população que segue uma distribuição normal.
+
+\hypertarget{cuxe1lculo-da-curtose-e-assimetria-2}{%
+\subsection{Cálculo da curtose e
+assimetria}\label{cuxe1lculo-da-curtose-e-assimetria-2}}
+
+Abaixo são calculados os mesmos parâmetros para a amostra Zoom:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{curtoseZoom <-}\StringTok{ }\KeywordTok{kurtosis}\NormalTok{(Skype}\OperatorTok{$}\NormalTok{Tempo)}
+\NormalTok{assimetriaZoom <-}\StringTok{ }\KeywordTok{skewness}\NormalTok{(Skype}\OperatorTok{$}\NormalTok{Tempo)}
+\KeywordTok{cat}\NormalTok{(}\StringTok{" Curtose para as amostras que utilizaram a plataforma Skype: "}\NormalTok{, curtoseZoom,}\StringTok{"}\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{,}\StringTok{"Assimetria para as amostras que utilizaram a plataforma Skype: "}\NormalTok{, assimetriaZoom)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  Curtose para as amostras que utilizaram a plataforma Skype:  0.5755356 
+##  Assimetria para as amostras que utilizaram a plataforma Skype:  1.083317
+\end{verbatim}
+
+Percebe-se que os valores estão desviados do valor esperado para uma
+curva normal. Quanto à curtose pode-se classificar a amostra como
+\textbf{leptocúrtica}.
+
+A partir da assimetria calculada pode-se afirmar que a distribuição
+possui uma \textbf{assimetria positiva}.
+
+Portanto, a partir dos parâmetros calculados, conclui-se que a amostra
+pode NÃO ter sido retirada de uma população que segue uma distribuição
+normal.
+
+\hypertarget{testes-estatuxedsticos-2}{%
+\subsection{Testes estatísticos}\label{testes-estatuxedsticos-2}}
+
+\hypertarget{teste-de-shapiro-wilk-2}{%
+\subsubsection{Teste de Shapiro-Wilk:}\label{teste-de-shapiro-wilk-2}}
+
+Abaixo a amostra Skype é testada para normalidade seguindo o método de
+Shapiro-Wilk:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{testeSkype <-}\StringTok{ }\KeywordTok{shapiro.test}\NormalTok{(Skype}\OperatorTok{$}\NormalTok{Tempo)}
+\NormalTok{testeSkype}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Shapiro-Wilk normality test
+## 
+## data:  Skype$Tempo
+## W = 0.88623, p-value = 0.02294
+\end{verbatim}
+
+A partir do teste aplicado nas amostras que utilizaram Skype pode-se
+afirmar que:
+
+\textbf{A um nível de significância de 0.1 ou 0.05 a hipótese nula pode
+ser rejeitada chegando-se a conclusão que a amostra não vem de uma
+população que segue uma distribuição normal.}
+
+\textbf{A um nível de significância de 0.01 a hipótese nula não pode ser
+rejeitada chegando-se a conclusão que a amostra vem de uma população que
+segue uma distribuição normal.}
+
+A depender do nível limiar de significância aplicado pelo pesquisador
+ambas as conclusões podem ser adotadas.
+
+\hypertarget{teste-de-kolmogorov-smirnov-2}{%
+\subsubsection{Teste de
+Kolmogorov-Smirnov:}\label{teste-de-kolmogorov-smirnov-2}}
+
+Aplica-se então o teste para comparar a amostra Skype a uma distribuição
+normal de média e desvio padrão iguais aos da amostra:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{testeKSSkype <-}\StringTok{ }\KeywordTok{ks.test}\NormalTok{(Skype}\OperatorTok{$}\NormalTok{Tempo, }\StringTok{"pnorm"}\NormalTok{, }\DataTypeTok{mean=}\KeywordTok{mean}\NormalTok{(Skype}\OperatorTok{$}\NormalTok{Tempo), }\DataTypeTok{sd=}\KeywordTok{sd}\NormalTok{(Skype}\OperatorTok{$}\NormalTok{Tempo))}
+\NormalTok{testeKSSkype}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  One-sample Kolmogorov-Smirnov test
+## 
+## data:  Skype$Tempo
+## D = 0.25698, p-value = 0.1186
+## alternative hypothesis: two-sided
+\end{verbatim}
+
+A partir das informações contidas no teste:
+
+\textbf{A um nível de significância de 0.1 a hipótese nula não pode ser
+rejeitada chegando-se a conclusão que a hipótese de que a amostra segue
+uma distribuição normal não pode ser descartada.}
+
+A visualização da distribuição cumulativa comparada com a distribuição
+cumulativa da curva normal é mostrada em seguida:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dist.Normal.Skype<-}\StringTok{ }\KeywordTok{rnorm}\NormalTok{(}\DecValTok{10000}\NormalTok{, }\KeywordTok{mean}\NormalTok{(Skype}\OperatorTok{$}\NormalTok{Tempo), }\KeywordTok{sd}\NormalTok{(Skype}\OperatorTok{$}\NormalTok{Tempo))}
+\KeywordTok{gera_ksplot}\NormalTok{(Skype, dist.Normal.Skype)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{resolucaoTrab04_files/figure-latex/ksplot Skype-1.pdf}
+Teste de lognormalidade para a amostra Skype:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fitlogSkype <-}\StringTok{ }\KeywordTok{fitdistr}\NormalTok{(Skype}\OperatorTok{$}\NormalTok{Tempo, }\StringTok{"lognormal"}\NormalTok{)}\OperatorTok{$}\NormalTok{estimate}
+\NormalTok{meanlogSkype <-}\StringTok{ }\NormalTok{fitlogSkype[}\DecValTok{1}\NormalTok{]}
+\NormalTok{sdlogSkype <-}\StringTok{ }\NormalTok{fitlogSkype[}\DecValTok{2}\NormalTok{]}
+\NormalTok{testeKSlogSkype <-}\StringTok{ }\KeywordTok{ks.test}\NormalTok{(Skype}\OperatorTok{$}\NormalTok{Tempo, }\StringTok{"plnorm"}\NormalTok{, meanlogSkype, sdlogSkype)}
+\NormalTok{testeKSlogSkype}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  One-sample Kolmogorov-Smirnov test
+## 
+## data:  Skype$Tempo
+## D = 0.1864, p-value = 0.4377
+## alternative hypothesis: two-sided
+\end{verbatim}
+
+A partir das informações contidas no teste:
+
+\textbf{A qualquer nível de significância comumente utilizado a hipótese
+nula não pode ser rejeitada, chegando-se a conclusão que a hipótese de
+que a amostra segue uma distribuição lognormal não pode ser descartada.}
+
+\hypertarget{teste-de-levene}{%
+\section{Teste de Levene}\label{teste-de-levene}}
+
+O teste de Levene é utilizado para avaliar se a variância entre os
+grupos é homogênea. O teste calcula a estatística F como é mostrado na
+fórmula a seguir: \[
+F = \frac{(N-k)} {(k-1)}
+               \frac{\sum_{i=1}^{k}N_{i}(\bar{Z}_{i.}-\bar{Z}_{..})^{2} }
+               {\sum_{i=1}^{k}\sum_{j=1}^{N_i}(Z_{ij}-\bar{Z}_{i.})^{2} }
+\] Entretanto, ao invés de calcular o quadrado da distância de cada
+ponto para a média de sua amostra, o teste de Levene transforma cada
+ponto da amostra para o módulo da diferença entre o ponto e a média ou
+mediana da amostra, como na fórmula a seguir:
+
+\[{\displaystyle Z_{ij}={\begin{cases}|Y_{ij}-{\bar {Y}}_{i\cdot }|,&{\bar {Y}}_{i\cdot }{\text{ é a média do }}i{\text{-ésimo grupo}},\\|Y_{ij}-{\tilde {Y}}_{i\cdot }|,&{\tilde {Y}}_{i\cdot }{\text{ é a mediana do }}i{\text{-ésimo grupo}}.\end{cases}}}\]
+A escolha entre utilizar a média ou a mediana está relacionada com a
+normalidade da amostra. Para amostras que seguem uma distribuição normal
+é utilizada a média. Para amostras assimétricas o parâmetro indicado é a
+mediana.
+
+O teste com centro na mediana também é chamado de teste de
+Brown-Forsythe
+
+O teste possui como hipótese nula a seguinte afirmação: \textbf{H0: As
+amostras foram retiradas de populções com dispersões homogêneas}
+
+\hypertarget{plotagem-de-diagrama-de-caixas}{%
+\subsection{Plotagem de diagrama de
+caixas}\label{plotagem-de-diagrama-de-caixas}}
+
+Antes de realizar os testes gera-se um gráfico para uma análise visual
+comparativa.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Boxplot3Variaveis <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(meet_file, }\KeywordTok{aes}\NormalTok{(Meet,Tempo, }\DataTypeTok{fill=}\NormalTok{Meet))}\OperatorTok{+}
+\StringTok{                      }\KeywordTok{geom_boxplot}\NormalTok{() }\OperatorTok{+}\StringTok{ }
+\StringTok{                      }\KeywordTok{theme_light}\NormalTok{()}\OperatorTok{+}
+\StringTok{                      }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x=} \StringTok{"Plataforma"}\NormalTok{, }
+                           \DataTypeTok{y=}\StringTok{"Tempo por plataforma"}\NormalTok{, }
+                           \DataTypeTok{title=}\StringTok{"Comparação do tempo gasto por usuário em cada plataforma"}\NormalTok{)}\OperatorTok{+}
+\StringTok{                      }\KeywordTok{coord_flip}\NormalTok{()}
+
+\NormalTok{Boxplot3Variaveis}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{resolucaoTrab04_files/figure-latex/boxplot 3 variáveis-1.pdf}
+
+\hypertarget{teste-entre-as-3-amostras}{%
+\subsection{Teste entre as 3 amostras}\label{teste-entre-as-3-amostras}}
+
+O teste de homogeneidade será realizado utilizando a média e a mediana
+como ajuste da amostra.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{leveneTest}\NormalTok{(Tempo }\OperatorTok{~}\StringTok{ }\NormalTok{Meet, }\DataTypeTok{data=}\NormalTok{meet_file, }\DataTypeTok{center=}\NormalTok{ median)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Levene's Test for Homogeneity of Variance (center = median)
+##       Df F value  Pr(>F)  
+## group  2  4.6149 0.01388 *
+##       57                  
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+\end{verbatim}
+
+\textbf{Para uma siginificância de 0,05 a hipótese nula pode ser
+rejeitada demonstrando que pelo menos uma amostra pode vir de uma
+população com variância diferente das demais}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{leveneTest}\NormalTok{(Tempo }\OperatorTok{~}\StringTok{ }\NormalTok{Meet, }\DataTypeTok{data=}\NormalTok{meet_file, }\DataTypeTok{center=}\NormalTok{ mean)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Levene's Test for Homogeneity of Variance (center = mean)
+##       Df F value    Pr(>F)    
+## group  2   8.758 0.0004823 ***
+##       57                      
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+\end{verbatim}
+
+\textbf{Para uma siginificância de 0,05 a hipótese nula pode ser
+rejeitada demonstrando que pelo menos uma amostra pode vir de uma
+população com variância diferente das demais}
+
+\hypertarget{testes-2-a-2}{%
+\subsection{Testes 2 a 2}\label{testes-2-a-2}}
+
+A partir da visualização do gráfico foi notado que a amostra Hangout
+parece ser a que mais se difere das demais. Para testar essa
+possibilidade é realizado o teste de cada combinação de amostras.
+
+\hypertarget{testes-entre-zoom-e-hangout}{%
+\subsubsection{Testes entre Zoom e
+Hangout}\label{testes-entre-zoom-e-hangout}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{leveneTest}\NormalTok{(Tempo }\OperatorTok{~}\StringTok{ }\NormalTok{Meet, }
+           \DataTypeTok{data=}\NormalTok{meet_file[meet_file}\OperatorTok{$}\NormalTok{Meet }\OperatorTok{==}\StringTok{ "Zoom"} \OperatorTok{|}\StringTok{ }\NormalTok{meet_file}\OperatorTok{$}\NormalTok{Meet }\OperatorTok{==}\StringTok{ "Hangout"}\NormalTok{, ], }
+           \DataTypeTok{center=}\NormalTok{median)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Levene's Test for Homogeneity of Variance (center = median)
+##       Df F value  Pr(>F)  
+## group  1  5.9144 0.01984 *
+##       38                  
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+\end{verbatim}
+
+\textbf{Para uma siginificância de 0,05 a hipótese nula pode ser
+rejeitada demonstrando que as amostras Zoom e Hangout podem ser
+originadas de populações distintas}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{leveneTest}\NormalTok{(Tempo }\OperatorTok{~}\StringTok{ }\NormalTok{Meet, }
+           \DataTypeTok{data=}\NormalTok{meet_file[meet_file}\OperatorTok{$}\NormalTok{Meet }\OperatorTok{==}\StringTok{ "Zoom"} \OperatorTok{|}\StringTok{ }\NormalTok{meet_file}\OperatorTok{$}\NormalTok{Meet }\OperatorTok{==}\StringTok{ "Hangout"}\NormalTok{, ], }
+           \DataTypeTok{center=}\NormalTok{mean)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Levene's Test for Homogeneity of Variance (center = mean)
+##       Df F value   Pr(>F)   
+## group  1  11.959 0.001356 **
+##       38                    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+\end{verbatim}
+
+\textbf{Para uma siginificância de 0,05 a hipótese nula pode ser
+rejeitada demonstrando que as amostras Zoom e Hangout podem ser
+originadas de populações distintas}
+
+\hypertarget{testes-entre-skype-e-hangout}{%
+\subsubsection{Testes entre Skype e
+Hangout}\label{testes-entre-skype-e-hangout}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{leveneTest}\NormalTok{(Tempo }\OperatorTok{~}\StringTok{ }\NormalTok{Meet, }
+           \DataTypeTok{data=}\NormalTok{meet_file[meet_file}\OperatorTok{$}\NormalTok{Meet }\OperatorTok{==}\StringTok{ "Skype"} \OperatorTok{|}\StringTok{ }\NormalTok{meet_file}\OperatorTok{$}\NormalTok{Meet }\OperatorTok{==}\StringTok{ "Hangout"}\NormalTok{, ], }
+           \DataTypeTok{center=}\NormalTok{median)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Levene's Test for Homogeneity of Variance (center = median)
+##       Df F value  Pr(>F)  
+## group  1   5.044 0.03061 *
+##       38                  
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+\end{verbatim}
+
+\textbf{Para uma siginificância de 0,05 a hipótese nula pode ser
+rejeitada demonstrando que as amostras Skype e Hangout podem ser
+originadas de populações distintas}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{leveneTest}\NormalTok{(Tempo }\OperatorTok{~}\StringTok{ }\NormalTok{Meet, }
+           \DataTypeTok{data=}\NormalTok{meet_file[meet_file}\OperatorTok{$}\NormalTok{Meet }\OperatorTok{==}\StringTok{ "Skype"} \OperatorTok{|}\StringTok{ }\NormalTok{meet_file}\OperatorTok{$}\NormalTok{Meet }\OperatorTok{==}\StringTok{ "Hangout"}\NormalTok{, ], }
+           \DataTypeTok{center=}\NormalTok{mean)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Levene's Test for Homogeneity of Variance (center = mean)
+##       Df F value   Pr(>F)   
+## group  1  10.369 0.002625 **
+##       38                    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+\end{verbatim}
+
+\textbf{Para uma siginificância de 0,05 a hipótese nula pode ser
+rejeitada demonstrando que as amostras Skype e Hangout podem ser
+originadas de populações distintas}
+
+\hypertarget{testes-entre-zoom-e-skype}{%
+\subsubsection{Testes entre Zoom e
+Skype}\label{testes-entre-zoom-e-skype}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{leveneTest}\NormalTok{(Tempo }\OperatorTok{~}\StringTok{ }\NormalTok{Meet, }
+           \DataTypeTok{data=}\NormalTok{meet_file[meet_file}\OperatorTok{$}\NormalTok{Meet }\OperatorTok{==}\StringTok{ "Zoom"} \OperatorTok{|}\StringTok{ }\NormalTok{meet_file}\OperatorTok{$}\NormalTok{Meet }\OperatorTok{==}\StringTok{ "Skype"}\NormalTok{, ], }
+           \DataTypeTok{center=}\NormalTok{median)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Levene's Test for Homogeneity of Variance (center = median)
+##       Df F value Pr(>F)
+## group  1  0.0884 0.7678
+##       38
+\end{verbatim}
+
+\textbf{Para uma siginificância de 0,05 a hipótes nula não pode ser
+rejeitada demonstrando que as amostras Zoom e Skype podem ser originadas
+de populações de variâncias semelhantes ou da mesma população}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{leveneTest}\NormalTok{(Tempo }\OperatorTok{~}\StringTok{ }\NormalTok{Meet, }
+           \DataTypeTok{data=}\NormalTok{meet_file[meet_file}\OperatorTok{$}\NormalTok{Meet }\OperatorTok{==}\StringTok{ "Zoom"} \OperatorTok{|}\StringTok{ }\NormalTok{meet_file}\OperatorTok{$}\NormalTok{Meet }\OperatorTok{==}\StringTok{ "Skype"}\NormalTok{, ], }
+           \DataTypeTok{center=}\NormalTok{mean)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Levene's Test for Homogeneity of Variance (center = mean)
+##       Df F value Pr(>F)
+## group  1  0.0921 0.7632
+##       38
+\end{verbatim}
+
+\textbf{Para uma siginificância de 0,05 a hipótes nula não pode ser
+rejeitada demonstrando que as amostras Zoom e Skype podem ser originadas
+de populações de variâncias semelhantes ou da mesma população}
+
+\end{document}
