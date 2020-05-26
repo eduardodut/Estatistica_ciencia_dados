@@ -113,6 +113,7 @@ ks.test(meet3_file[meet3_file$Meet == "Skype",]$Tempo, "plnorm", meanlog=fit[1],
 # create a new column in defined as log(Time)
 meet3_file$logTime = log(meet3_file$Tempo) # log transform
 View(meet3_file) # verify
+?log
 
 # explore for intuition-building
 boxplot(logTime ~ Meet, data=meet3_file) # boxplot

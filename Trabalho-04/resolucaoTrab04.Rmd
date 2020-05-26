@@ -61,17 +61,15 @@ Resumo:
 
 * Quanto ao teste lognormalidade da amostra Hangout (P= 0.871), o resultado se mostrou positivo, a hipótese de lognormalidade não pode ser descartad.
 
-<<<<<<< HEAD
+
 * A amostra Skype pode não ser considerada normal para o teste de Shapiro-Wilk (P= 0.02294), entretanto pode ser considerada para o teste de Komogorov-Smirnov (P= 0.1186);
 
 * Quanto ao teste lognormalidade da amostra Hangout (P=  0.4377), o resultado se mostrou positivo, a hipótese de lognormalidade não pode ser descartada; 
 
 * Considera-se então que as duas amostras seguem melhor uma distribuição lognormal do que uma distribuição normal;
 
-=======
 * Considera-se então que as duas amostras seguem melhor uma distribuição lognormal do que uma distribuição normal;
 
->>>>>>> 47731c7ceb3936ca04bf41ce8c0a06ad944b9eb8
 * Mesmo que após os testes de normalidade as amostras tenham sido consideradas como provenientes de uma distribuição lognormal, os testes de Levene foram realizados utilizando como centro a média e a mediana para obter um comparativo entre os testes;
 
 * Não houve discordância na conclusão entre os testes com média ou mediana para qualquer um dos casos testados;
