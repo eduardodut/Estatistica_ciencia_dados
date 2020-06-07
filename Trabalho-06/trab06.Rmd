@@ -1,101 +1,210 @@
 ---
 title: |
   | Estatística para Ciência de Dados
-  | Resolução do trabalho 05
+  | Resolução do trabalho 06
 author: "| Eduardo Façanha Dutra \n| Giovanni Brígido\n"
 output:
   pdf_document:
     number_sections: yes
-  lang: pt-BR
+  lang: pt-br
   html_document:
+    
     number_sections: yes
 ---
+\newpage 
+\tableofcontents
+\newpage
+
 
 # Enunciado
-Objetivos:
-Analisar o teste de hipótese T-test, usando o R
-Saber reportar o resultado
+Você é um analista de dados no setor de compras da Casa Pio, uma grande rede de lojas  de calçados.
+
+Ela é uma empresa com sede em Fortaleza estabelecido há 70 anos. Atualmente, também opera em várias cidades do interior do Ceará, A empresa vende sapatos de preços médios, variando de 120 a 200 reais. Embora os sapatos sejam de alta qualidade, existem lotes e lotes no estoque que nunca são vendidos. Em outras palavras, os sapatos estragando nas prateleiras das lojas.
+
+Por isto, o gerenciamento de estoque é um problema muito comum e importante. 
+
+Muitas, senão a maioria das lojas, não conseguem determinar número correto de itens que precisam manter em estoque. O problema oposto também surge: lojas sem estoque necessário de mercadorias não irão atender à demanda de mercado. Por exemplo, você certamente já entrou em uma loja de sapatos, mas não conseguiu comprar porque eles não tinham o número em estoque.
+
+Neste estudo, vamos examinar o problema oposto - ter muito estoque.
+
+Este é um problema mais significativo para a empresa, pois indica que investiu na produção ou compra de um produto, mas não foi capaz de vendê-lo.
+
+Temos um banco de dados com as informações de vendas das lojas durante os anos 2014 a 2016, com várias informações uteis.
+
+Nosso problema é estimar o volume de compra de sapatos para não ficar com estoque muito alto, nem perder muitas vendas.
+
+**Tarefa 1**
+Responda as seguintes perguntas:
+
+    1- Os dados fornecidos são amostrais ou populacionais?
+    2- Você separaria os dados em quantos grupos?
+    3- Esses grupos são dependentes ou independentes?
+    4- Como você agrupará os dados para ter uma melhor visão do problema a ser resolvido? 
+    5- Os dados fornecidos representam uma distribuição Normal?
+    6- Qual o intervalo de confiança que será usado?
+    7- Qual a estatística será usada? Z ou t?
+    8- Com base na sua resposta a pergunta 7, qual a sua justificativa?
+    9- Quantos pares de cada sapato devemos ter em estoque?
+    
+**Tarefa 2**
+
+Digamos que queremos usar um intervalo de confiança para ver se duas lojas estão vendendo o mesmo número de sapatos. Além disso, queremos saber com 90% confiança quanto uma loja supera a outra em termos de vendas. Você tem duas tabelas representando as vendas de calçados femininos em duas lojas. Seus códigos são ARA 1 e ARA 2. Temos dados para 2016.
+
+Justifique suas escolhas e aplique uma estatística para determinar qual das lojas vende mais produtos, e quais.
+
+Verifique com 90% de confiança, se ambas lojas podem ter um estoque único.
+
+# Resolução
+## Tarefa 1
+
+**1- Os dados fornecidos são amostrais ou populacionais?**
+
+Os dados fornecidos são amostrais, uma vez que se referem a apenas 3 anos, de 2014 a 2016 e Casa Pio já está estabelecida em Fortaleza há 70 anos.
+
+**2- Você separaria os dados em quantos grupos?**
+
+Separaria os dados por gênero, por tamanho de sapato, por mês e ano e por cidade.
+
+**3- Esses grupos são dependentes ou independentes?**
+
+Os grupos são independentes.
+
+**4- Como você agrupará os dados para ter uma melhor visão do problema a ser resolvido? **
+
+Os dados serão agrupados por meses de 1 a 12, por ano, e por tamanho de sapato, em ordem crescente, sendo criadas duas tabelas, uma para cada gênero. Dessa maneira, obtém-se uma visão melhor do problema a ser resolvido.
+
+**5- Os dados fornecidos representam uma distribuição Normal?**
+
+De acordo com o Teorema do Limite Central, as médias de amostras grandes e aleatórias são aproximadamente normais. Logo, os dados fornecidos representam uma distribuição normal.
+
+**6- Qual o intervalo de confiança que será usado?**
+
+O intervalo de confiança será de 95%
+
+**7- Qual a estatística será usada? Z ou t?**
+
+A estatística que será usada será a t.
+
+**8- Com base na sua resposta a pergunta 7, qual a sua justificativa?**
+
+Como são três anos de dados e os dados estão divididos em meses, totalizando 36 meses de dados, optou-se pela distribuição t, uma vez que a amostra tem tamanho próximo de 30. Ademais, como a variância populacional é desconhecida, sugere-se o uso da estatística t.
+
+**9- Quantos pares de cada sapato devemos ter em estoque?**
+
+Aplicando uma estratégia agressiva de mercado, adotou-se o arredondamento para cima do limite superior do intervalo de confiança para definir quantos pares de sapato deve-se ter em estoque.
+
+Digamos que queremos usar um intervalo de confiança para ver se duas lojas estão vendendo o mesmo número de sapatos. Além disso, queremos saber com 90% de confiança quanto uma loja supera a outra em termos de vendas. Você tem duas tabelas representando as vendas de calçados femininos em duas lojas. Seus códigos são ARA 1 e ARA 2. Temos dados para 2016.  
+
+Justifique suas escolhas e aplique uma estatística para determinar qual das lojas vende mais produtos, e quais.
+
+Não se pode concluir que uma loja vende mais que a outra para qualquer tamanho de sapato, uma vez que, para todos os tamanhos de sapatos, no intervalo de confiança, o limite inferior é um valor negativo e o limite superior é um valor positivo.
+
+  * Temos variância populacional desconhecida;
+  * Temos uma amostra pequena;
+  * Então devemos usar a estatística: T
 
 
-1. Aplique o T-test para esta situação de Teste A/B usando o arquivo meet_file. Objetiva-se saber se existe diferença significativa no tempo de acesso que os usuários tiveram ao usar os dois Meet: Zoom e Hangout. O meet que tem mais tempo de acesso foi o mais preferido.
-```{r}
-library(readxl)
+$$
+s_{p}^{2}={\frac {\left ( n_{x}-1 \right )s_{x}^{2}+\left ( n_{y}-1 \right )s_{y}^{2}}{n_{x}+n_{y}-2}}
+$$
+
+$$
+\left ( \bar{x}-\bar{y} \right ) \pm t_{n_{x}+n_{x}-2,\alpha/2}\sqrt{\frac{s_{p}^2}{n_{x}}+\frac{s_{p}^2}{n_{y}}}
+$$
+
+
+
+```{r Leitura dos dados, warning=FALSE, include=FALSE}
 library(lubridate)
+library(dplyr)
+library(tidyr)
+library(readxl)
+library(forcats)
 
-casa_pio <- read_excel("Dados/casa pio.xlsx", 
-    col_types = c("text", "date", "text", 
-        "numeric", "text", "text", "numeric", 
-        "text", "numeric", "numeric", "numeric", 
-        "skip", "skip", "numeric"), skip = 2)
-tabela_masculina <- read_excel("Dados/casa pio.xlsx", 
-    sheet = "Tabela de conversão", range = "B5:F22")
-casa_pio$Mes = month(casa_pio$Data)
-casa_pio$Ano = year(casa_pio$Data)
+casa_pio <- data.frame(readxl::read_excel(
+  "Dados/casa pio.xlsx",
+  col_types = c(
+    "skip",
+    "skip",
+    "text",
+    "skip",
+    "text",
+    "text",
+    "text",
+    "skip",
+    "skip",
+    "numeric",
+    "numeric",
+    "numeric",
+    "numeric",
+    "numeric"
+  ),
+  skip = 2
+)) %>%
+  select(Ano = ...7, Mes = Month, Loja, Sexo, Tamanho) %>%
+  arrange(Ano)
 
 
-tabela_feminina <- read_excel("Dados/casa pio.xlsx", 
-    sheet = "Tabela de conversão", range = "J5:N22")
-
-B <-  casa_pio[casa_pio$Loja=="ARA1",]
-
-C <-  casa_pio[casa_pio$Loja=="ARA2",]
 
 
-```
 
-
-1.1. Qual a hipótese NULA?
-
-**H0 - Não existe diferença significatva entre as médias dos tempos de uso de cada plataforma**
-
-1.2. Qual a relação da H0 com a hipótese alternativa?
-
-  **A hipótese alternativa pode ser considerada quando houver evidências suficientes para rejeitar estatísticamente a hipótese nula. Caso não haja evidências suficientes a hipótese nula pode ser aceita.**
-  **No teste observa-se que o p-value de 0.003745 nos permite rejeitar a hipótese nula, portanto, há diferença significativa entre as médias. O hangout, por possuir a maior média, é a ferramenta preferida.**
+filtra_tabela <- function(dados, sexo, anoInicial, anoFinal) {
+  aux <-
+    dados %>% filter(Ano >= anoInicial, Ano <= anoFinal, Sexo == sexo) %>%
+    select(Ano, Mes, Tamanho) %>%
+    group_by(Mes, Tamanho) %>%
+    count() %>%
+    spread(key = "Mes",
+           value = "n",
+           fill = 0) %>%
+    ungroup() %>%
+    `colnames<-`(
+      c(
+        "Tamanho",
+        "jan",
+        "fev",
+        "mar",
+        "abr",
+        "mai",
+        "jun",
+        "jul",
+        "ago",
+        "set",
+        "out",
+        "nov",
+        "dez"
+      )
+    ) %>%
+    bind_rows(summarise_all(., ~ if (is.numeric(.))
+      sum(.)
+      else
+        "Total")) %>%
+    mutate(label = Tamanho) %>%
+    select(Tamanho:dez) %>%
+    arrange(as.numeric(Tamanho)) %>%
+    as.data.frame()%>%
+    rowwise() %>%
+    mutate(Total = sum(jan:dez))
+    class(aux) <- "data.frame"
+  return(aux)
   
+};
 
- 2. Aplique novamente o T-test para esta situação de Teste A/B, agora considerando a variável logtempo. Faça uma análise da diferença entre com o item 1. 
- 
-```{r}
-meet_file$logTime = log(meet_file$Tempo)
-t.test(logTime ~ Meet, data=meet_file, var.equal=TRUE)
-```
- **Com o p-value de 0.002039, menor do que o teste passado, ainda pode-se rejeitar a hipótese de que há diferença entre o logaritmo do tempo de uso das plataformas, portanto, a plataforma Hangout ainda parece ser a mais utilizada entre as duas.**
- 
- 
+tabela.masc <- filtra_tabela(casa_pio, sexo = "Masc", anoInicial = 2014, anoFinal = 2016)
 
-3. Agora usando o arquivo Tempoporsite, com 600 entradas, conduza novamente o t-test no Time por Site. Assuma variâncias iguais. Tempo está em segundos. Objetiva-se saber se existe diferença significativa no tempo de acesso que os usuários tiveram ao usar os dois sites A e B. O meet que tem mais tempo de acesso foi o mais preferido.
-
-```{r}
- tempoporsite <- read_csv("Dados/tempoporsite.csv", 
-     col_types = cols(Subject = col_skip(), 
-         Site = col_factor(levels = c("A", 
-           "B"))))
-t.test(Time ~ Site, data=tempoporsite, var.equal=TRUE)
+tabela.fem <- filtra_tabela(casa_pio, sexo = "Fem", anoInicial = 2014, anoFinal = 2016)
 
 ```
-3.1. Quantos graus de liberdade resultaram da t-test? 
 
-**df= 598**
+```{r echo=FALSE, results='asis'}
 
-3.2. Para o décimo milésimo mais próximo (quatro dígitos), qual foi o valor p para este teste?
+tabela.masc %>%
+  knitr::kable(format= 'pandoc',label = "Tabela 1", caption = "Vendas de sapatos masculinos de 2014 a 2016 em todo o Ceará")
 
-**p-value = 0.0224**
+```
+```{r echo=FALSE, results='asis'}
 
-3.3. Considere esta forma de descrever o resultado do t-test. Descreva o que ele quer dizer
-T(598)= 2.28,p<0.05
+tabela.fem %>%
+  knitr::kable(format= 'pandoc',label = "Tabela 1", caption = "Vendas de sapatos femininos de 2014 a 2016 em todo o Ceará")
 
-**O valor entre parenteses (598) representa o número de graus de liberdade utilizados para obter a função densidade de probabilidade t-student para o teste aplicado.**
-
-**O valor de 2.28 representa o valor t do teste, que deve ser comparado com a tabela T, juntamente aos graus de liberade, para se obter o valor p do teste.**
-
-**O valor p<0.05 representa que o teste aplicado obteve um valor p menor que 0.05 e, dependendo do nível de rigor do pesquisador e do processo subjacente, pode-se rejeitar a hipótese nula do teste em questão.**
-
-3.4. Descreva desta mesma forma, o resultado do exemplo do item 1.
-
-**T(38)= -3.088, p-value < 0.05**
-
-3.5. Qual o site foi mais usado? 
-
-**Para um valor p de 0.0224 pode-se rejeitar a hipótese nula e considerar que a amostra com maior média foi a do site mais utilizado, no caso o Site A, mesmo que a diferença seja pequena**
-
+```
