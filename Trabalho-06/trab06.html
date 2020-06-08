@@ -394,6 +394,7 @@ Giovanni Brígido</div></h4>
 <p>Digamos que queremos usar um intervalo de confiança para ver se duas lojas estão vendendo o mesmo número de sapatos. Além disso, queremos saber com 90% confiança quanto uma loja supera a outra em termos de vendas. Você tem duas tabelas representando as vendas de calçados femininos em duas lojas. Seus códigos são ARA 1 e ARA 2. Temos dados para 2016.</p>
 <p>Justifique suas escolhas e aplique uma estatística para determinar qual das lojas vende mais produtos, e quais.</p>
 <p>Verifique com 90% de confiança, se ambas lojas podem ter um estoque único.</p>
+<div style="page-break-after: always;"></div>
 </div>
 <div id="resolução" class="section level1">
 <h1><span class="header-section-number">2</span> Resolução</h1>
@@ -402,13 +403,1507 @@ Giovanni Brígido</div></h4>
 <p><strong>1- Os dados fornecidos são amostrais ou populacionais?</strong></p>
 <p>Os dados fornecidos são amostrais, uma vez que se referem a apenas 3 anos, de 2014 a 2016 e Casa Pio já está estabelecida em Fortaleza há 70 anos.</p>
 <p><strong>2- Você separaria os dados em quantos grupos?</strong></p>
-<p>Separaria os dados por gênero, por tamanho de sapato, por mês e ano e por cidade.</p>
+<p>Separaria os dados por gênero, por tamanho de sapato, por mês e ano. Nesse caso específico foram utilizados os dados de todo Ceará.</p>
 <p><strong>3- Esses grupos são dependentes ou independentes?</strong></p>
 <p>Os grupos são independentes.</p>
 <p><strong>4- Como você agrupará os dados para ter uma melhor visão do problema a ser resolvido? </strong></p>
-<p>Os dados serão agrupados por meses de 1 a 12, por ano, e por tamanho de sapato, em ordem crescente, sendo criadas duas tabelas, uma para cada gênero. Dessa maneira, obtém-se uma visão melhor do problema a ser resolvido.</p>
+<p>Os dados serão agrupados por meses, por ano, e por tamanho de sapato, em ordem crescente, sendo criadas duas tabelas, uma para cada gênero. Dessa maneira, obtém-se uma visão melhor do problema a ser resolvido.</p>
+<table>
+<caption>Vendas de sapatos masculinos de 2014 a 2016 em todo o Ceará, por tamanho.</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">6</th>
+<th align="center">6.5</th>
+<th align="center">7</th>
+<th align="center">7.5</th>
+<th align="center">8</th>
+<th align="center">8.5</th>
+<th align="center">9</th>
+<th align="center">9.5</th>
+<th align="center">10</th>
+<th align="center">10.5</th>
+<th align="center">11</th>
+<th align="center">11.5</th>
+<th align="center">12</th>
+<th align="center">13</th>
+<th align="center">14</th>
+<th align="center">15</th>
+<th align="center">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>jan14</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">2</td>
+<td align="center">2</td>
+<td align="center">4</td>
+<td align="center">6</td>
+<td align="center">13</td>
+<td align="center">27</td>
+<td align="center">15</td>
+<td align="center">18</td>
+<td align="center">11</td>
+<td align="center">7</td>
+<td align="center">4</td>
+<td align="center">0</td>
+<td align="center">2</td>
+<td align="center">0</td>
+<td align="center">112</td>
+</tr>
+<tr class="even">
+<td>fev14</td>
+<td align="center">3</td>
+<td align="center">0</td>
+<td align="center">2</td>
+<td align="center">4</td>
+<td align="center">0</td>
+<td align="center">7</td>
+<td align="center">16</td>
+<td align="center">26</td>
+<td align="center">17</td>
+<td align="center">31</td>
+<td align="center">6</td>
+<td align="center">8</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">2</td>
+<td align="center">122</td>
+</tr>
+<tr class="odd">
+<td>mar14</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">3</td>
+<td align="center">13</td>
+<td align="center">10</td>
+<td align="center">21</td>
+<td align="center">31</td>
+<td align="center">16</td>
+<td align="center">20</td>
+<td align="center">11</td>
+<td align="center">8</td>
+<td align="center">4</td>
+<td align="center">0</td>
+<td align="center">6</td>
+<td align="center">5</td>
+<td align="center">149</td>
+</tr>
+<tr class="even">
+<td>abr14</td>
+<td align="center">0</td>
+<td align="center">5</td>
+<td align="center">2</td>
+<td align="center">0</td>
+<td align="center">4</td>
+<td align="center">9</td>
+<td align="center">27</td>
+<td align="center">33</td>
+<td align="center">17</td>
+<td align="center">23</td>
+<td align="center">10</td>
+<td align="center">7</td>
+<td align="center">4</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">4</td>
+<td align="center">147</td>
+</tr>
+<tr class="odd">
+<td>mai14</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">2</td>
+<td align="center">5</td>
+<td align="center">4</td>
+<td align="center">5</td>
+<td align="center">24</td>
+<td align="center">26</td>
+<td align="center">17</td>
+<td align="center">20</td>
+<td align="center">5</td>
+<td align="center">3</td>
+<td align="center">5</td>
+<td align="center">2</td>
+<td align="center">4</td>
+<td align="center">0</td>
+<td align="center">122</td>
+</tr>
+<tr class="even">
+<td>jun14</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">5</td>
+<td align="center">13</td>
+<td align="center">18</td>
+<td align="center">28</td>
+<td align="center">25</td>
+<td align="center">26</td>
+<td align="center">10</td>
+<td align="center">3</td>
+<td align="center">3</td>
+<td align="center">1</td>
+<td align="center">6</td>
+<td align="center">4</td>
+<td align="center">143</td>
+</tr>
+<tr class="odd">
+<td>jul14</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">13</td>
+<td align="center">4</td>
+<td align="center">17</td>
+<td align="center">33</td>
+<td align="center">21</td>
+<td align="center">14</td>
+<td align="center">10</td>
+<td align="center">9</td>
+<td align="center">2</td>
+<td align="center">3</td>
+<td align="center">5</td>
+<td align="center">1</td>
+<td align="center">134</td>
+</tr>
+<tr class="even">
+<td>ago14</td>
+<td align="center">3</td>
+<td align="center">3</td>
+<td align="center">3</td>
+<td align="center">1</td>
+<td align="center">6</td>
+<td align="center">7</td>
+<td align="center">20</td>
+<td align="center">26</td>
+<td align="center">27</td>
+<td align="center">23</td>
+<td align="center">11</td>
+<td align="center">5</td>
+<td align="center">2</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">140</td>
+</tr>
+<tr class="odd">
+<td>set14</td>
+<td align="center">0</td>
+<td align="center">3</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">8</td>
+<td align="center">11</td>
+<td align="center">22</td>
+<td align="center">27</td>
+<td align="center">22</td>
+<td align="center">31</td>
+<td align="center">8</td>
+<td align="center">2</td>
+<td align="center">3</td>
+<td align="center">5</td>
+<td align="center">2</td>
+<td align="center">4</td>
+<td align="center">150</td>
+</tr>
+<tr class="even">
+<td>out14</td>
+<td align="center">3</td>
+<td align="center">0</td>
+<td align="center">3</td>
+<td align="center">4</td>
+<td align="center">4</td>
+<td align="center">16</td>
+<td align="center">19</td>
+<td align="center">35</td>
+<td align="center">29</td>
+<td align="center">23</td>
+<td align="center">7</td>
+<td align="center">10</td>
+<td align="center">7</td>
+<td align="center">2</td>
+<td align="center">2</td>
+<td align="center">1</td>
+<td align="center">165</td>
+</tr>
+<tr class="odd">
+<td>nov14</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">5</td>
+<td align="center">5</td>
+<td align="center">5</td>
+<td align="center">11</td>
+<td align="center">15</td>
+<td align="center">20</td>
+<td align="center">18</td>
+<td align="center">4</td>
+<td align="center">5</td>
+<td align="center">6</td>
+<td align="center">3</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">100</td>
+</tr>
+<tr class="even">
+<td>dez14</td>
+<td align="center">0</td>
+<td align="center">2</td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">3</td>
+<td align="center">9</td>
+<td align="center">27</td>
+<td align="center">34</td>
+<td align="center">24</td>
+<td align="center">22</td>
+<td align="center">9</td>
+<td align="center">4</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">138</td>
+</tr>
+<tr class="odd">
+<td>jan15</td>
+<td align="center">1</td>
+<td align="center">6</td>
+<td align="center">0</td>
+<td align="center">2</td>
+<td align="center">9</td>
+<td align="center">14</td>
+<td align="center">26</td>
+<td align="center">53</td>
+<td align="center">36</td>
+<td align="center">19</td>
+<td align="center">9</td>
+<td align="center">8</td>
+<td align="center">6</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">192</td>
+</tr>
+<tr class="even">
+<td>fev15</td>
+<td align="center">1</td>
+<td align="center">4</td>
+<td align="center">0</td>
+<td align="center">2</td>
+<td align="center">13</td>
+<td align="center">11</td>
+<td align="center">26</td>
+<td align="center">41</td>
+<td align="center">30</td>
+<td align="center">25</td>
+<td align="center">13</td>
+<td align="center">6</td>
+<td align="center">7</td>
+<td align="center">0</td>
+<td align="center">2</td>
+<td align="center">1</td>
+<td align="center">182</td>
+</tr>
+<tr class="odd">
+<td>mar15</td>
+<td align="center">0</td>
+<td align="center">2</td>
+<td align="center">2</td>
+<td align="center">2</td>
+<td align="center">8</td>
+<td align="center">12</td>
+<td align="center">24</td>
+<td align="center">42</td>
+<td align="center">28</td>
+<td align="center">31</td>
+<td align="center">15</td>
+<td align="center">11</td>
+<td align="center">3</td>
+<td align="center">2</td>
+<td align="center">4</td>
+<td align="center">0</td>
+<td align="center">186</td>
+</tr>
+<tr class="even">
+<td>abr15</td>
+<td align="center">0</td>
+<td align="center">3</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">6</td>
+<td align="center">15</td>
+<td align="center">35</td>
+<td align="center">43</td>
+<td align="center">25</td>
+<td align="center">34</td>
+<td align="center">18</td>
+<td align="center">7</td>
+<td align="center">6</td>
+<td align="center">1</td>
+<td align="center">3</td>
+<td align="center">2</td>
+<td align="center">200</td>
+</tr>
+<tr class="odd">
+<td>mai15</td>
+<td align="center">5</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">9</td>
+<td align="center">14</td>
+<td align="center">35</td>
+<td align="center">58</td>
+<td align="center">23</td>
+<td align="center">38</td>
+<td align="center">17</td>
+<td align="center">12</td>
+<td align="center">5</td>
+<td align="center">3</td>
+<td align="center">2</td>
+<td align="center">3</td>
+<td align="center">226</td>
+</tr>
+<tr class="even">
+<td>jun15</td>
+<td align="center">3</td>
+<td align="center">1</td>
+<td align="center">5</td>
+<td align="center">6</td>
+<td align="center">8</td>
+<td align="center">26</td>
+<td align="center">51</td>
+<td align="center">61</td>
+<td align="center">37</td>
+<td align="center">34</td>
+<td align="center">12</td>
+<td align="center">19</td>
+<td align="center">9</td>
+<td align="center">6</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">279</td>
+</tr>
+<tr class="odd">
+<td>jul15</td>
+<td align="center">1</td>
+<td align="center">5</td>
+<td align="center">2</td>
+<td align="center">5</td>
+<td align="center">9</td>
+<td align="center">17</td>
+<td align="center">52</td>
+<td align="center">44</td>
+<td align="center">40</td>
+<td align="center">54</td>
+<td align="center">14</td>
+<td align="center">10</td>
+<td align="center">5</td>
+<td align="center">2</td>
+<td align="center">3</td>
+<td align="center">3</td>
+<td align="center">266</td>
+</tr>
+<tr class="even">
+<td>ago15</td>
+<td align="center">4</td>
+<td align="center">5</td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">3</td>
+<td align="center">32</td>
+<td align="center">44</td>
+<td align="center">66</td>
+<td align="center">38</td>
+<td align="center">34</td>
+<td align="center">14</td>
+<td align="center">11</td>
+<td align="center">8</td>
+<td align="center">2</td>
+<td align="center">7</td>
+<td align="center">6</td>
+<td align="center">277</td>
+</tr>
+<tr class="odd">
+<td>set15</td>
+<td align="center">7</td>
+<td align="center">1</td>
+<td align="center">5</td>
+<td align="center">9</td>
+<td align="center">10</td>
+<td align="center">20</td>
+<td align="center">40</td>
+<td align="center">57</td>
+<td align="center">39</td>
+<td align="center">43</td>
+<td align="center">19</td>
+<td align="center">8</td>
+<td align="center">12</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">4</td>
+<td align="center">275</td>
+</tr>
+<tr class="even">
+<td>out15</td>
+<td align="center">9</td>
+<td align="center">5</td>
+<td align="center">5</td>
+<td align="center">7</td>
+<td align="center">11</td>
+<td align="center">22</td>
+<td align="center">52</td>
+<td align="center">52</td>
+<td align="center">36</td>
+<td align="center">32</td>
+<td align="center">17</td>
+<td align="center">14</td>
+<td align="center">7</td>
+<td align="center">3</td>
+<td align="center">4</td>
+<td align="center">1</td>
+<td align="center">277</td>
+</tr>
+<tr class="odd">
+<td>nov15</td>
+<td align="center">2</td>
+<td align="center">4</td>
+<td align="center">4</td>
+<td align="center">6</td>
+<td align="center">9</td>
+<td align="center">16</td>
+<td align="center">26</td>
+<td align="center">67</td>
+<td align="center">42</td>
+<td align="center">36</td>
+<td align="center">11</td>
+<td align="center">13</td>
+<td align="center">8</td>
+<td align="center">4</td>
+<td align="center">4</td>
+<td align="center">7</td>
+<td align="center">259</td>
+</tr>
+<tr class="even">
+<td>dez15</td>
+<td align="center">3</td>
+<td align="center">3</td>
+<td align="center">6</td>
+<td align="center">5</td>
+<td align="center">9</td>
+<td align="center">14</td>
+<td align="center">42</td>
+<td align="center">76</td>
+<td align="center">43</td>
+<td align="center">37</td>
+<td align="center">14</td>
+<td align="center">15</td>
+<td align="center">6</td>
+<td align="center">3</td>
+<td align="center">4</td>
+<td align="center">4</td>
+<td align="center">284</td>
+</tr>
+<tr class="odd">
+<td>jan16</td>
+<td align="center">6</td>
+<td align="center">4</td>
+<td align="center">2</td>
+<td align="center">9</td>
+<td align="center">17</td>
+<td align="center">30</td>
+<td align="center">58</td>
+<td align="center">53</td>
+<td align="center">45</td>
+<td align="center">49</td>
+<td align="center">12</td>
+<td align="center">15</td>
+<td align="center">5</td>
+<td align="center">3</td>
+<td align="center">5</td>
+<td align="center">2</td>
+<td align="center">315</td>
+</tr>
+<tr class="even">
+<td>fev16</td>
+<td align="center">2</td>
+<td align="center">3</td>
+<td align="center">1</td>
+<td align="center">5</td>
+<td align="center">17</td>
+<td align="center">31</td>
+<td align="center">29</td>
+<td align="center">60</td>
+<td align="center">54</td>
+<td align="center">38</td>
+<td align="center">30</td>
+<td align="center">12</td>
+<td align="center">7</td>
+<td align="center">2</td>
+<td align="center">11</td>
+<td align="center">7</td>
+<td align="center">309</td>
+</tr>
+<tr class="odd">
+<td>mar16</td>
+<td align="center">3</td>
+<td align="center">3</td>
+<td align="center">7</td>
+<td align="center">3</td>
+<td align="center">14</td>
+<td align="center">32</td>
+<td align="center">43</td>
+<td align="center">61</td>
+<td align="center">52</td>
+<td align="center">49</td>
+<td align="center">29</td>
+<td align="center">11</td>
+<td align="center">2</td>
+<td align="center">4</td>
+<td align="center">4</td>
+<td align="center">0</td>
+<td align="center">317</td>
+</tr>
+<tr class="even">
+<td>abr16</td>
+<td align="center">2</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">15</td>
+<td align="center">32</td>
+<td align="center">49</td>
+<td align="center">76</td>
+<td align="center">62</td>
+<td align="center">60</td>
+<td align="center">21</td>
+<td align="center">6</td>
+<td align="center">6</td>
+<td align="center">2</td>
+<td align="center">4</td>
+<td align="center">4</td>
+<td align="center">343</td>
+</tr>
+<tr class="odd">
+<td>mai16</td>
+<td align="center">6</td>
+<td align="center">1</td>
+<td align="center">7</td>
+<td align="center">17</td>
+<td align="center">17</td>
+<td align="center">30</td>
+<td align="center">52</td>
+<td align="center">63</td>
+<td align="center">49</td>
+<td align="center">59</td>
+<td align="center">29</td>
+<td align="center">12</td>
+<td align="center">14</td>
+<td align="center">4</td>
+<td align="center">8</td>
+<td align="center">5</td>
+<td align="center">373</td>
+</tr>
+<tr class="even">
+<td>jun16</td>
+<td align="center">4</td>
+<td align="center">2</td>
+<td align="center">11</td>
+<td align="center">5</td>
+<td align="center">11</td>
+<td align="center">24</td>
+<td align="center">79</td>
+<td align="center">93</td>
+<td align="center">72</td>
+<td align="center">53</td>
+<td align="center">24</td>
+<td align="center">29</td>
+<td align="center">17</td>
+<td align="center">6</td>
+<td align="center">4</td>
+<td align="center">6</td>
+<td align="center">440</td>
+</tr>
+<tr class="odd">
+<td>jul16</td>
+<td align="center">3</td>
+<td align="center">3</td>
+<td align="center">9</td>
+<td align="center">14</td>
+<td align="center">23</td>
+<td align="center">41</td>
+<td align="center">72</td>
+<td align="center">77</td>
+<td align="center">69</td>
+<td align="center">62</td>
+<td align="center">32</td>
+<td align="center">17</td>
+<td align="center">10</td>
+<td align="center">2</td>
+<td align="center">7</td>
+<td align="center">10</td>
+<td align="center">451</td>
+</tr>
+<tr class="even">
+<td>ago16</td>
+<td align="center">7</td>
+<td align="center">11</td>
+<td align="center">4</td>
+<td align="center">6</td>
+<td align="center">10</td>
+<td align="center">43</td>
+<td align="center">57</td>
+<td align="center">91</td>
+<td align="center">70</td>
+<td align="center">57</td>
+<td align="center">19</td>
+<td align="center">18</td>
+<td align="center">25</td>
+<td align="center">2</td>
+<td align="center">4</td>
+<td align="center">3</td>
+<td align="center">427</td>
+</tr>
+<tr class="odd">
+<td>set16</td>
+<td align="center">3</td>
+<td align="center">3</td>
+<td align="center">10</td>
+<td align="center">13</td>
+<td align="center">17</td>
+<td align="center">26</td>
+<td align="center">89</td>
+<td align="center">70</td>
+<td align="center">56</td>
+<td align="center">60</td>
+<td align="center">29</td>
+<td align="center">16</td>
+<td align="center">15</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">3</td>
+<td align="center">412</td>
+</tr>
+<tr class="even">
+<td>out16</td>
+<td align="center">14</td>
+<td align="center">4</td>
+<td align="center">4</td>
+<td align="center">12</td>
+<td align="center">16</td>
+<td align="center">34</td>
+<td align="center">60</td>
+<td align="center">96</td>
+<td align="center">63</td>
+<td align="center">60</td>
+<td align="center">19</td>
+<td align="center">30</td>
+<td align="center">10</td>
+<td align="center">5</td>
+<td align="center">6</td>
+<td align="center">2</td>
+<td align="center">435</td>
+</tr>
+<tr class="odd">
+<td>nov16</td>
+<td align="center">6</td>
+<td align="center">2</td>
+<td align="center">4</td>
+<td align="center">3</td>
+<td align="center">8</td>
+<td align="center">22</td>
+<td align="center">32</td>
+<td align="center">73</td>
+<td align="center">50</td>
+<td align="center">45</td>
+<td align="center">18</td>
+<td align="center">17</td>
+<td align="center">4</td>
+<td align="center">7</td>
+<td align="center">5</td>
+<td align="center">6</td>
+<td align="center">302</td>
+</tr>
+<tr class="even">
+<td>dez16</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">3</td>
+<td align="center">6</td>
+<td align="center">16</td>
+<td align="center">18</td>
+<td align="center">39</td>
+<td align="center">76</td>
+<td align="center">38</td>
+<td align="center">30</td>
+<td align="center">15</td>
+<td align="center">11</td>
+<td align="center">3</td>
+<td align="center">5</td>
+<td align="center">3</td>
+<td align="center">5</td>
+<td align="center">270</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Vendas de sapatos femininos de 2014 a 2016 em todo o Ceará, por tamanho.</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">4.5</th>
+<th align="center">5</th>
+<th align="center">5.5</th>
+<th align="center">6</th>
+<th align="center">6.5</th>
+<th align="center">7</th>
+<th align="center">7.5</th>
+<th align="center">8</th>
+<th align="center">8.5</th>
+<th align="center">9</th>
+<th align="center">9.5</th>
+<th align="center">10</th>
+<th align="center">10.5</th>
+<th align="center">11</th>
+<th align="center">11.5</th>
+<th align="center">12</th>
+<th align="center">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>jan14</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">3</td>
+<td align="center">1</td>
+<td align="center">4</td>
+<td align="center">22</td>
+<td align="center">32</td>
+<td align="center">9</td>
+<td align="center">15</td>
+<td align="center">19</td>
+<td align="center">2</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">108</td>
+</tr>
+<tr class="even">
+<td>fev14</td>
+<td align="center">2</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">7</td>
+<td align="center">3</td>
+<td align="center">23</td>
+<td align="center">10</td>
+<td align="center">16</td>
+<td align="center">12</td>
+<td align="center">4</td>
+<td align="center">4</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">82</td>
+</tr>
+<tr class="odd">
+<td>mar14</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">11</td>
+<td align="center">4</td>
+<td align="center">20</td>
+<td align="center">5</td>
+<td align="center">17</td>
+<td align="center">9</td>
+<td align="center">6</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">75</td>
+</tr>
+<tr class="even">
+<td>abr14</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">2</td>
+<td align="center">3</td>
+<td align="center">2</td>
+<td align="center">13</td>
+<td align="center">3</td>
+<td align="center">22</td>
+<td align="center">23</td>
+<td align="center">12</td>
+<td align="center">13</td>
+<td align="center">9</td>
+<td align="center">4</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">106</td>
+</tr>
+<tr class="odd">
+<td>mai14</td>
+<td align="center">0</td>
+<td align="center">2</td>
+<td align="center">0</td>
+<td align="center">2</td>
+<td align="center">2</td>
+<td align="center">13</td>
+<td align="center">4</td>
+<td align="center">16</td>
+<td align="center">39</td>
+<td align="center">25</td>
+<td align="center">6</td>
+<td align="center">7</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">116</td>
+</tr>
+<tr class="even">
+<td>jun14</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">3</td>
+<td align="center">9</td>
+<td align="center">6</td>
+<td align="center">22</td>
+<td align="center">12</td>
+<td align="center">17</td>
+<td align="center">0</td>
+<td align="center">11</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">82</td>
+</tr>
+<tr class="odd">
+<td>jul14</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">7</td>
+<td align="center">8</td>
+<td align="center">5</td>
+<td align="center">16</td>
+<td align="center">18</td>
+<td align="center">13</td>
+<td align="center">5</td>
+<td align="center">10</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">85</td>
+</tr>
+<tr class="even">
+<td>ago14</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">4</td>
+<td align="center">12</td>
+<td align="center">2</td>
+<td align="center">30</td>
+<td align="center">17</td>
+<td align="center">12</td>
+<td align="center">4</td>
+<td align="center">13</td>
+<td align="center">5</td>
+<td align="center">2</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">101</td>
+</tr>
+<tr class="odd">
+<td>set14</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">2</td>
+<td align="center">0</td>
+<td align="center">3</td>
+<td align="center">12</td>
+<td align="center">8</td>
+<td align="center">16</td>
+<td align="center">14</td>
+<td align="center">21</td>
+<td align="center">2</td>
+<td align="center">13</td>
+<td align="center">2</td>
+<td align="center">0</td>
+<td align="center">6</td>
+<td align="center">1</td>
+<td align="center">100</td>
+</tr>
+<tr class="even">
+<td>out14</td>
+<td align="center">3</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">17</td>
+<td align="center">10</td>
+<td align="center">26</td>
+<td align="center">16</td>
+<td align="center">15</td>
+<td align="center">8</td>
+<td align="center">14</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">109</td>
+</tr>
+<tr class="odd">
+<td>nov14</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">2</td>
+<td align="center">14</td>
+<td align="center">3</td>
+<td align="center">14</td>
+<td align="center">15</td>
+<td align="center">11</td>
+<td align="center">11</td>
+<td align="center">9</td>
+<td align="center">2</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">81</td>
+</tr>
+<tr class="even">
+<td>dez14</td>
+<td align="center">2</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">2</td>
+<td align="center">14</td>
+<td align="center">3</td>
+<td align="center">20</td>
+<td align="center">10</td>
+<td align="center">19</td>
+<td align="center">4</td>
+<td align="center">10</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">86</td>
+</tr>
+<tr class="odd">
+<td>jan15</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">7</td>
+<td align="center">8</td>
+<td align="center">21</td>
+<td align="center">25</td>
+<td align="center">14</td>
+<td align="center">20</td>
+<td align="center">5</td>
+<td align="center">8</td>
+<td align="center">3</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">113</td>
+</tr>
+<tr class="even">
+<td>fev15</td>
+<td align="center">5</td>
+<td align="center">0</td>
+<td align="center">2</td>
+<td align="center">6</td>
+<td align="center">7</td>
+<td align="center">4</td>
+<td align="center">23</td>
+<td align="center">33</td>
+<td align="center">14</td>
+<td align="center">13</td>
+<td align="center">9</td>
+<td align="center">5</td>
+<td align="center">2</td>
+<td align="center">0</td>
+<td align="center">3</td>
+<td align="center">0</td>
+<td align="center">126</td>
+</tr>
+<tr class="odd">
+<td>mar15</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">5</td>
+<td align="center">6</td>
+<td align="center">30</td>
+<td align="center">29</td>
+<td align="center">20</td>
+<td align="center">19</td>
+<td align="center">15</td>
+<td align="center">8</td>
+<td align="center">9</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">142</td>
+</tr>
+<tr class="even">
+<td>abr15</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">2</td>
+<td align="center">7</td>
+<td align="center">9</td>
+<td align="center">7</td>
+<td align="center">10</td>
+<td align="center">23</td>
+<td align="center">15</td>
+<td align="center">22</td>
+<td align="center">17</td>
+<td align="center">7</td>
+<td align="center">8</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">127</td>
+</tr>
+<tr class="odd">
+<td>mai15</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">3</td>
+<td align="center">16</td>
+<td align="center">9</td>
+<td align="center">21</td>
+<td align="center">33</td>
+<td align="center">29</td>
+<td align="center">19</td>
+<td align="center">13</td>
+<td align="center">2</td>
+<td align="center">9</td>
+<td align="center">2</td>
+<td align="center">1</td>
+<td align="center">6</td>
+<td align="center">164</td>
+</tr>
+<tr class="even">
+<td>jun15</td>
+<td align="center">6</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">11</td>
+<td align="center">13</td>
+<td align="center">30</td>
+<td align="center">36</td>
+<td align="center">39</td>
+<td align="center">30</td>
+<td align="center">13</td>
+<td align="center">0</td>
+<td align="center">8</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">187</td>
+</tr>
+<tr class="odd">
+<td>jul15</td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">9</td>
+<td align="center">12</td>
+<td align="center">27</td>
+<td align="center">42</td>
+<td align="center">29</td>
+<td align="center">28</td>
+<td align="center">19</td>
+<td align="center">6</td>
+<td align="center">5</td>
+<td align="center">1</td>
+<td align="center">4</td>
+<td align="center">2</td>
+<td align="center">187</td>
+</tr>
+<tr class="even">
+<td>ago15</td>
+<td align="center">0</td>
+<td align="center">3</td>
+<td align="center">3</td>
+<td align="center">0</td>
+<td align="center">6</td>
+<td align="center">8</td>
+<td align="center">28</td>
+<td align="center">28</td>
+<td align="center">30</td>
+<td align="center">28</td>
+<td align="center">13</td>
+<td align="center">2</td>
+<td align="center">15</td>
+<td align="center">2</td>
+<td align="center">3</td>
+<td align="center">0</td>
+<td align="center">169</td>
+</tr>
+<tr class="odd">
+<td>set15</td>
+<td align="center">0</td>
+<td align="center">4</td>
+<td align="center">2</td>
+<td align="center">2</td>
+<td align="center">9</td>
+<td align="center">13</td>
+<td align="center">20</td>
+<td align="center">35</td>
+<td align="center">23</td>
+<td align="center">35</td>
+<td align="center">13</td>
+<td align="center">2</td>
+<td align="center">6</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">165</td>
+</tr>
+<tr class="even">
+<td>out15</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">2</td>
+<td align="center">2</td>
+<td align="center">9</td>
+<td align="center">12</td>
+<td align="center">24</td>
+<td align="center">46</td>
+<td align="center">31</td>
+<td align="center">25</td>
+<td align="center">17</td>
+<td align="center">10</td>
+<td align="center">11</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">193</td>
+</tr>
+<tr class="odd">
+<td>nov15</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">4</td>
+<td align="center">1</td>
+<td align="center">6</td>
+<td align="center">11</td>
+<td align="center">27</td>
+<td align="center">40</td>
+<td align="center">41</td>
+<td align="center">31</td>
+<td align="center">18</td>
+<td align="center">4</td>
+<td align="center">5</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">6</td>
+<td align="center">195</td>
+</tr>
+<tr class="even">
+<td>dez15</td>
+<td align="center">2</td>
+<td align="center">0</td>
+<td align="center">7</td>
+<td align="center">2</td>
+<td align="center">9</td>
+<td align="center">15</td>
+<td align="center">22</td>
+<td align="center">40</td>
+<td align="center">35</td>
+<td align="center">22</td>
+<td align="center">10</td>
+<td align="center">5</td>
+<td align="center">2</td>
+<td align="center">6</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">177</td>
+</tr>
+<tr class="odd">
+<td>jan16</td>
+<td align="center">1</td>
+<td align="center">4</td>
+<td align="center">5</td>
+<td align="center">0</td>
+<td align="center">15</td>
+<td align="center">10</td>
+<td align="center">31</td>
+<td align="center">48</td>
+<td align="center">34</td>
+<td align="center">38</td>
+<td align="center">14</td>
+<td align="center">5</td>
+<td align="center">8</td>
+<td align="center">8</td>
+<td align="center">2</td>
+<td align="center">1</td>
+<td align="center">224</td>
+</tr>
+<tr class="even">
+<td>fev16</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">12</td>
+<td align="center">10</td>
+<td align="center">12</td>
+<td align="center">35</td>
+<td align="center">57</td>
+<td align="center">31</td>
+<td align="center">31</td>
+<td align="center">10</td>
+<td align="center">11</td>
+<td align="center">14</td>
+<td align="center">3</td>
+<td align="center">9</td>
+<td align="center">4</td>
+<td align="center">240</td>
+</tr>
+<tr class="odd">
+<td>mar16</td>
+<td align="center">2</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">6</td>
+<td align="center">15</td>
+<td align="center">9</td>
+<td align="center">25</td>
+<td align="center">43</td>
+<td align="center">45</td>
+<td align="center">31</td>
+<td align="center">18</td>
+<td align="center">5</td>
+<td align="center">4</td>
+<td align="center">2</td>
+<td align="center">9</td>
+<td align="center">0</td>
+<td align="center">214</td>
+</tr>
+<tr class="even">
+<td>abr16</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">2</td>
+<td align="center">12</td>
+<td align="center">10</td>
+<td align="center">21</td>
+<td align="center">47</td>
+<td align="center">58</td>
+<td align="center">28</td>
+<td align="center">52</td>
+<td align="center">20</td>
+<td align="center">6</td>
+<td align="center">7</td>
+<td align="center">5</td>
+<td align="center">6</td>
+<td align="center">0</td>
+<td align="center">274</td>
+</tr>
+<tr class="odd">
+<td>mai16</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">7</td>
+<td align="center">5</td>
+<td align="center">12</td>
+<td align="center">28</td>
+<td align="center">57</td>
+<td align="center">52</td>
+<td align="center">48</td>
+<td align="center">18</td>
+<td align="center">4</td>
+<td align="center">4</td>
+<td align="center">2</td>
+<td align="center">6</td>
+<td align="center">2</td>
+<td align="center">248</td>
+</tr>
+<tr class="even">
+<td>jun16</td>
+<td align="center">11</td>
+<td align="center">1</td>
+<td align="center">3</td>
+<td align="center">1</td>
+<td align="center">16</td>
+<td align="center">19</td>
+<td align="center">44</td>
+<td align="center">36</td>
+<td align="center">42</td>
+<td align="center">41</td>
+<td align="center">9</td>
+<td align="center">7</td>
+<td align="center">9</td>
+<td align="center">2</td>
+<td align="center">4</td>
+<td align="center">5</td>
+<td align="center">250</td>
+</tr>
+<tr class="odd">
+<td>jul16</td>
+<td align="center">4</td>
+<td align="center">4</td>
+<td align="center">5</td>
+<td align="center">0</td>
+<td align="center">18</td>
+<td align="center">8</td>
+<td align="center">31</td>
+<td align="center">59</td>
+<td align="center">69</td>
+<td align="center">49</td>
+<td align="center">16</td>
+<td align="center">6</td>
+<td align="center">11</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">9</td>
+<td align="center">290</td>
+</tr>
+<tr class="even">
+<td>ago16</td>
+<td align="center">3</td>
+<td align="center">4</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">6</td>
+<td align="center">14</td>
+<td align="center">29</td>
+<td align="center">71</td>
+<td align="center">49</td>
+<td align="center">51</td>
+<td align="center">22</td>
+<td align="center">8</td>
+<td align="center">7</td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">10</td>
+<td align="center">279</td>
+</tr>
+<tr class="odd">
+<td>set16</td>
+<td align="center">2</td>
+<td align="center">6</td>
+<td align="center">1</td>
+<td align="center">3</td>
+<td align="center">8</td>
+<td align="center">22</td>
+<td align="center">56</td>
+<td align="center">52</td>
+<td align="center">51</td>
+<td align="center">42</td>
+<td align="center">19</td>
+<td align="center">4</td>
+<td align="center">4</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">4</td>
+<td align="center">275</td>
+</tr>
+<tr class="even">
+<td>out16</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">3</td>
+<td align="center">2</td>
+<td align="center">4</td>
+<td align="center">18</td>
+<td align="center">50</td>
+<td align="center">66</td>
+<td align="center">45</td>
+<td align="center">30</td>
+<td align="center">17</td>
+<td align="center">2</td>
+<td align="center">12</td>
+<td align="center">2</td>
+<td align="center">0</td>
+<td align="center">15</td>
+<td align="center">268</td>
+</tr>
+<tr class="odd">
+<td>nov16</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">4</td>
+<td align="center">0</td>
+<td align="center">9</td>
+<td align="center">12</td>
+<td align="center">27</td>
+<td align="center">52</td>
+<td align="center">43</td>
+<td align="center">28</td>
+<td align="center">18</td>
+<td align="center">2</td>
+<td align="center">9</td>
+<td align="center">2</td>
+<td align="center">1</td>
+<td align="center">9</td>
+<td align="center">217</td>
+</tr>
+<tr class="even">
+<td>dez16</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">9</td>
+<td align="center">2</td>
+<td align="center">7</td>
+<td align="center">14</td>
+<td align="center">21</td>
+<td align="center">36</td>
+<td align="center">41</td>
+<td align="center">28</td>
+<td align="center">20</td>
+<td align="center">4</td>
+<td align="center">7</td>
+<td align="center">3</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">193</td>
+</tr>
+</tbody>
+</table>
 <p><strong>5- Os dados fornecidos representam uma distribuição Normal?</strong></p>
-<p>De acordo com o Teorema do Limite Central, as médias de amostras grandes e aleatórias são aproximadamente normais. Logo, os dados fornecidos representam uma distribuição normal.</p>
+<p>De acordo com o Teorema do Limite Central, as médias de amostras grandes e aleatórias são aproximadamente normais. Logo, pode-se aplicar técnicas usadas em dados que seguem uma distribuição normal.</p>
 <p><strong>6- Qual o intervalo de confiança que será usado?</strong></p>
 <p>O intervalo de confiança será de 95%</p>
 <p><strong>7- Qual a estatística será usada? Z ou t?</strong></p>
@@ -416,315 +1911,1066 @@ Giovanni Brígido</div></h4>
 <p><strong>8- Com base na sua resposta a pergunta 7, qual a sua justificativa?</strong></p>
 <p>Como são três anos de dados e os dados estão divididos em meses, totalizando 36 meses de dados, optou-se pela distribuição t, uma vez que a amostra tem tamanho próximo de 30. Ademais, como a variância populacional é desconhecida, sugere-se o uso da estatística t.</p>
 <p><strong>9- Quantos pares de cada sapato devemos ter em estoque?</strong></p>
-<p>Aplicando uma estratégia agressiva de mercado, adotou-se o arredondamento para cima do limite superior do intervalo de confiança para definir quantos pares de sapato deve-se ter em estoque.</p>
-<p>Digamos que queremos usar um intervalo de confiança para ver se duas lojas estão vendendo o mesmo número de sapatos. Além disso, queremos saber com 90% de confiança quanto uma loja supera a outra em termos de vendas. Você tem duas tabelas representando as vendas de calçados femininos em duas lojas. Seus códigos são ARA 1 e ARA 2. Temos dados para 2016.</p>
-<p>Justifique suas escolhas e aplique uma estatística para determinar qual das lojas vende mais produtos, e quais.</p>
-<p>Não se pode concluir que uma loja vende mais que a outra para qualquer tamanho de sapato, uma vez que, para todos os tamanhos de sapatos, no intervalo de confiança, o limite inferior é um valor negativo e o limite superior é um valor positivo.</p>
-<ul>
-<li>Temos variância populacional desconhecida;</li>
-<li>Temos uma amostra pequena;</li>
-<li>Então devemos usar a estatística: T</li>
-</ul>
-<p><span class="math display">\[
-s_{p}^{2}={\frac {\left ( n_{x}-1 \right )s_{x}^{2}+\left ( n_{y}-1 \right )s_{y}^{2}}{n_{x}+n_{y}-2}}
-\]</span></p>
-<p><span class="math display">\[
-\left ( \bar{x}-\bar{y} \right ) \pm t_{n_{x}+n_{x}-2,\alpha/2}\sqrt{\frac{s_{p}^2}{n_{x}}+\frac{s_{p}^2}{n_{y}}}
-\]</span></p>
+<p>Aplicando uma estratégia agressiva de mercado, adotou-se o arredondamento para cima do limite superior do intervalo de confiança para definir quantos pares de sapato deve-se ter em estoque, para cada mês, em média.</p>
 <table>
+<caption>Intervalo de confiança para as vendas de 2014 a 2016 de calçados para homens.</caption>
 <thead>
 <tr class="header">
-<th align="left">Tamanho</th>
-<th align="right">jan</th>
-<th align="right">fev</th>
-<th align="right">mar</th>
-<th align="right">abr</th>
-<th align="right">mai</th>
-<th align="right">jun</th>
-<th align="right">jul</th>
-<th align="right">ago</th>
-<th align="right">set</th>
-<th align="right">out</th>
-<th align="right">nov</th>
-<th align="right">dez</th>
-<th align="right">Total</th>
+<th></th>
+<th align="center">Média</th>
+<th align="center">ErroPadrão</th>
+<th align="center">MargemErro</th>
+<th align="center">-95% CI</th>
+<th align="center">+95% CI</th>
+<th align="center">NumEscolhido</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">6</td>
-<td align="right">8</td>
-<td align="right">6</td>
-<td align="right">3</td>
-<td align="right">2</td>
-<td align="right">11</td>
-<td align="right">8</td>
-<td align="right">4</td>
-<td align="right">14</td>
-<td align="right">10</td>
-<td align="right">26</td>
-<td align="right">9</td>
-<td align="right">4</td>
-<td align="right">30</td>
+<td>6</td>
+<td align="center">2.92</td>
+<td align="center">0.51</td>
+<td align="center">1.04</td>
+<td align="center">1.88</td>
+<td align="center">3.96</td>
+<td align="center">4</td>
 </tr>
 <tr class="even">
-<td align="left">6.5</td>
-<td align="right">10</td>
-<td align="right">7</td>
-<td align="right">5</td>
-<td align="right">9</td>
-<td align="right">1</td>
-<td align="right">3</td>
-<td align="right">8</td>
-<td align="right">19</td>
-<td align="right">7</td>
-<td align="right">9</td>
-<td align="right">6</td>
-<td align="right">6</td>
-<td align="right">40</td>
+<td>6.5</td>
+<td align="center">2.50</td>
+<td align="center">0.39</td>
+<td align="center">0.79</td>
+<td align="center">1.71</td>
+<td align="center">3.29</td>
+<td align="center">4</td>
 </tr>
 <tr class="odd">
-<td align="left">7</td>
-<td align="right">4</td>
-<td align="right">3</td>
-<td align="right">10</td>
-<td align="right">4</td>
-<td align="right">10</td>
-<td align="right">16</td>
-<td align="right">12</td>
-<td align="right">8</td>
-<td align="right">16</td>
-<td align="right">12</td>
-<td align="right">9</td>
-<td align="right">10</td>
-<td align="right">49</td>
+<td>7</td>
+<td align="center">3.17</td>
+<td align="center">0.47</td>
+<td align="center">0.95</td>
+<td align="center">2.22</td>
+<td align="center">4.12</td>
+<td align="center">5</td>
 </tr>
 <tr class="even">
-<td align="left">7.5</td>
-<td align="right">13</td>
-<td align="right">11</td>
-<td align="right">8</td>
-<td align="right">3</td>
-<td align="right">23</td>
-<td align="right">11</td>
-<td align="right">20</td>
-<td align="right">9</td>
-<td align="right">23</td>
-<td align="right">23</td>
-<td align="right">14</td>
-<td align="right">13</td>
-<td align="right">13</td>
+<td>7.5</td>
+<td align="center">4.75</td>
+<td align="center">0.68</td>
+<td align="center">1.38</td>
+<td align="center">3.37</td>
+<td align="center">6.13</td>
+<td align="center">7</td>
 </tr>
 <tr class="odd">
-<td align="left">8</td>
-<td align="right">30</td>
-<td align="right">30</td>
-<td align="right">35</td>
-<td align="right">25</td>
-<td align="right">30</td>
-<td align="right">24</td>
-<td align="right">45</td>
-<td align="right">19</td>
-<td align="right">35</td>
-<td align="right">31</td>
-<td align="right">22</td>
-<td align="right">28</td>
-<td align="right">87</td>
+<td>8</td>
+<td align="center">9.83</td>
+<td align="center">0.87</td>
+<td align="center">1.77</td>
+<td align="center">8.06</td>
+<td align="center">11.60</td>
+<td align="center">12</td>
 </tr>
 <tr class="even">
-<td align="left">8.5</td>
-<td align="right">50</td>
-<td align="right">49</td>
-<td align="right">54</td>
-<td align="right">56</td>
-<td align="right">49</td>
-<td align="right">63</td>
-<td align="right">62</td>
-<td align="right">82</td>
-<td align="right">57</td>
-<td align="right">72</td>
-<td align="right">43</td>
-<td align="right">41</td>
-<td align="right">455</td>
+<td>8.5</td>
+<td align="center">18.83</td>
+<td align="center">1.78</td>
+<td align="center">3.61</td>
+<td align="center">15.22</td>
+<td align="center">22.44</td>
+<td align="center">23</td>
 </tr>
 <tr class="odd">
-<td align="left">9</td>
-<td align="right">97</td>
-<td align="right">71</td>
-<td align="right">88</td>
-<td align="right">111</td>
-<td align="right">111</td>
-<td align="right">148</td>
-<td align="right">141</td>
-<td align="right">121</td>
-<td align="right">151</td>
-<td align="right">131</td>
-<td align="right">69</td>
-<td align="right">108</td>
-<td align="right">1230</td>
+<td>9</td>
+<td align="center">37.42</td>
+<td align="center">3.18</td>
+<td align="center">6.46</td>
+<td align="center">30.96</td>
+<td align="center">43.88</td>
+<td align="center">44</td>
 </tr>
 <tr class="even">
-<td align="left">9.5</td>
-<td align="right">133</td>
-<td align="right">127</td>
-<td align="right">134</td>
-<td align="right">152</td>
-<td align="right">147</td>
-<td align="right">182</td>
-<td align="right">154</td>
-<td align="right">183</td>
-<td align="right">154</td>
-<td align="right">183</td>
-<td align="right">155</td>
-<td align="right">186</td>
-<td align="right">8613</td>
+<td>9.5</td>
+<td align="center">52.50</td>
+<td align="center">3.61</td>
+<td align="center">7.33</td>
+<td align="center">45.17</td>
+<td align="center">59.83</td>
+<td align="center">60</td>
 </tr>
 <tr class="odd">
-<td align="left">10</td>
-<td align="right">96</td>
-<td align="right">101</td>
-<td align="right">96</td>
-<td align="right">104</td>
-<td align="right">89</td>
-<td align="right">134</td>
-<td align="right">130</td>
-<td align="right">135</td>
-<td align="right">117</td>
-<td align="right">128</td>
-<td align="right">112</td>
-<td align="right">105</td>
-<td align="right">1005</td>
+<td>10</td>
+<td align="center">37.42</td>
+<td align="center">2.79</td>
+<td align="center">5.66</td>
+<td align="center">31.76</td>
+<td align="center">43.08</td>
+<td align="center">44</td>
 </tr>
 <tr class="even">
-<td align="left">10.5</td>
-<td align="right">86</td>
-<td align="right">94</td>
-<td align="right">100</td>
-<td align="right">117</td>
-<td align="right">117</td>
-<td align="right">113</td>
-<td align="right">130</td>
-<td align="right">114</td>
-<td align="right">134</td>
-<td align="right">115</td>
-<td align="right">99</td>
-<td align="right">89</td>
-<td align="right">350</td>
+<td>10.5</td>
+<td align="center">36.33</td>
+<td align="center">2.43</td>
+<td align="center">4.93</td>
+<td align="center">31.40</td>
+<td align="center">41.26</td>
+<td align="center">42</td>
 </tr>
 <tr class="odd">
-<td align="left">11</td>
-<td align="right">32</td>
-<td align="right">49</td>
-<td align="right">55</td>
-<td align="right">49</td>
-<td align="right">51</td>
-<td align="right">46</td>
-<td align="right">56</td>
-<td align="right">44</td>
-<td align="right">56</td>
-<td align="right">43</td>
-<td align="right">33</td>
-<td align="right">38</td>
-<td align="right">245</td>
+<td>11</td>
+<td align="center">15.33</td>
+<td align="center">1.24</td>
+<td align="center">2.52</td>
+<td align="center">12.81</td>
+<td align="center">17.85</td>
+<td align="center">18</td>
 </tr>
 <tr class="even">
-<td align="left">11.5</td>
-<td align="right">30</td>
-<td align="right">26</td>
-<td align="right">30</td>
-<td align="right">20</td>
-<td align="right">27</td>
-<td align="right">51</td>
-<td align="right">36</td>
-<td align="right">34</td>
-<td align="right">26</td>
-<td align="right">54</td>
-<td align="right">35</td>
-<td align="right">30</td>
-<td align="right">30</td>
+<td>11.5</td>
+<td align="center">11.08</td>
+<td align="center">1.06</td>
+<td align="center">2.15</td>
+<td align="center">8.93</td>
+<td align="center">13.23</td>
+<td align="center">14</td>
 </tr>
 <tr class="odd">
-<td align="left">12</td>
-<td align="right">15</td>
-<td align="right">14</td>
-<td align="right">9</td>
-<td align="right">16</td>
-<td align="right">24</td>
-<td align="right">29</td>
-<td align="right">17</td>
-<td align="right">35</td>
-<td align="right">30</td>
-<td align="right">24</td>
-<td align="right">18</td>
-<td align="right">9</td>
-<td align="right">84</td>
+<td>12</td>
+<td align="center">6.67</td>
+<td align="center">0.83</td>
+<td align="center">1.68</td>
+<td align="center">4.99</td>
+<td align="center">8.35</td>
+<td align="center">9</td>
 </tr>
 <tr class="even">
-<td align="left">13</td>
-<td align="right">4</td>
-<td align="right">2</td>
-<td align="right">6</td>
-<td align="right">4</td>
-<td align="right">9</td>
-<td align="right">13</td>
-<td align="right">7</td>
-<td align="right">4</td>
-<td align="right">6</td>
-<td align="right">10</td>
-<td align="right">14</td>
-<td align="right">8</td>
-<td align="right">30</td>
+<td>13</td>
+<td align="center">2.42</td>
+<td align="center">0.32</td>
+<td align="center">0.65</td>
+<td align="center">1.77</td>
+<td align="center">3.07</td>
+<td align="center">4</td>
 </tr>
 <tr class="odd">
-<td align="left">14</td>
-<td align="right">8</td>
-<td align="right">13</td>
-<td align="right">14</td>
-<td align="right">8</td>
-<td align="right">14</td>
-<td align="right">10</td>
-<td align="right">15</td>
-<td align="right">12</td>
-<td align="right">4</td>
-<td align="right">12</td>
-<td align="right">9</td>
-<td align="right">7</td>
-<td align="right">15</td>
+<td>14</td>
+<td align="center">3.50</td>
+<td align="center">0.42</td>
+<td align="center">0.85</td>
+<td align="center">2.65</td>
+<td align="center">4.35</td>
+<td align="center">5</td>
 </tr>
 <tr class="even">
-<td align="left">15</td>
-<td align="right">3</td>
-<td align="right">10</td>
-<td align="right">5</td>
-<td align="right">10</td>
-<td align="right">8</td>
-<td align="right">11</td>
-<td align="right">14</td>
-<td align="right">11</td>
-<td align="right">11</td>
-<td align="right">4</td>
-<td align="right">14</td>
-<td align="right">10</td>
-<td align="right">52</td>
-</tr>
-<tr class="odd">
-<td align="left">Total</td>
-<td align="right">619</td>
-<td align="right">613</td>
-<td align="right">652</td>
-<td align="right">690</td>
-<td align="right">721</td>
-<td align="right">862</td>
-<td align="right">851</td>
-<td align="right">844</td>
-<td align="right">837</td>
-<td align="right">877</td>
-<td align="right">661</td>
-<td align="right">692</td>
-<td align="right">48507</td>
+<td>15</td>
+<td align="center">3.08</td>
+<td align="center">0.40</td>
+<td align="center">0.81</td>
+<td align="center">2.27</td>
+<td align="center">3.89</td>
+<td align="center">4</td>
 </tr>
 </tbody>
 </table>
+<table>
+<caption>Intervalo de confiança para as vendas de 2014 a 2016 de calçados para mulheres.</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Média</th>
+<th align="center">ErroPadrão</th>
+<th align="center">MargemErro</th>
+<th align="center">-95% CI</th>
+<th align="center">+95% CI</th>
+<th align="center">NumEscolhido</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>4.5</td>
+<td align="center">1.42</td>
+<td align="center">0.37</td>
+<td align="center">0.75</td>
+<td align="center">0.67</td>
+<td align="center">2.17</td>
+<td align="center">3</td>
+</tr>
+<tr class="even">
+<td>5</td>
+<td align="center">1.00</td>
+<td align="center">0.26</td>
+<td align="center">0.53</td>
+<td align="center">0.47</td>
+<td align="center">1.53</td>
+<td align="center">2</td>
+</tr>
+<tr class="odd">
+<td>5.5</td>
+<td align="center">1.75</td>
+<td align="center">0.36</td>
+<td align="center">0.73</td>
+<td align="center">1.02</td>
+<td align="center">2.48</td>
+<td align="center">3</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td align="center">2.25</td>
+<td align="center">0.52</td>
+<td align="center">1.06</td>
+<td align="center">1.19</td>
+<td align="center">3.31</td>
+<td align="center">4</td>
+</tr>
+<tr class="odd">
+<td>6.5</td>
+<td align="center">7.00</td>
+<td align="center">0.80</td>
+<td align="center">1.62</td>
+<td align="center">5.38</td>
+<td align="center">8.62</td>
+<td align="center">9</td>
+</tr>
+<tr class="even">
+<td>7</td>
+<td align="center">11.75</td>
+<td align="center">0.71</td>
+<td align="center">1.44</td>
+<td align="center">10.31</td>
+<td align="center">13.19</td>
+<td align="center">14</td>
+</tr>
+<tr class="odd">
+<td>7.5</td>
+<td align="center">21.67</td>
+<td align="center">2.40</td>
+<td align="center">4.87</td>
+<td align="center">16.80</td>
+<td align="center">26.54</td>
+<td align="center">27</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td align="center">36.17</td>
+<td align="center">2.55</td>
+<td align="center">5.18</td>
+<td align="center">30.99</td>
+<td align="center">41.35</td>
+<td align="center">42</td>
+</tr>
+<tr class="odd">
+<td>8.5</td>
+<td align="center">28.83</td>
+<td align="center">2.53</td>
+<td align="center">5.14</td>
+<td align="center">23.69</td>
+<td align="center">33.97</td>
+<td align="center">34</td>
+</tr>
+<tr class="even">
+<td>9</td>
+<td align="center">26.50</td>
+<td align="center">1.96</td>
+<td align="center">3.98</td>
+<td align="center">22.52</td>
+<td align="center">30.48</td>
+<td align="center">31</td>
+</tr>
+<tr class="odd">
+<td>9.5</td>
+<td align="center">12.67</td>
+<td align="center">0.96</td>
+<td align="center">1.95</td>
+<td align="center">10.72</td>
+<td align="center">14.62</td>
+<td align="center">15</td>
+</tr>
+<tr class="even">
+<td>10</td>
+<td align="center">6.42</td>
+<td align="center">0.59</td>
+<td align="center">1.20</td>
+<td align="center">5.22</td>
+<td align="center">7.62</td>
+<td align="center">8</td>
+</tr>
+<tr class="odd">
+<td>10.5</td>
+<td align="center">5.50</td>
+<td align="center">0.69</td>
+<td align="center">1.40</td>
+<td align="center">4.10</td>
+<td align="center">6.90</td>
+<td align="center">7</td>
+</tr>
+<tr class="even">
+<td>11</td>
+<td align="center">1.25</td>
+<td align="center">0.31</td>
+<td align="center">0.63</td>
+<td align="center">0.62</td>
+<td align="center">1.88</td>
+<td align="center">2</td>
+</tr>
+<tr class="odd">
+<td>11.5</td>
+<td align="center">1.67</td>
+<td align="center">0.43</td>
+<td align="center">0.87</td>
+<td align="center">0.80</td>
+<td align="center">2.54</td>
+<td align="center">3</td>
+</tr>
+<tr class="even">
+<td>12</td>
+<td align="center">2.17</td>
+<td align="center">0.61</td>
+<td align="center">1.24</td>
+<td align="center">0.93</td>
+<td align="center">3.41</td>
+<td align="center">4</td>
+</tr>
+</tbody>
+</table>
+<div style="page-break-after: always;"></div>
+</div>
+<div id="tarefa-2" class="section level2">
+<h2><span class="header-section-number">2.2</span> Tarefa 2</h2>
+<div id="desenvolvimento" class="section level3">
+<h3><span class="header-section-number">2.2.1</span> Desenvolvimento</h3>
+<p>Para a solução dessa tarefa serão filtrados os dados de vendas de sapatos femininos nas lojas ARA1 e ARA2 (Aracati 1 e 2), e separados em tabelas distintas, uma para cada loja referente às vendas em 2016.</p>
+<table>
+<caption>Vendas de sapatos femininos em 2016 da loja 1 de Aracati, por tamanho.</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">jan16</th>
+<th align="center">fev16</th>
+<th align="center">mar16</th>
+<th align="center">abr16</th>
+<th align="center">mai16</th>
+<th align="center">jun16</th>
+<th align="center">jul16</th>
+<th align="center">ago16</th>
+<th align="center">set16</th>
+<th align="center">out16</th>
+<th align="center">nov16</th>
+<th align="center">dez16</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>4.5</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">3</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td>5</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">2</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td>5.5</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td align="center">0</td>
+<td align="center">2</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td>6.5</td>
+<td align="center">3</td>
+<td align="center">3</td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">2</td>
+<td align="center">0</td>
+<td align="center">2</td>
+<td align="center">1</td>
+<td align="center">3</td>
+<td align="center">4</td>
+</tr>
+<tr class="even">
+<td>7</td>
+<td align="center">0</td>
+<td align="center">3</td>
+<td align="center">3</td>
+<td align="center">4</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">2</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">1</td>
+</tr>
+<tr class="odd">
+<td>7.5</td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">4</td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">6</td>
+<td align="center">4</td>
+<td align="center">3</td>
+<td align="center">5</td>
+<td align="center">8</td>
+<td align="center">2</td>
+<td align="center">1</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td align="center">6</td>
+<td align="center">10</td>
+<td align="center">3</td>
+<td align="center">9</td>
+<td align="center">1</td>
+<td align="center">3</td>
+<td align="center">6</td>
+<td align="center">8</td>
+<td align="center">3</td>
+<td align="center">12</td>
+<td align="center">3</td>
+<td align="center">9</td>
+</tr>
+<tr class="odd">
+<td>8.5</td>
+<td align="center">10</td>
+<td align="center">10</td>
+<td align="center">10</td>
+<td align="center">7</td>
+<td align="center">14</td>
+<td align="center">4</td>
+<td align="center">7</td>
+<td align="center">7</td>
+<td align="center">4</td>
+<td align="center">8</td>
+<td align="center">7</td>
+<td align="center">9</td>
+</tr>
+<tr class="even">
+<td>9</td>
+<td align="center">1</td>
+<td align="center">3</td>
+<td align="center">8</td>
+<td align="center">6</td>
+<td align="center">3</td>
+<td align="center">1</td>
+<td align="center">4</td>
+<td align="center">4</td>
+<td align="center">0</td>
+<td align="center">2</td>
+<td align="center">4</td>
+<td align="center">2</td>
+</tr>
+<tr class="odd">
+<td>9.5</td>
+<td align="center">4</td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">2</td>
+<td align="center">2</td>
+<td align="center">4</td>
+<td align="center">5</td>
+<td align="center">2</td>
+<td align="center">3</td>
+<td align="center">2</td>
+</tr>
+<tr class="even">
+<td>10</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">3</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">1</td>
+</tr>
+<tr class="odd">
+<td>10.5</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">2</td>
+<td align="center">2</td>
+<td align="center">4</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">3</td>
+<td align="center">1</td>
+<td align="center">1</td>
+</tr>
+<tr class="even">
+<td>11</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td>11.5</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">2</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td>12</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Vendas de sapatos femininos em 2016 da loja 2 de Aracati, por tamanho.</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">jan16</th>
+<th align="center">fev16</th>
+<th align="center">mar16</th>
+<th align="center">abr16</th>
+<th align="center">mai16</th>
+<th align="center">jun16</th>
+<th align="center">jul16</th>
+<th align="center">ago16</th>
+<th align="center">set16</th>
+<th align="center">out16</th>
+<th align="center">nov16</th>
+<th align="center">dez16</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>4.5</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td>5</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">2</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td>5.5</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">2</td>
+<td align="center">0</td>
+<td align="center">1</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">3</td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td>6.5</td>
+<td align="center">2</td>
+<td align="center">0</td>
+<td align="center">2</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">1</td>
+<td align="center">3</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td>7</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">4</td>
+<td align="center">1</td>
+<td align="center">3</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">3</td>
+<td align="center">1</td>
+<td align="center">4</td>
+</tr>
+<tr class="odd">
+<td>7.5</td>
+<td align="center">2</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">3</td>
+<td align="center">2</td>
+<td align="center">7</td>
+<td align="center">9</td>
+<td align="center">8</td>
+<td align="center">14</td>
+<td align="center">8</td>
+<td align="center">6</td>
+<td align="center">3</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td align="center">13</td>
+<td align="center">6</td>
+<td align="center">5</td>
+<td align="center">13</td>
+<td align="center">5</td>
+<td align="center">3</td>
+<td align="center">11</td>
+<td align="center">6</td>
+<td align="center">6</td>
+<td align="center">9</td>
+<td align="center">8</td>
+<td align="center">3</td>
+</tr>
+<tr class="odd">
+<td>8.5</td>
+<td align="center">8</td>
+<td align="center">5</td>
+<td align="center">10</td>
+<td align="center">4</td>
+<td align="center">5</td>
+<td align="center">5</td>
+<td align="center">9</td>
+<td align="center">7</td>
+<td align="center">3</td>
+<td align="center">7</td>
+<td align="center">9</td>
+<td align="center">8</td>
+</tr>
+<tr class="even">
+<td>9</td>
+<td align="center">5</td>
+<td align="center">2</td>
+<td align="center">2</td>
+<td align="center">9</td>
+<td align="center">3</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">7</td>
+<td align="center">2</td>
+<td align="center">1</td>
+<td align="center">4</td>
+<td align="center">2</td>
+</tr>
+<tr class="odd">
+<td>9.5</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">2</td>
+<td align="center">1</td>
+<td align="center">7</td>
+<td align="center">2</td>
+<td align="center">4</td>
+<td align="center">2</td>
+</tr>
+<tr class="even">
+<td>10</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">2</td>
+<td align="center">3</td>
+<td align="center">0</td>
+<td align="center">2</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td>10.5</td>
+<td align="center">0</td>
+<td align="center">2</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">2</td>
+<td align="center">1</td>
+</tr>
+<tr class="even">
+<td>11</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">1</td>
+</tr>
+<tr class="odd">
+<td>11.5</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">5</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td>12</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">2</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">0</td>
+</tr>
+</tbody>
+</table>
+<p>Após a seleção e organização dos dados são aplicados testes estatísticos para cada tamanho de sapato vendido, com o objetivo de saber se há diferença no perfil de venda da loja em cada tipo de produto. O teste selecionado é o t de student pelos seguintes motivos:</p>
+<ul>
+<li>Temos variância populacional desconhecida;</li>
+<li>Temos uma amostra pequena.</li>
+<li>Por se tratar de uma amostra grande podemos utilizar testes paramétricos.</li>
+</ul>
+<p>O teste t será utilizado para saber se há diferença significativa entre as vendas em 2016 de cada tamanho de sapato. Serão utilizados os seguintes parâmetros para a realização dos testes:</p>
+<ul>
+<li>Amostra 1: vendas em 2016 dos sapatos de um determinado número da loja ARA1;</li>
+<li>Amostra 2: vendas em 2016 dos sapatos, do mesmo número da amostra 1, da loja ARA2;</li>
+<li>Variância populacional será considerada igual, embora desconhecida;</li>
+<li>Intervalo de confiança de 90%;</li>
+<li>Graus de liberdade: 22, pois são testadas duas amostras de 12 meses cada com variâncias populacionais consideradas iguais.</li>
+</ul>
+<p>A hipótese nula do teste t aplicado é de que não há diferença significativa entre as médias das vendas mês a mês dos mesmos tipos produtos de cada loja.</p>
+<p>A variância conjunta das amostras é calculada a partir da fórmula abaixo: <span class="math display">\[
+s_{p}^{2}={\frac {\left ( n_{x}-1 \right )s_{x}^{2}+\left ( n_{y}-1 \right )s_{y}^{2}}{n_{x}+n_{y}-2}}
+\]</span> A variância conjunta é utilizado para calcular o intervalo de confiança, para o nível especificado, da diferença entre as médias, de acordo com a expressão seguinte:</p>
+<p><span class="math display">\[
+\left ( \bar{x}-\bar{y} \right ) \pm t_{n_{x}+n_{x}-2,\alpha/2}\sqrt{\frac{s_{p}^2}{n_{x}}+\frac{s_{p}^2}{n_{y}}}
+\]</span></p>
+<p>A chamada da função do teste t em R:</p>
+<p><code>t.test(ara1[,&quot;num&quot;],ara2[,&quot;num&quot;], var.equal = TRUE,conf.level = 0.90)</code></p>
+<p>O resultado dos teste é mostrado na tabela 7.</p>
+<table>
+<caption>Comparação das vendas das lojas ARA1 e ARA2 por tamanho no ano de 2016</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">estatística t</th>
+<th align="center">valor p</th>
+<th align="center">gl</th>
+<th align="center">mediaARA1</th>
+<th align="center">mediaARA2</th>
+<th align="center">-90% CI</th>
+<th align="center">+90% CI</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>4.5</td>
+<td align="center">1.221</td>
+<td align="center">0.2349</td>
+<td align="center">22</td>
+<td align="center">0.42</td>
+<td align="center">0.08</td>
+<td align="center">-0.14</td>
+<td align="center">0.80</td>
+</tr>
+<tr class="even">
+<td>5</td>
+<td align="center">0.000</td>
+<td align="center">1.0000</td>
+<td align="center">22</td>
+<td align="center">0.17</td>
+<td align="center">0.17</td>
+<td align="center">-0.40</td>
+<td align="center">0.40</td>
+</tr>
+<tr class="odd">
+<td>5.5</td>
+<td align="center">-1.216</td>
+<td align="center">0.2370</td>
+<td align="center">22</td>
+<td align="center">0.08</td>
+<td align="center">0.33</td>
+<td align="center">-0.60</td>
+<td align="center">0.10</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td align="center">-1.254</td>
+<td align="center">0.2232</td>
+<td align="center">22</td>
+<td align="center">0.17</td>
+<td align="center">0.58</td>
+<td align="center">-0.99</td>
+<td align="center">0.15</td>
+</tr>
+<tr class="odd">
+<td>6.5</td>
+<td align="center">1.268</td>
+<td align="center">0.2179</td>
+<td align="center">22</td>
+<td align="center">1.83</td>
+<td align="center">1.25</td>
+<td align="center">-0.21</td>
+<td align="center">1.37</td>
+</tr>
+<tr class="even">
+<td>7</td>
+<td align="center">-0.558</td>
+<td align="center">0.5827</td>
+<td align="center">22</td>
+<td align="center">1.25</td>
+<td align="center">1.58</td>
+<td align="center">-1.36</td>
+<td align="center">0.69</td>
+</tr>
+<tr class="odd">
+<td>7.5</td>
+<td align="center">-1.575</td>
+<td align="center">0.1295</td>
+<td align="center">22</td>
+<td align="center">3.25</td>
+<td align="center">5.33</td>
+<td align="center">-4.35</td>
+<td align="center">0.19</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td align="center">-0.875</td>
+<td align="center">0.3912</td>
+<td align="center">22</td>
+<td align="center">6.08</td>
+<td align="center">7.33</td>
+<td align="center">-3.70</td>
+<td align="center">1.20</td>
+</tr>
+<tr class="odd">
+<td>8.5</td>
+<td align="center">1.378</td>
+<td align="center">0.1822</td>
+<td align="center">22</td>
+<td align="center">8.08</td>
+<td align="center">6.67</td>
+<td align="center">-0.35</td>
+<td align="center">3.18</td>
+</tr>
+<tr class="even">
+<td>9</td>
+<td align="center">-0.085</td>
+<td align="center">0.9333</td>
+<td align="center">22</td>
+<td align="center">3.17</td>
+<td align="center">3.25</td>
+<td align="center">-1.77</td>
+<td align="center">1.61</td>
+</tr>
+<tr class="odd">
+<td>9.5</td>
+<td align="center">0.881</td>
+<td align="center">0.3880</td>
+<td align="center">22</td>
+<td align="center">2.50</td>
+<td align="center">1.92</td>
+<td align="center">-0.55</td>
+<td align="center">1.72</td>
+</tr>
+<tr class="even">
+<td>10</td>
+<td align="center">0.215</td>
+<td align="center">0.8321</td>
+<td align="center">22</td>
+<td align="center">0.83</td>
+<td align="center">0.75</td>
+<td align="center">-0.58</td>
+<td align="center">0.75</td>
+</tr>
+<tr class="odd">
+<td>10.5</td>
+<td align="center">1.715</td>
+<td align="center">0.1004</td>
+<td align="center">22</td>
+<td align="center">1.25</td>
+<td align="center">0.50</td>
+<td align="center">0.00</td>
+<td align="center">1.50</td>
+</tr>
+<tr class="even">
+<td>11</td>
+<td align="center">-0.920</td>
+<td align="center">0.3676</td>
+<td align="center">22</td>
+<td align="center">0.17</td>
+<td align="center">0.33</td>
+<td align="center">-0.48</td>
+<td align="center">0.14</td>
+</tr>
+<tr class="odd">
+<td>11.5</td>
+<td align="center">-0.742</td>
+<td align="center">0.4662</td>
+<td align="center">22</td>
+<td align="center">0.17</td>
+<td align="center">0.50</td>
+<td align="center">-1.11</td>
+<td align="center">0.44</td>
+</tr>
+<tr class="even">
+<td>12</td>
+<td align="center">-0.715</td>
+<td align="center">0.4820</td>
+<td align="center">22</td>
+<td align="center">0.25</td>
+<td align="center">0.42</td>
+<td align="center">-0.57</td>
+<td align="center">0.23</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="análise-dos-resultados" class="section level3">
+<h3><span class="header-section-number">2.2.2</span> Análise dos resultados</h3>
+<p>Considerando um valo p de referência de <code>0.05</code>, pode-se observar na tabela 7 que nenhum valor p dos testes realizados indica que há diferenças estatisticamente relevantes entre as vendas dos sapatos de cada tamanho, portanto a hipótese nula de que não há diferença entre as médias das vendas não pode ser rejeitada.</p>
+<p>Pode-se tirar a mesma conclusão ao analisar os intervalos de confiança gerados pelos testes pois uma vez que, para todos os tamanhos de sapatos, o valor <code>0.0</code> está contido entre o limite inferior e o limite inferior do intervalo de confiança de 90%.</p>
+<p>Em posse dessas conclusões, já que não foram encontradas diferenças significativas entre o perfil de vendas das lojas 1 e 2 de Aracati, é possível sugerir que as lojas possuam um estoque único.</p>
+</div>
 </div>
 </div>
 
