@@ -437,7 +437,7 @@ resultado %>%
 
 ### Análise dos resultados
 
-Considerando um valo p de referência de `0.05`, pode-se observar na tabela 7 que nenhum valor p dos testes realizados indica que há diferenças estatisticamente relevantes entre as vendas dos sapatos de cada tamanho, portanto a hipótese nula de que não há diferença entre as médias das vendas não pode ser rejeitada.
+Considerando um valor p de referência de `0.05`, pode-se observar na tabela 7 que nenhum valor p dos testes realizados indica que há diferenças estatisticamente relevantes entre as vendas dos sapatos de cada tamanho, portanto a hipótese nula de que não há diferença entre as médias das vendas não pode ser rejeitada.
 
 Pode-se tirar a mesma conclusão ao analisar os intervalos de confiança gerados pelos testes pois uma vez que, para todos os tamanhos de sapatos, o valor `0.0` está contido entre o limite inferior e o limite inferior do intervalo de confiança de 90%.
 
