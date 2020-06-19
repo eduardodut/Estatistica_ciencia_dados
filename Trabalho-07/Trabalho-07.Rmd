@@ -1,0 +1,448 @@
+---
+title: |
+  | Estatística para Ciência de Dados
+  | Resolução do trabalho 06
+author: "| Eduardo Façanha Dutra \n| Giovanni Brígido\n"
+output:
+  pdf_document:
+    number_sections: yes
+  lang: pt-br
+  html_document:
+    
+    number_sections: yes
+header-includes:
+    \renewcommand{\contentsname}{Conteúdo}
+    \renewcommand{\tablename}{Tabela}
+    
+---
+
+\newpage 
+\tableofcontents
+\newpage
+
+
+# Enunciado
+Você é um analista de dados no setor de compras da Casa Pio, uma grande rede de lojas  de calçados.
+
+Ela é uma empresa com sede em Fortaleza estabelecido há 70 anos. Atualmente, também opera em várias cidades do interior do Ceará, A empresa vende sapatos de preços médios, variando de 120 a 200 reais. Embora os sapatos sejam de alta qualidade, existem lotes e lotes no estoque que nunca são vendidos. Em outras palavras, os sapatos estragando nas prateleiras das lojas.
+
+Por isto, o gerenciamento de estoque é um problema muito comum e importante. 
+
+Muitas, senão a maioria das lojas, não conseguem determinar número correto de itens que precisam manter em estoque. O problema oposto também surge: lojas sem estoque necessário de mercadorias não irão atender à demanda de mercado. Por exemplo, você certamente já entrou em uma loja de sapatos, mas não conseguiu comprar porque eles não tinham o número em estoque.
+
+Neste estudo, vamos examinar o problema oposto - ter muito estoque.
+
+Este é um problema mais significativo para a empresa, pois indica que investiu na produção ou compra de um produto, mas não foi capaz de vendê-lo.
+
+Temos um banco de dados com as informações de vendas das lojas durante os anos 2014 a 2016, com várias informações uteis.
+
+Nosso problema é estimar o volume de compra de sapatos para não ficar com estoque muito alto, nem perder muitas vendas.
+
+**Tarefa 1**
+Responda as seguintes perguntas:
+
+    1- Os dados fornecidos são amostrais ou populacionais?
+    2- Você separaria os dados em quantos grupos?
+    3- Esses grupos são dependentes ou independentes?
+    4- Como você agrupará os dados para ter uma melhor visão do problema a ser resolvido? 
+    5- Os dados fornecidos representam uma distribuição Normal?
+    6- Qual o intervalo de confiança que será usado?
+    7- Qual a estatística será usada? Z ou t?
+    8- Com base na sua resposta a pergunta 7, qual a sua justificativa?
+    9- Quantos pares de cada sapato devemos ter em estoque?
+    
+**Tarefa 2**
+
+Digamos que queremos usar um intervalo de confiança para ver se duas lojas estão vendendo o mesmo número de sapatos. Além disso, queremos saber com 90% confiança quanto uma loja supera a outra em termos de vendas. Você tem duas tabelas representando as vendas de calçados femininos em duas lojas. Seus códigos são ARA 1 e ARA 2. Temos dados para 2016.
+
+Justifique suas escolhas e aplique uma estatística para determinar qual das lojas vende mais produtos, e quais.
+
+Verifique com 90% de confiança, se ambas lojas podem ter um estoque único.
+
+
+\pagebreak
+
+# Resolução
+
+## Tarefa 1
+
+**1- Os dados fornecidos são amostrais ou populacionais?**
+
+Os dados fornecidos são amostrais, uma vez que se referem a apenas 3 anos, de 2014 a 2016 e Casa Pio já está estabelecida em Fortaleza há 70 anos.
+
+**2- Você separaria os dados em quantos grupos?**
+
+Separaria os dados por gênero, por tamanho de sapato, por mês e ano. Nesse caso específico foram utilizados os dados de todo Ceará.
+
+**3- Esses grupos são dependentes ou independentes?**
+
+Os grupos são independentes.
+
+**4- Como você agrupará os dados para ter uma melhor visão do problema a ser resolvido? **
+
+Os dados serão agrupados por meses, por ano, e por tamanho de sapato, em ordem crescente, sendo criadas duas tabelas, uma para cada gênero. Dessa maneira, obtém-se uma visão melhor do problema a ser resolvido.
+
+```{r Leitura dos dados e declaração das funções para organização dos dados, warning=FALSE, include=FALSE}
+
+library(dplyr)
+library(tidyr)
+library(readxl)
+library(PEIP)
+
+
+library(knitr)
+
+library(kableExtra)
+
+casa_pio <- data.frame(readxl::read_excel(
+  "Dados/casa pio.xlsx",
+  col_types = c(
+    "skip",
+    "skip",
+    "text",
+    "skip",
+    "text",
+    "text",
+    "numeric",
+    "skip",
+    "skip",
+    "numeric",
+    "numeric",
+    "numeric",
+    "numeric",
+    "numeric"
+  ),
+  skip = 2
+)) %>%
+  select(Ano = ...7, Mes = Month, Loja, Sexo, Tamanho) %>%
+  arrange(Ano)
+
+ 
+filtra_tabela <- function(dados, sexo, anoInicial, anoFinal) {
+  
+  aux <- data.frame()
+ 
+  
+  for (ano in anoInicial:anoFinal) {
+    
+    v <- dados %>%
+      filter( Ano == ano, Sexo == sexo) %>% 
+      select(-Sexo) %>% 
+      group_by(Mes, Tamanho) %>%
+      count() %>%
+    spread(key = "Mes",
+           value = "n",
+           fill = 0) %>%
+    ungroup() %>%
+    `colnames<-`(
+      append(paste(c(
+        "jan",
+        "fev",
+        "mar",
+        "abr",
+        "mai",
+        "jun",
+        "jul",
+        "ago",
+        "set",
+        "out",
+        "nov",
+        "dez"
+      ),toString(ano),sep = ""),values = "Tamanho", after = 0)) %>%
+    bind_rows(summarise_all(., ~ if (is.numeric(.))
+      sum(.)
+      else
+        "Total")) %>%
+    arrange(as.numeric(Tamanho))
+    class(v) <- "data.frame"
+    
+    if(ncol(aux) == 0){
+      
+     aux <- v
+     
+    }else{
+      
+      aux <- left_join(aux,v,by="Tamanho")
+    }
+    
+  }
+  nomes <- aux[,1]
+  aux <-t(aux)%>%`colnames<-`(append(nomes[1:16],values = "Total", after = 16))
+  aux <- as_tibble(aux[-1,])
+  return(aux)
+  
+}
+
+
+
+tab_intervalo_conf <- function(dados, intervaloConfianca) {
+  x <- dados %>% select(-contains("Total"))
+  
+  numAmostras = nrow(x)
+  
+  nomesLinhas <- colnames(x)
+  
+  
+  tvalue <-
+    tinv(p = 1 - (1 - intervaloConfianca) / 2, nu = numAmostras - 1)
+  media <- round(apply(x, 2, mean), 2)
+  erro_Padrao <- round(apply(x, 2, sd) / numAmostras ^ 0.5, 2)
+  margem_Erro <- round(erro_Padrao * tvalue, 2)
+  ci_inf <- round(media - margem_Erro, 2)
+  ci_sup <- round(media + margem_Erro, 2)
+  
+  novasColunas <-
+    c(paste("-", toString(intervaloConfianca * 100), "%", " CI", sep = ""),
+      paste("+", toString(intervaloConfianca * 100), "%", " CI", sep = ""))
+  
+  
+  aux <-
+    t(bind_rows(media, erro_Padrao, margem_Erro, ci_inf, ci_sup)) %>%
+    `colnames<-`(c(
+      "Média",
+      "ErroPadrão",
+      "MargemErro",
+      novasColunas[1],
+      novasColunas[2]
+    ))  %>%
+    as_tibble() %>%
+    mutate(NumEscolhido = ceiling(.data[[novasColunas[2]]])) %>%
+    as.matrix() %>%
+    `row.names<-`(nomesLinhas)
+  
+  return(aux)
+  
+}
+
+gera_tabela_intervalo_confianca <-
+  function(dados, anoInicial, anoFinal, sexo, intervaloConf) {
+    anoInicial <- anoInicial
+    anoFinal <- anoFinal
+    sexo.extenso <-
+      if (sexo == "Masc") {
+        "homens"
+      } else if (sexo == "Fem") {
+        "mulheres"
+      }
+    
+    caption = paste(
+      "Intervalo de confiança para as vendas de ",
+      toString(anoInicial),
+      " a ",
+      toString(anoFinal),
+      " de calçados para ",
+      sexo.extenso,
+      ".",
+      sep = ""
+    )
+    
+    filtra_tabela(dados,
+                  sexo = sexo,
+                  anoInicial = anoInicial,
+                  anoFinal = anoFinal) %>% 
+      tab_intervalo_conf(intervaloConf) %>%
+      knitr::kable(format = 'pandoc', caption = caption,align = "c")
+  }
+
+
+```
+
+```{r Tabela vendas de sapatos masculinos, echo=FALSE, warning=FALSE, results='asis'}
+
+nomes <- c()
+for (ano in 2014:2016) {
+  meses <- c("jan",
+        "fev",
+        "mar",
+        "abr",
+        "mai",
+        "jun",
+        "jul",
+        "ago",
+        "set",
+        "out",
+        "nov",
+        "dez")
+  nomes <- append(nomes,paste(meses,substring(toString(ano),first=3), sep = ""))
+}
+
+
+casa_pio %>% 
+  filtra_tabela(sexo = "Masc", anoInicial = 2014,anoFinal = 2016) %>%
+  as.matrix() %>%
+  `rownames<-`(nomes) %>%
+  knitr::kable(format = 'pandoc', caption = "Vendas de sapatos masculinos de 2014 a 2016 em todo o Ceará, por tamanho.",align = "c")
+
+```
+```{r Tabela vendas de sapatos femininos, echo=FALSE, warning=FALSE, results='asis'}
+casa_pio %>% 
+  filtra_tabela(sexo = "Fem",anoInicial = 2014,anoFinal = 2016) %>% as.matrix()%>%`rownames<-`(nomes)%>%
+  knitr::kable(format = 'pandoc', caption = "Vendas de sapatos femininos de 2014 a 2016 em todo o Ceará, por tamanho.",align = "c")
+
+```
+
+**5- Os dados fornecidos representam uma distribuição Normal?**
+
+De acordo com o Teorema do Limite Central, as médias de amostras grandes e aleatórias são aproximadamente normais. Logo, pode-se aplicar técnicas usadas em dados que seguem uma distribuição normal.
+
+**6- Qual o intervalo de confiança que será usado?**
+
+O intervalo de confiança será de 95%
+
+**7- Qual a estatística será usada? Z ou t?**
+
+A estatística que será usada será a t.
+
+**8- Com base na sua resposta a pergunta 7, qual a sua justificativa?**
+
+Como são três anos de dados e os dados estão divididos em meses, totalizando 36 meses de dados, optou-se pela distribuição t, uma vez que a amostra tem tamanho próximo de 30. Ademais, como a variância populacional é desconhecida, sugere-se o uso da estatística t.
+
+**9- Quantos pares de cada sapato devemos ter em estoque?**
+
+Aplicando uma estratégia agressiva de mercado, adotou-se o arredondamento para cima do limite superior do intervalo de confiança para definir quantos pares de sapato deve-se ter em estoque, para cada mês, em média.
+
+```{r Tabela intervalo de confiança homens, echo=FALSE, results='asis'}
+casa_pio %>%
+gera_tabela_intervalo_confianca(2014, 2016, "Masc", 0.95)
+
+```
+```{r Tabela intervalo de confiança mulheres, echo=FALSE, results='asis'}
+casa_pio %>%
+gera_tabela_intervalo_confianca( 2014, 2016, "Fem", 0.95)
+
+```
+
+\pagebreak
+
+## Tarefa 2
+
+### Desenvolvimento
+
+Para a solução dessa tarefa serão filtrados os dados de vendas de sapatos femininos nas lojas ARA1 e ARA2 (Aracati 1 e 2), e separados em tabelas distintas, uma para cada loja referente às vendas em 2016.
+
+```{r, echo=FALSE, results='asis'}
+meses <- c("jan","fev", "mar","abr","mai","jun",
+           "jul","ago","set","out","nov","dez")
+nomes <- paste(meses, substring(toString(2016), first = 3), sep = "")
+casa_pio %>% filter(Loja == "ARA1") %>%
+  filtra_tabela(sexo = "Fem",
+                anoInicial = 2016,
+                anoFinal = 2016) %>% select(-Total) %>% as.matrix() %>% `rownames<-`(nomes) %>%
+  t() %>%
+  knitr::kable(format = 'pandoc',
+               caption = "Vendas de sapatos femininos em 2016 da loja 1 de Aracati, por tamanho.",
+               align = "c")
+```
+
+```{r echo=FALSE, warning=FALSE, results='asis'}
+casa_pio %>% 
+  filter(Loja == "ARA2") %>%
+  filtra_tabela(sexo = "Fem",
+                anoInicial = 2016,
+                anoFinal = 2016) %>% 
+  select(-Total) %>% 
+  as.matrix() %>% 
+  `rownames<-`(nomes) %>%
+  t() %>%
+  knitr::kable(format = "pandoc",
+               caption = "Vendas de sapatos femininos em 2016 da loja 2 de Aracati, por tamanho.",
+               align = "c")
+  
+```
+
+Após a seleção e organização dos dados são aplicados testes estatísticos para cada tamanho de sapato vendido, com o objetivo de saber se há diferença no perfil de venda da loja em cada tipo de produto. O teste selecionado é o t de student pelos seguintes motivos:
+  
+  * Temos variância populacional desconhecida;
+  * Temos uma amostra pequena.
+  * Por se tratar de uma amostra grande podemos utilizar testes paramétricos.
+  
+O teste t será utilizado para saber se há diferença significativa entre as vendas em 2016 de cada tamanho de sapato. Serão utilizados os seguintes parâmetros para a realização dos testes:
+
+  * Amostra 1: vendas em 2016 dos sapatos de um determinado número da loja ARA1;
+  * Amostra 2: vendas em 2016 dos sapatos, do mesmo número da amostra 1, da loja ARA2;
+  * Variância populacional será considerada igual, embora desconhecida;
+  * Intervalo de confiança de 90%;
+  * Graus de liberdade: 22, pois são testadas duas amostras de 12 meses cada com variâncias populacionais consideradas iguais.
+  
+A hipótese nula do teste t aplicado é de que não há diferença significativa entre as médias das vendas mês a mês dos mesmos tipos produtos de cada loja.
+  
+A variância conjunta das amostras é calculada a partir da fórmula abaixo:
+$$
+s_{p}^{2}={\frac {\left ( n_{x}-1 \right )s_{x}^{2}+\left ( n_{y}-1 \right )s_{y}^{2}}{n_{x}+n_{y}-2}}
+$$
+A variância conjunta é utilizado para calcular o intervalo de confiança, para o nível especificado, da diferença entre as médias, de acordo com a expressão seguinte:
+
+$$
+\left ( \bar{x}-\bar{y} \right ) \pm t_{n_{x}+n_{x}-2,\alpha/2}\sqrt{\frac{s_{p}^2}{n_{x}}+\frac{s_{p}^2}{n_{y}}}
+$$
+  
+A chamada da função do teste t em R:
+
+`t.test(ara1[,"num"],ara2[,"num"], var.equal = TRUE,conf.level = 0.90)`
+
+O resultado dos teste é mostrado na tabela 7.
+  
+```{r warning=FALSE,echo=FALSE, results='asis'}
+ara1 <- casa_pio %>%
+  filter(Loja == "ARA1") %>%
+  filtra_tabela("Fem", 2016, 2016)
+ara2 <- casa_pio %>%
+  filter(Loja == "ARA2") %>%
+  filtra_tabela("Fem", 2016, 2016)
+resultado <- matrix()
+
+
+conf.Level = 0.90
+nomes <-
+    c("estatística t",
+      "valor p",
+      "gl",
+      "mediaARA1",
+      "mediaARA2",
+      paste("-", conf.Level * 100, "% ", "CI", sep = ""),
+      paste("+", conf.Level * 100, "% ", "CI", sep = ""))
+for (col in colnames(ara1)[1:ncol(ara1)-1]) {
+  
+  var <- t.test(ara1[,col],ara2[,col],var.equal = TRUE,conf.level = conf.Level)
+  t <- round(var$statistic[[1]],3)
+  p_value <- round(var$p.value[[1]],4)
+  grausLiberdade <- var$parameter[[1]]
+  
+  mediaARA1 <- round(var$estimate[1],2)[[1]]
+  mediaARA2 <- round(var$estimate[2],2)[[1]]
+  
+  ci_min <- round(var$conf.int[1],2) 
+  ci_max <-round(var$conf.int[2],2)
+  row <- c(t,p_value,grausLiberdade,mediaARA1,mediaARA2,ci_min, ci_max)
+  
+  if (ncol(resultado) == 1) {
+    
+    resultado <- matrix(row, nrow=1)
+   
+  }else{
+    resultado <- rbind(resultado, matrix(row, nrow=1))
+    
+  }
+}
+
+rownames(resultado) <- colnames(ara1)[1:16]
+colnames(resultado) <- nomes
+  
+ 
+
+resultado %>% 
+  knitr::kable(format = 'pandoc', caption = "Comparação das vendas das lojas ARA1 e ARA2 por tamanho no ano de 2016", align = "c")
+
+```
+
+### Análise dos resultados
+
+Considerando um valor p de referência de `0.05`, pode-se observar na tabela 7 que nenhum valor p dos testes realizados indica que há diferenças estatisticamente relevantes entre as vendas dos sapatos de cada tamanho, portanto a hipótese nula de que não há diferença entre as médias das vendas não pode ser rejeitada.
+
+Pode-se tirar a mesma conclusão ao analisar os intervalos de confiança gerados pelos testes pois uma vez que, para todos os tamanhos de sapatos, o valor `0.0` está contido entre o limite inferior e o limite inferior do intervalo de confiança de 90%.
+
+Em posse dessas conclusões, já que não foram encontradas diferenças significativas entre o perfil de vendas das lojas 1 e 2 de Aracati, é possível sugerir que as lojas possuam um estoque único.
+
+  
+
+
