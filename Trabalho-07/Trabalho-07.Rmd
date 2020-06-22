@@ -1,448 +1,334 @@
 ---
 title: |
   | Estatística para Ciência de Dados
-  | Resolução do trabalho 06
-author: "| Eduardo Façanha Dutra \n| Giovanni Brígido\n"
+  | Resolução do trabalho 07
+author: 'Eduardo Façanha Dutra'
 output:
   pdf_document:
     number_sections: yes
   lang: pt-br
   html_document:
-    
     number_sections: yes
-header-includes:
-    \renewcommand{\contentsname}{Conteúdo}
-    \renewcommand{\tablename}{Tabela}
-    
+  word_document: default
+header-includes: \renewcommand{\contentsname}{Conteúdo} \renewcommand{\tablename}{Tabela}
 ---
 
-\newpage 
+\newpage
 \tableofcontents
 \newpage
 
 
 # Enunciado
-Você é um analista de dados no setor de compras da Casa Pio, uma grande rede de lojas  de calçados.
 
-Ela é uma empresa com sede em Fortaleza estabelecido há 70 anos. Atualmente, também opera em várias cidades do interior do Ceará, A empresa vende sapatos de preços médios, variando de 120 a 200 reais. Embora os sapatos sejam de alta qualidade, existem lotes e lotes no estoque que nunca são vendidos. Em outras palavras, os sapatos estragando nas prateleiras das lojas.
 
-Por isto, o gerenciamento de estoque é um problema muito comum e importante. 
+**Questão 1**
 
-Muitas, senão a maioria das lojas, não conseguem determinar número correto de itens que precisam manter em estoque. O problema oposto também surge: lojas sem estoque necessário de mercadorias não irão atender à demanda de mercado. Por exemplo, você certamente já entrou em uma loja de sapatos, mas não conseguiu comprar porque eles não tinham o número em estoque.
+Assista aos vídeos 3, 4 e 5, do prof. Jacob. Em seguida, execute o programa
+contido no arquivo “pref-ABC-teste-qui-quadrado.R”, usando o RStudio.
+Pede-se:
+    a) Explique todos os testes de proporção realizados.
+    b) Reporte os resultados para as hipóteses contidas no programa.
 
-Neste estudo, vamos examinar o problema oposto - ter muito estoque.
 
-Este é um problema mais significativo para a empresa, pois indica que investiu na produção ou compra de um produto, mas não foi capaz de vendê-lo.
+**Questão 2**
 
-Temos um banco de dados com as informações de vendas das lojas durante os anos 2014 a 2016, com várias informações uteis.
+Nesta questão, você deve descobrir as condições que sua amostra precisa
+ter para você aplicar um certo teste estatístico.
+Sugiro você consultar as possíveis condições usando a tabela de análise.
+Nos dois itens pedidos a seguir, você irá responder as perguntas formuladas pelo
+sistema, para chegar aos testes que se pede em cada item. Para isto, considere que o
+sistema está acessível em
+https://www.socscistatistics.com/tests/what_stats_test_wizard.aspx
+Pede-se:
+a) O sistema deve sugerir teste Qui-quadrado. Serve para comparar proporções, isto é, a
+distribuição de diversos acontecimentos (preferências, aprendizado, etc.) em diferentes
+amostras, a fim de avaliar se as amostras diferem significativamente quanto às
+proporções desses acontecimentos.
 
-Nosso problema é estimar o volume de compra de sapatos para não ficar com estoque muito alto, nem perder muitas vendas.
+  - Você acertou a resposta em quantas tentativas?
+  - Quais as respostas você deu para cada uma das perguntas formuladas quando você acertou o teste solicitado?
+  - Dê um exemplo, em que esta técnica seria aplicada, considerando as suas respostas corretas.
+  
+b) O sistema deve sugerir o teste estatístico T-student, e como alternativa a ele, o
+Man-whitney U test.
 
-**Tarefa 1**
-Responda as seguintes perguntas:
+  - Você acertou a resposta em quantas tentativas?
+  - Quais as respostas você deu para cada uma das perguntas formuladas quando você acertou o teste solicitado?
+  - Dê um exemplo, em que esta técnica seria aplicada, considerando as suas respostas corretas.
 
-    1- Os dados fornecidos são amostrais ou populacionais?
-    2- Você separaria os dados em quantos grupos?
-    3- Esses grupos são dependentes ou independentes?
-    4- Como você agrupará os dados para ter uma melhor visão do problema a ser resolvido? 
-    5- Os dados fornecidos representam uma distribuição Normal?
-    6- Qual o intervalo de confiança que será usado?
-    7- Qual a estatística será usada? Z ou t?
-    8- Com base na sua resposta a pergunta 7, qual a sua justificativa?
-    9- Quantos pares de cada sapato devemos ter em estoque?
-    
-**Tarefa 2**
-
-Digamos que queremos usar um intervalo de confiança para ver se duas lojas estão vendendo o mesmo número de sapatos. Além disso, queremos saber com 90% confiança quanto uma loja supera a outra em termos de vendas. Você tem duas tabelas representando as vendas de calçados femininos em duas lojas. Seus códigos são ARA 1 e ARA 2. Temos dados para 2016.
-
-Justifique suas escolhas e aplique uma estatística para determinar qual das lojas vende mais produtos, e quais.
-
-Verifique com 90% de confiança, se ambas lojas podem ter um estoque único.
 
 
 \pagebreak
 
 # Resolução
 
-## Tarefa 1
+## Questão 1
 
-**1- Os dados fornecidos são amostrais ou populacionais?**
+    a) Explique todos os testes de proporção realizados.
+    b) Reporte os resultados para as hipóteses contidas no programa.
 
-Os dados fornecidos são amostrais, uma vez que se referem a apenas 3 anos, de 2014 a 2016 e Casa Pio já está estabelecida em Fortaleza há 70 anos.
+A explicação dos resultados se dará logo após a explicação dos testes realizados.
 
-**2- Você separaria os dados em quantos grupos?**
+### Teste chi-quadrado
+O primeiro teste realizado é o Chi-quadrado para proporções, onde será avaliado se existe diferença na preferência entre sites.
+```{r teste quiquadrado}
+#carregamento das bibliotecas necessárias
+library("csv")
+library("Rcpp")
 
-Separaria os dados por gênero, por tamanho de sapato, por mês e ano. Nesse caso específico foram utilizados os dados de todo Ceará.
+# leitura dos dados em arquivo
+prefsABC = read.csv("Dados/prefsABC.csv")
 
-**3- Esses grupos são dependentes ou independentes?**
+#visualização em tabela dos dados recém carregados
+#View(prefsABC)
 
-Os grupos são independentes.
+#conversão da coluna Subject para representação de dados categóricos
+prefsABC$Subject = factor(prefsABC$Subject)
 
-**4- Como você agrupará os dados para ter uma melhor visão do problema a ser resolvido? **
+#visualização de algumas estatísticas dos dados carregados
+#summary(prefsABC)
 
-Os dados serão agrupados por meses, por ano, e por tamanho de sapato, em ordem crescente, sendo criadas duas tabelas, uma para cada gênero. Dessa maneira, obtém-se uma visão melhor do problema a ser resolvido.
+#formatação dos dados para apresentação da contagem de observações por categoria
+prfs = xtabs( ~ Pref, data = prefsABC)
 
-```{r Leitura dos dados e declaração das funções para organização dos dados, warning=FALSE, include=FALSE}
+#visualização da contagem das observações 
+# prfs 
 
-library(dplyr)
-library(tidyr)
-library(readxl)
-library(PEIP)
-
-
-library(knitr)
-
-library(kableExtra)
-
-casa_pio <- data.frame(readxl::read_excel(
-  "Dados/casa pio.xlsx",
-  col_types = c(
-    "skip",
-    "skip",
-    "text",
-    "skip",
-    "text",
-    "text",
-    "numeric",
-    "skip",
-    "skip",
-    "numeric",
-    "numeric",
-    "numeric",
-    "numeric",
-    "numeric"
-  ),
-  skip = 2
-)) %>%
-  select(Ano = ...7, Mes = Month, Loja, Sexo, Tamanho) %>%
-  arrange(Ano)
-
- 
-filtra_tabela <- function(dados, sexo, anoInicial, anoFinal) {
-  
-  aux <- data.frame()
- 
-  
-  for (ano in anoInicial:anoFinal) {
-    
-    v <- dados %>%
-      filter( Ano == ano, Sexo == sexo) %>% 
-      select(-Sexo) %>% 
-      group_by(Mes, Tamanho) %>%
-      count() %>%
-    spread(key = "Mes",
-           value = "n",
-           fill = 0) %>%
-    ungroup() %>%
-    `colnames<-`(
-      append(paste(c(
-        "jan",
-        "fev",
-        "mar",
-        "abr",
-        "mai",
-        "jun",
-        "jul",
-        "ago",
-        "set",
-        "out",
-        "nov",
-        "dez"
-      ),toString(ano),sep = ""),values = "Tamanho", after = 0)) %>%
-    bind_rows(summarise_all(., ~ if (is.numeric(.))
-      sum(.)
-      else
-        "Total")) %>%
-    arrange(as.numeric(Tamanho))
-    class(v) <- "data.frame"
-    
-    if(ncol(aux) == 0){
-      
-     aux <- v
-     
-    }else{
-      
-      aux <- left_join(aux,v,by="Tamanho")
-    }
-    
-  }
-  nomes <- aux[,1]
-  aux <-t(aux)%>%`colnames<-`(append(nomes[1:16],values = "Total", after = 16))
-  aux <- as_tibble(aux[-1,])
-  return(aux)
-  
-}
-
-
-
-tab_intervalo_conf <- function(dados, intervaloConfianca) {
-  x <- dados %>% select(-contains("Total"))
-  
-  numAmostras = nrow(x)
-  
-  nomesLinhas <- colnames(x)
-  
-  
-  tvalue <-
-    tinv(p = 1 - (1 - intervaloConfianca) / 2, nu = numAmostras - 1)
-  media <- round(apply(x, 2, mean), 2)
-  erro_Padrao <- round(apply(x, 2, sd) / numAmostras ^ 0.5, 2)
-  margem_Erro <- round(erro_Padrao * tvalue, 2)
-  ci_inf <- round(media - margem_Erro, 2)
-  ci_sup <- round(media + margem_Erro, 2)
-  
-  novasColunas <-
-    c(paste("-", toString(intervaloConfianca * 100), "%", " CI", sep = ""),
-      paste("+", toString(intervaloConfianca * 100), "%", " CI", sep = ""))
-  
-  
-  aux <-
-    t(bind_rows(media, erro_Padrao, margem_Erro, ci_inf, ci_sup)) %>%
-    `colnames<-`(c(
-      "Média",
-      "ErroPadrão",
-      "MargemErro",
-      novasColunas[1],
-      novasColunas[2]
-    ))  %>%
-    as_tibble() %>%
-    mutate(NumEscolhido = ceiling(.data[[novasColunas[2]]])) %>%
-    as.matrix() %>%
-    `row.names<-`(nomesLinhas)
-  
-  return(aux)
-  
-}
-
-gera_tabela_intervalo_confianca <-
-  function(dados, anoInicial, anoFinal, sexo, intervaloConf) {
-    anoInicial <- anoInicial
-    anoFinal <- anoFinal
-    sexo.extenso <-
-      if (sexo == "Masc") {
-        "homens"
-      } else if (sexo == "Fem") {
-        "mulheres"
-      }
-    
-    caption = paste(
-      "Intervalo de confiança para as vendas de ",
-      toString(anoInicial),
-      " a ",
-      toString(anoFinal),
-      " de calçados para ",
-      sexo.extenso,
-      ".",
-      sep = ""
-    )
-    
-    filtra_tabela(dados,
-                  sexo = sexo,
-                  anoInicial = anoInicial,
-                  anoFinal = anoFinal) %>% 
-      tab_intervalo_conf(intervaloConf) %>%
-      knitr::kable(format = 'pandoc', caption = caption,align = "c")
-  }
-
-
+#Realização do teste qui-quadrado 
+teste = chisq.test(prfs)
+teste
 ```
+O teste acima realizado é um teste de proporções, cuja a hipótese nula é de que as frequências das variáveis observadas em relação ao total são iguais, que, no caso particular estudado, se traduz em conjecturar que as preferências entre os sites A, B e C são iguais.
 
-```{r Tabela vendas de sapatos masculinos, echo=FALSE, warning=FALSE, results='asis'}
+No caso estudado, o teste é realizado comparando as frequências observadas com as frequências esperadas, como visto abaixo:
 
-nomes <- c()
-for (ano in 2014:2016) {
-  meses <- c("jan",
-        "fev",
-        "mar",
-        "abr",
-        "mai",
-        "jun",
-        "jul",
-        "ago",
-        "set",
-        "out",
-        "nov",
-        "dez")
-  nomes <- append(nomes,paste(meses,substring(toString(ano),first=3), sep = ""))
-}
-
-
-casa_pio %>% 
-  filtra_tabela(sexo = "Masc", anoInicial = 2014,anoFinal = 2016) %>%
-  as.matrix() %>%
-  `rownames<-`(nomes) %>%
-  knitr::kable(format = 'pandoc', caption = "Vendas de sapatos masculinos de 2014 a 2016 em todo o Ceará, por tamanho.",align = "c")
-
+```{r}
+teste$expected
 ```
-```{r Tabela vendas de sapatos femininos, echo=FALSE, warning=FALSE, results='asis'}
-casa_pio %>% 
-  filtra_tabela(sexo = "Fem",anoInicial = 2014,anoFinal = 2016) %>% as.matrix()%>%`rownames<-`(nomes)%>%
-  knitr::kable(format = 'pandoc', caption = "Vendas de sapatos femininos de 2014 a 2016 em todo o Ceará, por tamanho.",align = "c")
-
-```
-
-**5- Os dados fornecidos representam uma distribuição Normal?**
-
-De acordo com o Teorema do Limite Central, as médias de amostras grandes e aleatórias são aproximadamente normais. Logo, pode-se aplicar técnicas usadas em dados que seguem uma distribuição normal.
-
-**6- Qual o intervalo de confiança que será usado?**
-
-O intervalo de confiança será de 95%
-
-**7- Qual a estatística será usada? Z ou t?**
-
-A estatística que será usada será a t.
-
-**8- Com base na sua resposta a pergunta 7, qual a sua justificativa?**
-
-Como são três anos de dados e os dados estão divididos em meses, totalizando 36 meses de dados, optou-se pela distribuição t, uma vez que a amostra tem tamanho próximo de 30. Ademais, como a variância populacional é desconhecida, sugere-se o uso da estatística t.
-
-**9- Quantos pares de cada sapato devemos ter em estoque?**
-
-Aplicando uma estratégia agressiva de mercado, adotou-se o arredondamento para cima do limite superior do intervalo de confiança para definir quantos pares de sapato deve-se ter em estoque, para cada mês, em média.
-
-```{r Tabela intervalo de confiança homens, echo=FALSE, results='asis'}
-casa_pio %>%
-gera_tabela_intervalo_confianca(2014, 2016, "Masc", 0.95)
-
-```
-```{r Tabela intervalo de confiança mulheres, echo=FALSE, results='asis'}
-casa_pio %>%
-gera_tabela_intervalo_confianca( 2014, 2016, "Fem", 0.95)
-
-```
-
-\pagebreak
-
-## Tarefa 2
-
-### Desenvolvimento
-
-Para a solução dessa tarefa serão filtrados os dados de vendas de sapatos femininos nas lojas ARA1 e ARA2 (Aracati 1 e 2), e separados em tabelas distintas, uma para cada loja referente às vendas em 2016.
-
-```{r, echo=FALSE, results='asis'}
-meses <- c("jan","fev", "mar","abr","mai","jun",
-           "jul","ago","set","out","nov","dez")
-nomes <- paste(meses, substring(toString(2016), first = 3), sep = "")
-casa_pio %>% filter(Loja == "ARA1") %>%
-  filtra_tabela(sexo = "Fem",
-                anoInicial = 2016,
-                anoFinal = 2016) %>% select(-Total) %>% as.matrix() %>% `rownames<-`(nomes) %>%
-  t() %>%
-  knitr::kable(format = 'pandoc',
-               caption = "Vendas de sapatos femininos em 2016 da loja 1 de Aracati, por tamanho.",
-               align = "c")
-```
-
-```{r echo=FALSE, warning=FALSE, results='asis'}
-casa_pio %>% 
-  filter(Loja == "ARA2") %>%
-  filtra_tabela(sexo = "Fem",
-                anoInicial = 2016,
-                anoFinal = 2016) %>% 
-  select(-Total) %>% 
-  as.matrix() %>% 
-  `rownames<-`(nomes) %>%
-  t() %>%
-  knitr::kable(format = "pandoc",
-               caption = "Vendas de sapatos femininos em 2016 da loja 2 de Aracati, por tamanho.",
-               align = "c")
-  
-```
-
-Após a seleção e organização dos dados são aplicados testes estatísticos para cada tamanho de sapato vendido, com o objetivo de saber se há diferença no perfil de venda da loja em cada tipo de produto. O teste selecionado é o t de student pelos seguintes motivos:
-  
-  * Temos variância populacional desconhecida;
-  * Temos uma amostra pequena.
-  * Por se tratar de uma amostra grande podemos utilizar testes paramétricos.
-  
-O teste t será utilizado para saber se há diferença significativa entre as vendas em 2016 de cada tamanho de sapato. Serão utilizados os seguintes parâmetros para a realização dos testes:
-
-  * Amostra 1: vendas em 2016 dos sapatos de um determinado número da loja ARA1;
-  * Amostra 2: vendas em 2016 dos sapatos, do mesmo número da amostra 1, da loja ARA2;
-  * Variância populacional será considerada igual, embora desconhecida;
-  * Intervalo de confiança de 90%;
-  * Graus de liberdade: 22, pois são testadas duas amostras de 12 meses cada com variâncias populacionais consideradas iguais.
-  
-A hipótese nula do teste t aplicado é de que não há diferença significativa entre as médias das vendas mês a mês dos mesmos tipos produtos de cada loja.
-  
-A variância conjunta das amostras é calculada a partir da fórmula abaixo:
+A fórmula utilizada para calcular a estatística do teste é:
 $$
-s_{p}^{2}={\frac {\left ( n_{x}-1 \right )s_{x}^{2}+\left ( n_{y}-1 \right )s_{y}^{2}}{n_{x}+n_{y}-2}}
+\chi^2=\sum_{k=A}^{C}\frac{(o_{k}-e_{k})^2}{e_{k}}
 $$
-A variância conjunta é utilizado para calcular o intervalo de confiança, para o nível especificado, da diferença entre as médias, de acordo com a expressão seguinte:
 
-$$
-\left ( \bar{x}-\bar{y} \right ) \pm t_{n_{x}+n_{x}-2,\alpha/2}\sqrt{\frac{s_{p}^2}{n_{x}}+\frac{s_{p}^2}{n_{y}}}
-$$
-  
-A chamada da função do teste t em R:
-
-`t.test(ara1[,"num"],ara2[,"num"], var.equal = TRUE,conf.level = 0.90)`
-
-O resultado dos teste é mostrado na tabela 7.
-  
-```{r warning=FALSE,echo=FALSE, results='asis'}
-ara1 <- casa_pio %>%
-  filter(Loja == "ARA1") %>%
-  filtra_tabela("Fem", 2016, 2016)
-ara2 <- casa_pio %>%
-  filter(Loja == "ARA2") %>%
-  filtra_tabela("Fem", 2016, 2016)
-resultado <- matrix()
+De acordo com o resultado do teste, pode-se afirmar que, com os dados obtidos, a hipótese de que a preferência entre os sites A, B e C pode ser rejeitada a um nível de significância estatística de 0,05.
 
 
-conf.Level = 0.90
-nomes <-
-    c("estatística t",
-      "valor p",
-      "gl",
-      "mediaARA1",
-      "mediaARA2",
-      paste("-", conf.Level * 100, "% ", "CI", sep = ""),
-      paste("+", conf.Level * 100, "% ", "CI", sep = ""))
-for (col in colnames(ara1)[1:ncol(ara1)-1]) {
-  
-  var <- t.test(ara1[,col],ara2[,col],var.equal = TRUE,conf.level = conf.Level)
-  t <- round(var$statistic[[1]],3)
-  p_value <- round(var$p.value[[1]],4)
-  grausLiberdade <- var$parameter[[1]]
-  
-  mediaARA1 <- round(var$estimate[1],2)[[1]]
-  mediaARA2 <- round(var$estimate[2],2)[[1]]
-  
-  ci_min <- round(var$conf.int[1],2) 
-  ci_max <-round(var$conf.int[2],2)
-  row <- c(t,p_value,grausLiberdade,mediaARA1,mediaARA2,ci_min, ci_max)
-  
-  if (ncol(resultado) == 1) {
-    
-    resultado <- matrix(row, nrow=1)
-   
-  }else{
-    resultado <- rbind(resultado, matrix(row, nrow=1))
-    
-  }
-}
+Uma ilustração mais detalhada do teste é mostrada na figura a seguir.
 
-rownames(resultado) <- colnames(ara1)[1:16]
-colnames(resultado) <- nomes
-  
- 
+----
 
-resultado %>% 
-  knitr::kable(format = 'pandoc', caption = "Comparação das vendas das lojas ARA1 e ARA2 por tamanho no ano de 2016", align = "c")
+[id]: Dados/TesteABCquiquadrado.png "Title"
+![][id]
+
+----
+### Teste multinomial
+
+O teste multinomial aplicado visa comparar a frequência dos dados observados em cada categoria (site de preferência) com uma distribuição multinomial com frequências teóricas à escolha do pesquisador.
+
+O teste informa o quão raro seriam os resultados observados obtidos caso fossem obtidos de uma distribuição multinomial. A distribuição multinomial é utilizada para modelar uma variável aleatória que representam eventos com probabilidade fixa e independentes entre si.
+
+A hipótese nula do teste é de que as variáveis observadas seguem possuem frequências iguais às predeterminadas pelo pesquisador. No nosso caso estudado a hipótese nula pode ser ser expressada como a assunção de que a proporção de escolha entre os sites A, B e C são iguais.
+
+Portanto, o teste é realizado como mostrado no bloco a seguir, passando como parâmetros os dados estudados e assumindo iguais chances de escolha de cada site: `A= 1/3, B= 1/3, C= 1/3`. Ao predeterminar chances iguais de escolha para cada opção, assume-se, implicitamente, que as variáveis são independentes entre si e que a escolha de um site em particular é devido apenas a uma aleatoriedade.
+
+```{r teste multinomial}
+# multinomial test
+library(XNomial)
+xmulti(prfs, c(1/3, 1/3, 1/3), statName="Prob")
 
 ```
 
-### Análise dos resultados
+Os resultados obtidos no teste nos mostram que a frequência de escolha de cada site divergem bastante de uma distribuição multinomial equilibrada(`P(A) = P(B) = P(C)`) devido ao valor P calculado se encontrar muito abaixo de `0.05`, limiar de significância adotado.
 
-Considerando um valor p de referência de `0.05`, pode-se observar na tabela 7 que nenhum valor p dos testes realizados indica que há diferenças estatisticamente relevantes entre as vendas dos sapatos de cada tamanho, portanto a hipótese nula de que não há diferença entre as médias das vendas não pode ser rejeitada.
+Pode-se interpretar o resultado, alternativamente, como, caso a escolha do site seja aleatória, e não haja preferência entre eles, um resultado tão ou mais raro quanto o resultado encontrado será observado apenas `0.08%` das vezes. Como as chances são muito baixas é provável que a escolha dos sites não sejam aleatórias e que pelo menos um site pode possuir características de causem a preferência de um site sobre outro.
 
-Pode-se tirar a mesma conclusão ao analisar os intervalos de confiança gerados pelos testes pois uma vez que, para todos os tamanhos de sapatos, o valor `0.0` está contido entre o limite inferior e o limite inferior do intervalo de confiança de 90%.
+### Testes binomiais
 
-Em posse dessas conclusões, já que não foram encontradas diferenças significativas entre o perfil de vendas das lojas 1 e 2 de Aracati, é possível sugerir que as lojas possuam um estoque único.
+Os testes binomiais aplicados em seguida são utilizados para comparar o percentual de escolha de um site isoladamente contra as outras opções. Semelhante ao teste multinomial, é escolhido um percentual de referência de `1/3`, que corresponde a uma escolha aleatória, sem preferências, entre 3 opções. 
 
-  
+A hipótese nula de cada teste individual é de que a probabilidade de escolha do teste é igual a 1/3.
+
+```{r Testes binomiais}
+# teste site A
+aa = binom.test(sum(prefsABC$Pref == "A"), nrow(prefsABC), p=1/3)
+# teste site B
+bb = binom.test(sum(prefsABC$Pref == "B"), nrow(prefsABC), p=1/3)
+# teste site C
+cc = binom.test(sum(prefsABC$Pref == "C"), nrow(prefsABC), p=1/3)
+aa$p.value
+bb$p.value
+cc$p.value
+
+```
+Os resultados de cada teste nos informa que as proporções de escolhas dos sites A e C estão divergentes da probabilidade de 1/3, pois o p-value de cada teste está muito abaixo de `0.05`. 
+
+O site A foi escolhido abaixo do esperado, pois seu intervalo de confiança de 95% (6% a 25%) está abaixo da probabilidade de referência (33%).
+
+O site C foi escolhido acima do esperado, pois seu intervalo de confiança de 95% (38% a 65%) está acima da probabilidade de referência (33%) 
+
+Já o site B, escolhido por 21 das 60 pessoas, não diverge significamente da probabilidade de referência de 1/3, que está contida no intervalo de confiança do teste realizado (23% a 48%).
+
+
+```{r ajuste dos p-values}
+p.adjust(c(aa$p.value, bb$p.value, cc$p.value), method="holm")
+#cada valor p é multiplicado pelo seu índice de ordenação
+c(aa$p.value*3,bb$p.value*1, cc$p.value*2)
+```
+
+Após a realização dos testes, os p-values foram ajustados como uma forma de verificar se não há erro do tipo 1, rejeição de hipótese nula verdadeira, em cada um dos testes aplicados. No método de Holm os valores p são ordenados do maior para o menor e multiplicados pelo respectivo índice de ordenação(menor valor-p por 3 e o maior valor-p por 1). 
+
+Mesmo após as correções dos p-values de cada teste a conclusão sobre os testes binomiais permanece inalterada, pois nenhum deles ultrapassou o limiar de `0.05`.
+
+
+### Teste qui-quadrado ABCSex
+
+O teste aplicado a seguir tem como objetivo avaliar se a escolha de site é afetada pelo gênero do participante. 
+
+Diferentemente do teste chi-quadrado anterior não será avaliado se as proporções entre A, B e C são iguais, mas se as proporções das escolhas feitas por pessoas de cada gênero dadas as proporções de A, B e C observadas são semelhantes.
+
+Portanto, a hipótese nula é que a escolha do site é independente do gênero do participante
+
+```{r}
+# leitura dos dados em arquivo da preferências do sites por gênero
+prefsABCsex <- read.csv("Dados/prefsABCsex.csv")
+
+#conversão da coluna Subject para representação de dados categóricos
+prefsABCsex$Subject=factor(prefsABCsex$Subject)
+
+#visualização dos dados
+#View(prefsABCsex)
+#summary(prefsABCsex)
+
+#formatação dos dados para apresentação da contagem de observações por categoria
+prfsABCSex = xtabs( ~ Pref + Sex, data = prefsABCsex)
+
+t = chisq.test(prfsABCSex)
+t
+```
+
+Com o p-value obtido do teste menor que 0.05, pode-se rejeitar a hipótese nula de que as escolhas de site são independente de gênero.
+
+### Teste de proporções G test
+
+Teste utilizado com o mesmo objetivo do chi-quadrado, para avaliar se há diferença nas proporções de escolha de site por pessoas de cada gênero. Utiliza-se a mesma tabela do chi-quadrado. O teste geralmente é utilizado para amostras maiores que 200.
+
+```{r}
+library(RVAideMemoire)
+# G-test
+G.test(prfsABCSex)
+```
+
+O valor p obtido nos leva às mesmas conclusões do teste chi-quadrado anterior.
+
+### Teste exato de Fisher
+
+O teste exato de Fisher é utilizado para saber o quão provavel é de se obter um resultado tão ou mais atípico quanto o observado, dadas as proporções apresentadas. Normalmente é utilizado para amostras com poucas observações.
+
+A hipótese nula do teste é de que as chances de escolha dos sites são iguais (odds ratio = 1).
+
+```{r}
+# Fisher's exact test
+fisher.test(prfsABCSex)
+
+```
+
+O resultado do teste permite rejeitar a hipótese nula de que a razão das chances de escolha são iguais a 1.
+
+### Testes binomiais ABC para o sexo Masculino
+
+Os testes binomiais aplicados em seguida são utilizados para comparar o percentual de escolha de um site por participantes apenas do sexo masculino isoladamente contra as outras opções. Semelhante ao teste multinomial, é escolhido um percentual de referência de `1/3`, que corresponde a uma escolha aleatória, sem preferências, entre 3 opções. 
+
+A hipótese nula de cada teste individual é de que a probabilidade de escolha do teste é igual a 1/3.
+
+```{r}
+# Teste binomial de escolha do site A por sujeitos do sexo masculino
+ma = binom.test(sum(prefsABCsex[prefsABCsex$Sex == "M", ]$Pref == "A"),
+                nrow(prefsABCsex[prefsABCsex$Sex == "M", ]), 
+                p = 1/3)
+
+# Teste binomial de escolha do site B por sujeitos do sexo masculino
+mb = binom.test(sum(prefsABCsex[prefsABCsex$Sex == "M", ]$Pref == "B"),
+                nrow(prefsABCsex[prefsABCsex$Sex == "M", ]), 
+                p = 1/3)
+
+# Teste binomial de escolha do site C por sujeitos do sexo masculino
+mc = binom.test(sum(prefsABCsex[prefsABCsex$Sex == "M", ]$Pref == "C"),
+                nrow(prefsABCsex[prefsABCsex$Sex == "M", ]), 
+                p = 1/3)
+
+ma$p.value
+mb$p.value
+mc$p.value
+```
+
+Para o site A não se rejeita a hipótese nula, pois o p-value(0.055) está acima do valor de `0.05`.
+
+Para o site B não se rejeita a hipótese nula, pois o p-value(0.127) está acima do valor de `0.05`.
+
+Para o site C se rejeita a hipótese nula, pois o p-value(0.0004) está muito abaixo do valor de `0.05`.
+
+
+```{r}
+p.adjust(c(ma$p.value, mb$p.value, mc$p.value), method="holm")
+
+#cada valor p é multiplicado pelo seu índice de ordenação
+c(ma$p.value*2,mb$p.value*1, mc$p.value*3)
+```
+
+Após a realização dos testes, os p-values foram ajustados como uma forma de verificar se não há erro do tipo 1, rejeição de hipótese nula verdadeira, em cada um dos testes aplicados. No método de Holm os valores p são ordenados do maior para o menor e multiplicados pelo respectivo índice de ordenação(menor valor-p por 3 e o maior valor-p por 1). 
+
+Mesmo após as correções dos p-values de cada teste a conclusão sobre os testes binomiais permanece inalterada, pois nenhum deles ultrapassou o limiar de `0.05`.
+
+### Testes binomiais ABC para o sexo Feminino
+
+Os testes aplicados para o sexo masculino são agora aplicados para o sexo feminino.
+
+```{r}
+
+fa = binom.test(sum(prefsABCsex[prefsABCsex$Sex == "F", ]$Pref == "A"),
+                nrow(prefsABCsex[prefsABCsex$Sex == "F", ]), 
+                p = 1/3)
+fb = binom.test(sum(prefsABCsex[prefsABCsex$Sex == "F", ]$Pref == "B"),
+                nrow(prefsABCsex[prefsABCsex$Sex == "F", ]), 
+                p = 1/3)
+fc = binom.test(sum(prefsABCsex[prefsABCsex$Sex == "F", ]$Pref == "C"),
+                nrow(prefsABCsex[prefsABCsex$Sex == "F", ]), 
+                p = 1/3)
+
+fa$p.value
+fb$p.value
+fc$p.value
+```
+
+Para o site A se rejeita a hipótese nula, pois o p-value(0.009) está muito abaixo do valor de `0.05`.
+
+Para o site B se rejeita a hipótese nula, pois o p-value(0.047) está abaixo do valor de `0.05`.
+
+Para o site C não se rejeita a hipótese nula, pois o p-value(0.694) está acima do valor de `0.05`.
+
+```{r}
+p.adjust(c(fa$p.value, fb$p.value, fc$p.value), method="holm") 
+c(fa$p.value*3,fb$p.value*1, fc$p.value*1)
+```
+
+Após a realização dos testes, os p-values foram ajustados como uma forma de verificar se não há erro do tipo 1, rejeição de hipótese nula verdadeira, em cada um dos testes aplicados. No método de Holm os valores p são ordenados do maior para o menor e multiplicados pelo respectivo índice de ordenação(menor valor-p por 3 e o maior valor-p por 1). 
+
+Mesmo após as correções dos p-values de cada teste a conclusão sobre os testes binomiais permanece inalterada, pois nenhum deles ultrapassou o limiar de `0.05`.
+
+## Questão 2
+
+### a)
+
+  - Foram realizadas 2 tentativas;
+  - Nominal > One nominal variable;
+  - Realizar um teste em uma população para aferir se, por exemplo, a proporção de mortes por Covid-19 em um país segue ou diverge da tendência mundial.
+
+### b)
+
+  - Foram realizadas 3 tentativas;
+  - Interval/Ratio > Differences between populations > No, I'm working with more than one sample (or treatment condition) > Independent-measures > Two samples (treatments);
+  - Realizar um teste em uma população para aferir se, por exemplo, há eficácia de um medicamento para determinada doença entre dois grupos.
+
+
 
 

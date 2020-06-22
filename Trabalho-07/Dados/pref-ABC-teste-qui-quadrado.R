@@ -1,8 +1,8 @@
-#library("csv")
-#library("Rcpp")
+library("csv")
+library("Rcpp")
 
 # read in a data file with 3 response categories
-#prefsABC = read.csv("prefsABC.csv")
+prefsABC = read.csv("Dados/prefsABC.csv")
 
 View(prefsABC)
 prefsABC$Subject = factor(prefsABC$Subject) # convert to nominal factor
@@ -39,7 +39,7 @@ summary(prefsABCsex)
 prfs = xtabs( ~ Pref + Sex, data=prefsABCsex)
 View(prfs)
 chisq.test(prfs)
-
+library(RVAideMemoire)
 # G-test
 G.test(prfs)
 
@@ -61,4 +61,4 @@ p.adjust(c(fa$p.value, fb$p.value, fc$p.value), method="holm") # correct for mul
 prfs = xtabs( ~ Pref + Sex, data=prefsABCsex)
 View(prfs)
 chisq.test(prfs)
-
+install.packages("RVA")
